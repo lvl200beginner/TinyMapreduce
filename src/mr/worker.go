@@ -1,10 +1,13 @@
 package mr
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+	"time"
+)
 import "log"
 import "net/rpc"
 import "hash/fnv"
-
 
 //
 // Map functions return a slice of KeyValue.
@@ -24,7 +27,6 @@ func ihash(key string) int {
 	return int(h.Sum32() & 0x7fffffff)
 }
 
-
 //
 // main/mrworker.go calls this function.
 //
@@ -34,8 +36,52 @@ func Worker(mapf func(string, string) []KeyValue,
 	// Your worker implementation here.
 
 	// uncomment to send the Example RPC to the coordinator.
-	// CallExample()
+	//CallExample()
+	for {
+		job := RequestJob()
+		switch job.JobType {
+		case Waiting:
+			time.Sleep(time.Second)
+		case Exit:
+			os.Exit(0)
+		case MapJob:
+			HandleMap(job, mapf)
+		case ReduceJob:
+			HandleReduce(job, reducef)
+		}
+	}
+}
 
+func HandleMap(job JobAssigned, mapf func(string, string) []KeyValue) {
+	//call map func and divide intermediate file
+
+	//notify coordinator that job is completed
+
+}
+
+func HandleReduce(job JobAssigned, reducef func(string, []string) string) {
+
+}
+
+func RequestJob() JobAssigned {
+	args := ExampleArgs{}
+
+	// fill in the argument(s).
+	args.X = 0
+
+	// declare a reply structure.
+	reply := JobAssigned{}
+
+	// send the RPC request, wait for the reply.
+	// the "Coordinator.Example" tells the
+	// receiving server that we'd like to call
+	// the Example() method of struct Coordinator.
+	ok := call("Coordinator.AssignJobs", &args, &reply)
+	if !ok {
+		reply.JobType = Waiting
+		fmt.Printf("RequestJob failed!\n")
+	}
+	return reply
 }
 
 //
