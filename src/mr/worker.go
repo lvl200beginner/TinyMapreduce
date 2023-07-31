@@ -1,8 +1,11 @@
 package mr
 
 import (
+	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"os"
+	"strconv"
 	"time"
 )
 import "log"
@@ -32,56 +35,108 @@ func ihash(key string) int {
 //
 func Worker(mapf func(string, string) []KeyValue,
 	reducef func(string, []string) string) {
-
+	CallExample()
 	// Your worker implementation here.
+	//register worker and get info
+	args := ExampleArgs{}
+	mymissioninfo := MissionInfo{}
+	ok := call("Coordinator.RegisterWorker", &args, &mymissioninfo)
 
-	// uncomment to send the Example RPC to the coordinator.
-	//CallExample()
+	for !ok {
+		time.Sleep(5 * time.Second)
+		fmt.Printf("call failed!\n")
+		ok = call("Coordinator.RegisterWorker", &args, &mymissioninfo)
+	}
+
 	for {
-		job := RequestJob()
+		job := RequestJob(mymissioninfo.WorkerInfo)
 		switch job.JobType {
 		case Waiting:
-			time.Sleep(time.Second)
+			time.Sleep(2 * time.Second)
 		case Exit:
 			os.Exit(0)
 		case MapJob:
-			HandleMap(job, mapf)
+			HandleMap(mymissioninfo, job, mapf)
 		case ReduceJob:
-			HandleReduce(job, reducef)
+			HandleReduce(mymissioninfo, job, reducef)
 		}
 	}
 }
 
-func HandleMap(job JobAssigned, mapf func(string, string) []KeyValue) {
+func HandleMap(mission MissionInfo, job JobAssigned, mapf func(string, string) []KeyValue) {
 	//call map func and divide intermediate file
+	file, err := os.Open(job.Files)
+	if err != nil {
+		log.Fatalf("cannot open %v", job.Files)
+		return
+	}
+	content, err := ioutil.ReadAll(file)
+	if err != nil {
+		log.Fatalf("cannot read %v", job.Files)
+		return
+	}
+	file.Close()
+	kva := mapf(job.Files, string(content))
+
+	intermedias := make([][]KeyValue, mission.Reducediv)
+
+	if mission.Reducediv == 0 {
+		fmt.Println(mission)
+		os.Exit(0)
+	}
+
+	for _, kvpair := range kva {
+		BucketIdx := ihash(kvpair.Key) % mission.Reducediv
+		intermedias[BucketIdx] = append(intermedias[BucketIdx], kvpair)
+	}
+	for i := 0; i < mission.Reducediv; i++ {
+		interfile := "mr-" + strconv.Itoa(job.JobIndex) + "-" + strconv.Itoa(i)
+		f, err := os.Create(interfile)
+		if err != nil {
+			log.Fatalln("failed to create file! name:", interfile)
+			return
+		}
+		enc := json.NewEncoder(f)
+		for _, kv := range intermedias {
+			err = enc.Encode(&kv)
+			if err != nil {
+				log.Fatalln("failed to encode file! name:", interfile)
+				return
+			}
+		}
+		f.Close()
+	}
 
 	//notify coordinator that job is completed
-
+	CallSubmitJob(mission.WorkerInfo, JobInfo{job.JobType, job.JobIndex})
 }
 
-func HandleReduce(job JobAssigned, reducef func(string, []string) string) {
-
+func HandleReduce(mission MissionInfo, job JobAssigned, reducef func(string, []string) string) {
+	time.Sleep(5 * time.Second)
+	//notify coordinator that job is completed
+	CallSubmitJob(mission.WorkerInfo, JobInfo{job.JobType, job.JobIndex})
 }
 
-func RequestJob() JobAssigned {
-	args := ExampleArgs{}
+func RequestJob(worker WorkerInfo) JobAssigned {
 
-	// fill in the argument(s).
-	args.X = 0
-
-	// declare a reply structure.
 	reply := JobAssigned{}
 
-	// send the RPC request, wait for the reply.
-	// the "Coordinator.Example" tells the
-	// receiving server that we'd like to call
-	// the Example() method of struct Coordinator.
-	ok := call("Coordinator.AssignJobs", &args, &reply)
-	if !ok {
-		reply.JobType = Waiting
-		fmt.Printf("RequestJob failed!\n")
+	ok := call("Coordinator.AssignJob", &worker, &reply)
+	for !ok {
+		time.Sleep(5 * time.Second)
+		ok = call("Coordinator.AssignJob", &worker, &reply)
 	}
 	return reply
+}
+
+func CallSubmitJob(worker WorkerInfo, job JobInfo) {
+	args := JobSummision{worker, job}
+	reply := ExampleReply{}
+	ok := call("Coordinator.SubmitJob", &args, &reply)
+
+	if !ok {
+		fmt.Println("failed to submit job!")
+	}
 }
 
 //
@@ -131,7 +186,6 @@ func call(rpcname string, args interface{}, reply interface{}) bool {
 	if err == nil {
 		return true
 	}
-
 	fmt.Println(err)
 	return false
 }

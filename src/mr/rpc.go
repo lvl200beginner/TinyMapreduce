@@ -24,8 +24,13 @@ type JobInfo struct {
 	JobIndex int
 }
 
+type MissionInfo struct {
+	WorkerInfo
+	Reducediv int
+}
+
 type WorkerInfo struct {
-	name int
+	Name int
 }
 
 type ExampleArgs struct {
@@ -46,7 +51,7 @@ const (
 )
 
 type JobAssigned struct {
-	files []string
+	Files string
 	JobType
 	JobIndex int
 }

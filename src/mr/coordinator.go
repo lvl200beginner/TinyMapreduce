@@ -2,8 +2,10 @@ package mr
 
 import (
 	"errors"
+	"fmt"
 	"log"
 	"net/http"
+	"path/filepath"
 	"strconv"
 	"time"
 )
@@ -18,11 +20,12 @@ type Coordinator struct {
 	Phase
 	MapJobStatus    []int
 	ReduceJobStatus []int
-	Workers         map[int]Workerstatu
+	Workers         []Workerstatu
 	M               int
 	R               int
 	MCompleted      int
 	RCompleted      int
+	nWorkers        int
 	mu              sync.Mutex
 	cond            *sync.Cond
 	jobList         *LinkedList
@@ -72,7 +75,7 @@ func (c *Coordinator) SubmitJob(args *JobSummision, reply *ExampleReply) error {
 	c.mu.Lock()
 	defer c.mu.Unlock()
 	var err error = nil
-	worker := args.WorkerInfo.name
+	worker := args.WorkerInfo.Name
 	jobtype := args.JobType
 	jobidx := args.JobIndex
 	c.Workers[worker] = Workerstatu{false, idle, -1, time.Time{}}
@@ -96,8 +99,10 @@ func (c *Coordinator) SubmitJob(args *JobSummision, reply *ExampleReply) error {
 			err = errors.New("job already done")
 			return err
 		}
+		fmt.Printf("RC:%d,status before:%v \n", c.RCompleted, c.ReduceJobStatus)
 		c.ReduceJobStatus[jobidx] = complete
 		c.RCompleted++
+		fmt.Printf("RC:%d,status before:%v \n", c.RCompleted, c.ReduceJobStatus)
 		if c.R == c.RCompleted {
 			c.completed = true
 			c.jobList.Clear()
@@ -106,9 +111,15 @@ func (c *Coordinator) SubmitJob(args *JobSummision, reply *ExampleReply) error {
 	return err
 }
 
-func (c *Coordinator) RegisterWorker(args *WorkerInfo, reply *ExampleReply) error {
+func (c *Coordinator) RegisterWorker(args *ExampleArgs, reply *MissionInfo) error {
+	c.mu.Lock()
+	defer c.mu.Unlock()
+
 	worker := Workerstatu{false, Waiting, -1, time.Time{}}
-	c.Workers[args.name] = worker
+	c.Workers = append(c.Workers, worker)
+	reply.WorkerInfo.Name = c.nWorkers
+	reply.Reducediv = c.R
+	c.nWorkers++
 	return nil
 }
 
@@ -117,9 +128,14 @@ func (c *Coordinator) AssignJob(args *WorkerInfo, reply *JobAssigned) error {
 	defer c.mu.Unlock()
 	if c.completed {
 		reply.JobType = Exit
-		c.Workers[args.name] = Workerstatu{false, Exit, -1, time.Time{}}
+		c.Workers[args.Name] = Workerstatu{false, Exit, -1, time.Time{}}
 		return nil
 	}
+
+	//if this worker already request a job before
+	//but didn't complete for some reason
+	//resume the job
+	//what if worker proc restart??
 
 	node := c.jobList.DeleteAtHead()
 	var err error = nil
@@ -129,7 +145,7 @@ func (c *Coordinator) AssignJob(args *WorkerInfo, reply *JobAssigned) error {
 	} else {
 		jobdata, _ := node.(JobNode)
 		reply.JobType = jobdata.JobType
-		reply.files = append(reply.files, jobdata.File)
+		reply.Files = jobdata.File
 		reply.JobIndex = jobdata.JobIndex
 		switch jobdata.JobType {
 		case MapJob:
@@ -138,7 +154,7 @@ func (c *Coordinator) AssignJob(args *WorkerInfo, reply *JobAssigned) error {
 			c.ReduceJobStatus[jobdata.JobIndex] = working
 		}
 		statue := Workerstatu{true, jobdata.JobType, jobdata.JobIndex, time.Now()}
-		c.Workers[args.name] = statue
+		c.Workers[args.Name] = statue
 	}
 	return err
 }
@@ -146,17 +162,24 @@ func (c *Coordinator) AssignJob(args *WorkerInfo, reply *JobAssigned) error {
 func (c *Coordinator) checkworkers() {
 	for {
 		c.mu.Lock()
+		fmt.Printf("map jobs:%v \n", c.MapJobStatus)
+		fmt.Printf("reduce jobs:%v \n", c.ReduceJobStatus)
+		fmt.Printf("workers:%v \n", c.Workers)
+		fmt.Printf("MComplete:%v \n", c.MCompleted)
+		fmt.Printf("RComplete:%v \n", c.RCompleted)
 		if c.completed {
 			return
 		}
 		for name, worker := range c.Workers {
 			if worker.isworking && time.Since(worker.JobStartTime) > 10*time.Second {
-				c.Workers[name] = Workerstatu{false, idle, -1, time.Time{}}
+				c.Workers[name].isworking = false
 				var jobfile string
 				if worker.JobType == MapJob {
 					jobfile = c.mapfiles[worker.JobIndex]
+					c.MapJobStatus[worker.JobIndex] = idle
 				} else if worker.JobType == ReduceJob {
 					jobfile = "mr-*-" + strconv.Itoa(worker.JobIndex)
+					c.ReduceJobStatus[worker.JobIndex] = idle
 				}
 				c.jobList.InsertAtHead(JobNode{worker.JobType, worker.JobIndex, jobfile})
 			}
@@ -187,7 +210,7 @@ func (c *Coordinator) server() {
 // if the entire job has finished.
 //
 func (c *Coordinator) Done() bool {
-	ret := c.completed
+	//ret := c.completed
 
 	if c.completed {
 		for {
@@ -206,7 +229,7 @@ func (c *Coordinator) Done() bool {
 	}
 	// Your code here.
 
-	return ret
+	return false
 }
 
 //
@@ -215,14 +238,18 @@ func (c *Coordinator) Done() bool {
 // nReduce is the number of reduce tasks to use.
 //
 func MakeCoordinator(files []string, nReduce int) *Coordinator {
-	c := Coordinator{false, MapPhase, make([]int, len(files)),
-		make([]int, nReduce), make(map[int]Workerstatu, 0),
-		len(files), nReduce, 0, 0, sync.Mutex{},
-		&sync.Cond{}, NewLinkedList(), files}
+	matches, err := filepath.Glob(files[0])
+	if err != nil {
+		fmt.Println("Error:", err)
+	}
+	c := Coordinator{false, MapPhase, make([]int, len(matches)),
+		make([]int, nReduce), make([]Workerstatu, 0),
+		len(matches), nReduce, 0, 0, 0, sync.Mutex{},
+		&sync.Cond{}, NewLinkedList(), matches}
 	// Your code here.
 	//add map jobs
-	for i := 0; i < len(files); i++ {
-		c.jobList.InsertAtHead(JobNode{MapJob, i, files[i]})
+	for i := 0; i < len(matches); i++ {
+		c.jobList.InsertAtHead(JobNode{MapJob, i, matches[i]})
 	}
 	c.cond = sync.NewCond(&c.mu)
 	c.server()
