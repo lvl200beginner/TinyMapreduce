@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"path/filepath"
 	"strconv"
 	"time"
 )
@@ -99,10 +98,8 @@ func (c *Coordinator) SubmitJob(args *JobSummision, reply *ExampleReply) error {
 			err = errors.New("job already done")
 			return err
 		}
-		fmt.Printf("RC:%d,status before:%v \n", c.RCompleted, c.ReduceJobStatus)
 		c.ReduceJobStatus[jobidx] = complete
 		c.RCompleted++
-		fmt.Printf("RC:%d,status before:%v \n", c.RCompleted, c.ReduceJobStatus)
 		if c.R == c.RCompleted {
 			c.completed = true
 			c.jobList.Clear()
@@ -141,7 +138,6 @@ func (c *Coordinator) AssignJob(args *WorkerInfo, reply *JobAssigned) error {
 	var err error = nil
 	if node == nil {
 		reply.JobType = Waiting
-		err = errors.New("no job in job list")
 	} else {
 		jobdata, _ := node.(JobNode)
 		reply.JobType = jobdata.JobType
@@ -164,9 +160,9 @@ func (c *Coordinator) checkworkers() {
 		c.mu.Lock()
 		fmt.Printf("map jobs:%v \n", c.MapJobStatus)
 		fmt.Printf("reduce jobs:%v \n", c.ReduceJobStatus)
-		fmt.Printf("workers:%v \n", c.Workers)
-		fmt.Printf("MComplete:%v \n", c.MCompleted)
-		fmt.Printf("RComplete:%v \n", c.RCompleted)
+		//fmt.Printf("workers:%v \n", c.Workers)
+		//fmt.Printf("MComplete:%v \n", c.MCompleted)
+		//fmt.Printf("RComplete:%v \n", c.RCompleted)
 		if c.completed {
 			return
 		}
@@ -210,10 +206,13 @@ func (c *Coordinator) server() {
 // if the entire job has finished.
 //
 func (c *Coordinator) Done() bool {
+	c.mu.Lock()
+	defer c.mu.Unlock()
+	ret := false
 	//ret := c.completed
-
+	var waittime int = 6
 	if c.completed {
-		for {
+		for i := 0; i < waittime; i++ {
 			var flag = false
 			for _, worker := range c.Workers {
 				if worker.JobType != Exit {
@@ -226,10 +225,11 @@ func (c *Coordinator) Done() bool {
 			}
 			time.Sleep(10 * time.Second)
 		}
+		ret = true
 	}
 	// Your code here.
 
-	return false
+	return ret
 }
 
 //
@@ -238,10 +238,7 @@ func (c *Coordinator) Done() bool {
 // nReduce is the number of reduce tasks to use.
 //
 func MakeCoordinator(files []string, nReduce int) *Coordinator {
-	matches, err := filepath.Glob(files[0])
-	if err != nil {
-		fmt.Println("Error:", err)
-	}
+	matches := files
 	c := Coordinator{false, MapPhase, make([]int, len(matches)),
 		make([]int, nReduce), make([]Workerstatu, 0),
 		len(matches), nReduce, 0, 0, 0, sync.Mutex{},

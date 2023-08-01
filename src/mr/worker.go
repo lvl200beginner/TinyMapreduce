@@ -5,19 +5,30 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"path/filepath"
+	"sort"
 	"strconv"
+	"strings"
 	"time"
+	"unicode"
 )
 import "log"
 import "net/rpc"
 import "hash/fnv"
 
+type ByKey []KeyValue
+
+// for sorting by key.
+func (a ByKey) Len() int           { return len(a) }
+func (a ByKey) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
+func (a ByKey) Less(i, j int) bool { return a[i].Key < a[j].Key }
+
 //
 // Map functions return a slice of KeyValue.
 //
 type KeyValue struct {
-	Key   string
-	Value string
+	Key   string `json:"key"`
+	Value string `json:"value"`
 }
 
 //
@@ -35,7 +46,6 @@ func ihash(key string) int {
 //
 func Worker(mapf func(string, string) []KeyValue,
 	reducef func(string, []string) string) {
-	CallExample()
 	// Your worker implementation here.
 	//register worker and get info
 	args := ExampleArgs{}
@@ -91,20 +101,19 @@ func HandleMap(mission MissionInfo, job JobAssigned, mapf func(string, string) [
 	}
 	for i := 0; i < mission.Reducediv; i++ {
 		interfile := "mr-" + strconv.Itoa(job.JobIndex) + "-" + strconv.Itoa(i)
-		f, err := os.Create(interfile)
+		tmpf, err := ioutil.TempFile("./", "tmp-"+interfile)
+		defer os.Remove(tmpf.Name())
 		if err != nil {
 			log.Fatalln("failed to create file! name:", interfile)
 			return
 		}
-		enc := json.NewEncoder(f)
-		for _, kv := range intermedias {
-			err = enc.Encode(&kv)
-			if err != nil {
-				log.Fatalln("failed to encode file! name:", interfile)
-				return
-			}
+		enc := json.NewEncoder(tmpf)
+		err = enc.Encode(&(intermedias[i]))
+		if err != nil {
+			log.Fatalln("failed to encode file! name:", interfile)
+			return
 		}
-		f.Close()
+		err = os.Rename(tmpf.Name(), interfile)
 	}
 
 	//notify coordinator that job is completed
@@ -112,9 +121,81 @@ func HandleMap(mission MissionInfo, job JobAssigned, mapf func(string, string) [
 }
 
 func HandleReduce(mission MissionInfo, job JobAssigned, reducef func(string, []string) string) {
-	time.Sleep(5 * time.Second)
+
+	matches, err := filepath.Glob(job.Files)
+	files := make([]string, 0)
+
+	if err != nil {
+		log.Fatalln(err)
+	}
+	for _, filename := range matches {
+		tmp := strings.Split(filename, "-")
+		if len(tmp) != 3 || tmp[0] != "mr" || !isAllDigits(tmp[1]) || !isAllDigits(tmp[2]) {
+			break
+		}
+		files = append(files, filename)
+	}
+
+	fmt.Println(files)
+	kva := make([]KeyValue, 0)
+	for _, filename := range files {
+		f, err := os.Open(filename)
+		if err != nil {
+			log.Fatalf("cannot open %v", job.Files)
+			return
+		}
+
+		dec := json.NewDecoder(f)
+		kvs := make([]KeyValue, 0)
+		err = dec.Decode(&kvs)
+		if err != nil {
+			log.Fatalln("JSON decoding error:", err)
+		}
+		kva = append(kva, kvs...)
+		f.Close()
+	}
+
+	sort.Sort(ByKey(kva))
+
+	oname := "mr-out-" + strconv.Itoa(job.JobIndex)
+	tmpf, err := ioutil.TempFile("./", "tmp-"+oname)
+	if err != nil {
+		log.Fatalln("Error creating temporary file:", err)
+	}
+	defer os.Remove(tmpf.Name())
+
+	i := 0
+	for i < len(kva) {
+		j := i + 1
+		for j < len(kva) && kva[j].Key == kva[i].Key {
+			j++
+		}
+		values := []string{}
+		for k := i; k < j; k++ {
+			values = append(values, kva[k].Value)
+		}
+		output := reducef(kva[i].Key, values)
+
+		// this is the correct format for each line of Reduce output.
+		fmt.Fprintf(tmpf, "%v %v\n", kva[i].Key, output)
+
+		i = j
+	}
+	err = os.Rename(tmpf.Name(), oname)
+	if err != nil {
+		log.Fatalln("Error renaming temporary file:", err)
+	}
 	//notify coordinator that job is completed
 	CallSubmitJob(mission.WorkerInfo, JobInfo{job.JobType, job.JobIndex})
+}
+
+func isAllDigits(s string) bool {
+	for _, ch := range s {
+		if !unicode.IsDigit(ch) {
+			return false
+		}
+	}
+	return true
 }
 
 func RequestJob(worker WorkerInfo) JobAssigned {

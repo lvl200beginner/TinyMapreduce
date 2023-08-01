@@ -7,6 +7,8 @@
 # comment this out to run the tests without the Go race detector.
 RACE=-race
 
+export LC_COLLATE=C
+
 if [[ "$OSTYPE" = "darwin"* ]]
 then
   if go version | grep 'go1.17.[012345]'
@@ -67,6 +69,7 @@ failed_any=0
 # generate the correct output
 ../mrsequential ../../mrapps/wc.so ../pg*txt || exit 1
 sort mr-out-0 > mr-correct-wc.txt
+cp mr-correct-wc.txt ../mymroutcc
 rm -f mr-out*
 
 echo '***' Starting wc test.
@@ -88,6 +91,8 @@ wait $pid
 # since workers are required to exit when a job is completely finished,
 # and not before, that means the job has finished.
 sort mr-out* | grep . > mr-wc-all
+cp mr-wc-all ../mymrout
+
 if cmp mr-wc-all mr-correct-wc.txt
 then
   echo '---' wc test: PASS
