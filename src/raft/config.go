@@ -282,6 +282,7 @@ func (cfg *config) start1(i int, applier func(int, chan ApplyMsg)) {
 	cfg.endnames[i] = make([]string, cfg.n)
 	for j := 0; j < cfg.n; j++ {
 		cfg.endnames[i][j] = randstring(20)
+		fmt.Printf("endnames for %d->%d is %s \n", i, j, cfg.endnames[i][j])
 	}
 
 	// a fresh set of ClientEnds.
@@ -430,6 +431,7 @@ func (cfg *config) setlongreordering(longrel bool) {
 // try a few times in case re-elections are needed.
 //
 func (cfg *config) checkOneLeader() int {
+	fmt.Println("check one leader")
 	for iters := 0; iters < 10; iters++ {
 		ms := 450 + (rand.Int63() % 100)
 		time.Sleep(time.Duration(ms) * time.Millisecond)

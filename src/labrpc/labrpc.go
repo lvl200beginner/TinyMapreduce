@@ -49,7 +49,10 @@ package labrpc
 //   pass svc to srv.AddService()
 //
 
-import "6.824/labgob"
+import (
+	"6.824/labgob"
+	"fmt"
+)
 import "bytes"
 import "reflect"
 import "sync"
@@ -302,6 +305,7 @@ func (rn *Network) processReq(req reqMsg) {
 			ms = (rand.Int() % 100)
 		}
 		time.AfterFunc(time.Duration(ms)*time.Millisecond, func() {
+			fmt.Printf("%s failed rpc! \n", req.endname)
 			req.replyCh <- replyMsg{false, nil}
 		})
 	}
