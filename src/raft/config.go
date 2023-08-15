@@ -282,7 +282,7 @@ func (cfg *config) start1(i int, applier func(int, chan ApplyMsg)) {
 	cfg.endnames[i] = make([]string, cfg.n)
 	for j := 0; j < cfg.n; j++ {
 		cfg.endnames[i][j] = randstring(20)
-		fmt.Printf("endnames for %d->%d is %s \n", i, j, cfg.endnames[i][j])
+		//fmt.Printf("endnames for %d->%d is %s \n", i, j, cfg.endnames[i][j])
 	}
 
 	// a fresh set of ClientEnds.
@@ -584,7 +584,7 @@ func (cfg *config) one(cmd interface{}, expectedServers int, retry bool) int {
 				}
 			}
 		}
-
+		//fmt.Printf("start! cmd = %d ,index = %d \n", cmd, index)
 		if index != -1 {
 			// somebody claimed to be the leader and to have
 			// submitted our command; wait a while for agreement.
@@ -598,6 +598,7 @@ func (cfg *config) one(cmd interface{}, expectedServers int, retry bool) int {
 						return index
 					}
 				}
+				//fmt.Printf("index:%d......nd = %d,cmd1 = %d \n", index, nd, cmd1)
 				time.Sleep(20 * time.Millisecond)
 			}
 			if retry == false {
