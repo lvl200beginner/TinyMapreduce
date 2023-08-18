@@ -1033,6 +1033,68 @@ func TestFigure8Unreliable2C(t *testing.T) {
 	cfg.end()
 }
 
+func aTestMyFigure8Unreliable2C(t *testing.T) {
+	servers := 5
+	cfg := make_config(t, servers, true, false)
+	defer cfg.cleanup()
+
+	cfg.begin("Test (2C): Figure 8 (unreliable)")
+
+	cfg.one(10000, 1, true)
+
+	nup := servers
+	for iters := 0; iters < 1000; iters++ {
+		if iters == 200 {
+			cfg.setlongreordering(true)
+		}
+		leader := -1
+		for i := 0; i < servers; i++ {
+			_, _, ok := cfg.rafts[i].Start(iters + 1)
+			if ok && cfg.connected[i] {
+				leader = i
+			}
+		}
+		fmt.Printf("add agreement! cmd=%d \n", iters+1)
+
+		if (rand.Int() % 1000) < 100 {
+			ms := rand.Int63() % (int64(RaftElectionTimeout/time.Millisecond) / 2)
+			fmt.Printf("sleep %v ms! \n", ms)
+			time.Sleep(time.Duration(ms) * time.Millisecond)
+
+		} else {
+			ms := (rand.Int63() % 13)
+			fmt.Printf("sleep %v ms! \n", ms)
+			time.Sleep(time.Duration(ms) * time.Millisecond)
+		}
+
+		if leader != -1 && (rand.Int()%1000) < int(RaftElectionTimeout/time.Millisecond)/2 {
+			cfg.disconnect(leader)
+			fmt.Printf("diconnect leader %d \n", leader)
+			nup -= 1
+		}
+
+		if nup < 3 {
+			s := rand.Int() % servers
+			if cfg.connected[s] == false {
+				cfg.connect(s)
+				fmt.Printf("connect  %d \n", s)
+				nup += 1
+			}
+		}
+	}
+
+	for i := 0; i < servers; i++ {
+		if cfg.connected[i] == false {
+			cfg.connect(i)
+		}
+	}
+	fmt.Printf("connect all \n")
+
+	cfg.one(rand.Int()%10000, servers, true)
+
+	cfg.end()
+}
+
 func internalChurn(t *testing.T, unreliable bool) {
 
 	servers := 5

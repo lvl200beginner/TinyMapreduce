@@ -233,8 +233,11 @@ type AppendEntriesArgs struct {
 }
 
 type AppendEntriesReply struct {
-	Term    int
-	Success bool
+	Term           int
+	Success        bool
+	ConflicTerm    int
+	TermFirstIndex int
+	LogLen         int
 }
 
 func (rf *Raft) PersistState(changed *bool) {
@@ -250,6 +253,9 @@ func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply
 	//fmt.Printf("%d(%d) rec heart from %d(%d) \n ", rf.me, rf.currentTerm, args.LeaderId, args.Term)
 	reply.Term = rf.currentTerm
 	reply.Success = false
+	reply.LogLen = len(rf.log)
+	reply.ConflicTerm = -1
+	reply.TermFirstIndex = -1
 	logCount := len(args.Entries)
 	stateChanged := new(bool)
 	*stateChanged = false
@@ -276,19 +282,30 @@ func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply
 	if args.PrevLogIndex == -1 && logCount == 0 {
 		return
 	}
-	if args.PrevLogIndex == -1 {
-		//fmt.Printf("PrevLogIndex == -1:%d in term %d recv log form %d \n", rf.me, rf.currentTerm, rf.votedFor)
-		rf.log = append(rf.log, args.Entries[:]...)
-		reply.Success = true
-		rf.commitIndex = args.LeaderCommit
-		if rf.commitIndex > len(args.Entries)-1 {
-			rf.commitIndex = len(args.Entries) - 1
-		}
-		*stateChanged = true
-		return
-	}
+	//if args.PrevLogIndex == -1 {
+	//	//fmt.Printf("PrevLogIndex == -1:%d in term %d recv log form %d \n", rf.me, rf.currentTerm, rf.votedFor)
+	//	rf.log = append(rf.log, args.Entries[:]...)
+	//	reply.Success = true
+	//	rf.commitIndex = args.LeaderCommit
+	//	if rf.commitIndex > len(args.Entries)-1 {
+	//		rf.commitIndex = len(args.Entries) - 1
+	//	}
+	//	*stateChanged = true
+	//	return
+	//}
 
-	if args.PrevLogIndex >= len(rf.log) || rf.log[args.PrevLogIndex].Term != args.PrevLogTerm {
+	if args.PrevLogIndex >= len(rf.log) {
+		return
+	} else if args.PrevLogIndex >= 0 && rf.log[args.PrevLogIndex].Term != args.PrevLogTerm {
+		reply.ConflicTerm = rf.log[args.PrevLogIndex].Term
+		i := args.PrevLogIndex
+		for {
+			if i == 0 || rf.log[i-1].Term != reply.ConflicTerm {
+				break
+			}
+			i--
+		}
+		reply.TermFirstIndex = i
 		return
 	}
 
@@ -537,7 +554,6 @@ func (rf *Raft) startElection() {
 	rf.mu.Lock()
 	defer rf.mu.Unlock()
 	if term != rf.currentTerm {
-		//fmt.Println("get new term while election!")
 		return
 	}
 	if !imnew && newterm > rf.currentTerm {
@@ -559,6 +575,13 @@ func (rf *Raft) startElection() {
 	return
 }
 
+func min(a int, b int) int {
+	if a < b {
+		return a
+	}
+	return b
+}
+
 func GetGid() (gid uint64) {
 	b := make([]byte, 64)
 	b = b[:runtime.Stack(b, false)]
@@ -569,6 +592,13 @@ func GetGid() (gid uint64) {
 		panic(err)
 	}
 	return n
+}
+
+func max(a int, b int) int {
+	if a > b {
+		return a
+	}
+	return b
 }
 
 func (rf *Raft) heartbeat(t1 int) {
@@ -607,9 +637,22 @@ func (rf *Raft) heartbeat(t1 int) {
 					} else if rf.nextIndex[msg.peerIdx] != 0 {
 						switch msg.reply.Success {
 						case false:
-							rf.nextIndex[msg.peerIdx] = rf.nextIndex[msg.peerIdx] - 1
+							minIdx := min(msg.reply.LogLen, len(rf.log))
+							//rf.nextIndex[msg.peerIdx] = rf.nextIndex[msg.peerIdx] - 1
+							n := msg.nextIdx
+							if msg.reply.ConflicTerm != -1 {
+								for n >= msg.reply.TermFirstIndex && n < len(rf.log) {
+									if rf.log[n].Term == msg.reply.ConflicTerm {
+										break
+									}
+									n--
+								}
+							}
+							minIdx = min(minIdx, n)
+							minIdx = min(msg.nextIdx-1, minIdx)
+							rf.nextIndex[msg.peerIdx] = min(rf.nextIndex[msg.peerIdx], minIdx)
 						case true:
-							rf.matchIndex[msg.peerIdx] = rf.nextIndex[msg.peerIdx] - 1
+							rf.matchIndex[msg.peerIdx] = max(msg.nextIdx-1, rf.matchIndex[msg.peerIdx])
 						}
 
 					}
@@ -654,6 +697,7 @@ func (rf *Raft) heartbeat(t1 int) {
 				msg := AppendMsg{}
 				msg.peerIdx = n
 				msg.rpcFailed = false
+				msg.nextIdx = ni
 				msg.reply = reply
 				if !ok {
 					msg.rpcFailed = true
@@ -717,10 +761,23 @@ func (rf *Raft) run() {
 						}
 						//fmt.Printf("%d:update for %d!msg.nextIdx =%d,msg.entriesLen = %d \n", rf.me, msg.peerIdx, msg.nextIdx, msg.entriesLen)
 						if !msg.reply.Success {
-							rf.nextIndex[msg.peerIdx] = msg.nextIdx - 1
+							//rf.nextIndex[msg.peerIdx] = msg.nextIdx - 1
+							minIdx := min(msg.reply.LogLen, len(rf.log))
+							n := msg.nextIdx - 1
+							if msg.reply.ConflicTerm != -1 {
+								for n >= msg.reply.TermFirstIndex && n < len(rf.log) {
+									if rf.log[n].Term == msg.reply.ConflicTerm {
+										break
+									}
+									n--
+								}
+							}
+							minIdx = min(minIdx, n)
+							minIdx = min(msg.nextIdx-1, minIdx)
+							rf.nextIndex[msg.peerIdx] = min(rf.nextIndex[msg.peerIdx], minIdx)
 						} else {
-							rf.nextIndex[msg.peerIdx] = msg.nextIdx + msg.entriesLen
-							rf.matchIndex[msg.peerIdx] = msg.nextIdx + msg.entriesLen - 1
+							rf.nextIndex[msg.peerIdx] = max(msg.nextIdx+msg.entriesLen, rf.nextIndex[msg.peerIdx])
+							rf.matchIndex[msg.peerIdx] = max(rf.matchIndex[msg.peerIdx], msg.nextIdx+msg.entriesLen-1)
 						}
 						for N := rf.commitIndex + 1; N < len(rf.log); N++ {
 							//fmt.Printf("N = %d!rf.log[N].Term=%d,rf.currentTerm = %d,match = %v,next =%v \n", rf.commitIndex+1, rf.log[rf.commitIndex+1].Term, rf.currentTerm, rf.matchIndex, rf.nextIndex)
