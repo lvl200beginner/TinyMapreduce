@@ -88,12 +88,18 @@ type Raft struct {
 	mrole            Role
 
 	//persistence
-	currentTerm int
-	votedFor    int
+	currentTerm   int
+	votedFor      int
+	logFirstIndex int
+	snapshot      []byte
+	snapshotTerm  int
+	snapshotIndex int
 
 	//timeout
 	chticker  chan struct{}
 	chVoteWin chan struct{}
+
+	chApplier chan ApplyMsg
 }
 
 type raftLog struct {
@@ -149,9 +155,58 @@ func (rf *Raft) persist() {
 		fmt.Printf("persist currentTerm error.err=%v \n", err)
 		return
 	}
+	err = e.Encode(rf.logFirstIndex)
+	if err != nil {
+		rf.mu.Unlock()
+		fmt.Printf("persist logFirstIndex error.err=%v \n", err)
+		return
+	}
+	w2 := new(bytes.Buffer)
+	e2 := labgob.NewEncoder(w2)
+	err = e2.Encode(rf.snapshot)
+	if err != nil {
+		rf.mu.Unlock()
+		fmt.Printf("persist snapshot error.err=%v \n", err)
+		return
+	}
+	err = e.Encode(rf.snapshotIndex)
+	if err != nil {
+		rf.mu.Unlock()
+		fmt.Printf("persist snapShotIndex error.err=%v \n", err)
+		return
+	}
+	err = e.Encode(rf.snapshotTerm)
+	if err != nil {
+		rf.mu.Unlock()
+		fmt.Printf("persist snapShotTerm error.err=%v \n", err)
+		return
+	}
 	rf.mu.Unlock()
 	data := w.Bytes()
-	rf.persister.SaveRaftState(data)
+	snapdata := w2.Bytes()
+	rf.persister.SaveStateAndSnapshot(data, snapdata)
+}
+
+func (rf *Raft) readSnapShot(data []byte) {
+	if data == nil || len(data) < 1 { // bootstrap without any state?
+		return
+	}
+	r := bytes.NewBuffer(data)
+	d := labgob.NewDecoder(r)
+	var snapshot []byte
+	var snapshotIndex int
+	var snapshotTerm int
+	if d.Decode(&snapshot) != nil ||
+		d.Decode(&snapshotIndex) != nil ||
+		d.Decode(&snapshotTerm) != nil {
+		fmt.Printf("decode error!\n")
+	} else {
+		rf.mu.Lock()
+		rf.snapshot = snapshot
+		rf.snapshotIndex = snapshotIndex
+		rf.snapshotTerm = snapshotTerm
+		rf.mu.Unlock()
+	}
 }
 
 //
@@ -221,6 +276,18 @@ type RequestVoteReply struct {
 	// Your data here (2A).
 	Term        int
 	VoteGranted bool
+}
+
+type InstallSnapshotArgs struct {
+	Term              int
+	LeaderId          int
+	LastIncludedIndex int
+	LastIncludedTerm  int
+	Data              []byte
+}
+
+type InstallSnapshotReply struct {
+	Term int
 }
 
 type AppendEntriesArgs struct {
@@ -393,6 +460,51 @@ func (rf *Raft) RequestVote(args *RequestVoteArgs, reply *RequestVoteReply) {
 	return
 }
 
+func (rf *Raft) InstallSnapshot(args *InstallSnapshotArgs, reply *InstallSnapshotReply) {
+	rf.chticker <- struct{}{}
+	rf.mu.Lock()
+	defer rf.mu.Unlock()
+
+	reply.Term = rf.currentTerm
+	if args.Term < rf.currentTerm {
+		return
+	}
+	if args.Term > rf.currentTerm {
+		if rf.mrole == leader {
+			rf.nextIndex = make([]int, len(rf.peers))
+			rf.matchIndex = make([]int, len(rf.peers))
+		}
+		rf.mrole = follower
+		rf.currentTerm = args.Term
+	}
+	if rf.snapshotIndex >= args.LastIncludedIndex {
+		return
+	}
+
+	rf.snapshot = args.Data
+	rf.snapshotIndex = args.LastIncludedIndex
+	rf.snapshotTerm = args.LastIncludedTerm
+
+	lens := len(rf.log)
+	defer rf.persist()
+
+	if args.LastIncludedIndex < lens+rf.logFirstIndex && rf.log[args.LastIncludedIndex-rf.logFirstIndex].Term == args.LastIncludedTerm {
+		rf.log = rf.log[args.LastIncludedIndex-rf.logFirstIndex+1:]
+		rf.logFirstIndex = args.LastIncludedIndex + 1
+		return
+	}
+	rf.log = []raftLog{}
+
+	msg := ApplyMsg{}
+	msg.SnapshotValid = true
+	msg.SnapshotTerm = args.LastIncludedTerm
+	msg.SnapshotIndex = args.LastIncludedIndex
+	msg.Snapshot = args.Data
+	go func() {
+		rf.chApplier <- msg
+	}()
+}
+
 //
 // example code to send a RequestVote RPC to a server.
 // server is the index of the target server in rf.peers[].
@@ -429,6 +541,11 @@ func (rf *Raft) sendRequestVote(server int, args *RequestVoteArgs, reply *Reques
 
 func (rf *Raft) sendAppendEntries(server int, args *AppendEntriesArgs, reply *AppendEntriesReply) bool {
 	ok := rf.peers[server].Call("Raft.AppendEntries", args, reply)
+	return ok
+}
+
+func (rf *Raft) sendInstallSnapshot(server int, args *InstallSnapshotArgs, reply *InstallSnapshotReply) bool {
+	ok := rf.peers[server].Call("Raft.InstallSnapshot", args, reply)
 	return ok
 }
 
@@ -940,16 +1057,29 @@ func Make(peers []*labrpc.ClientEnd, me int,
 	rf.votedFor = -1
 	rf.commitIndex = -1
 	rf.lastApplied = -1
+	rf.logFirstIndex = 0
+	rf.snapshotTerm = -1
+	rf.snapshotIndex = -1
 	rf.receiveHeartbeat = false
 	rf.chticker = make(chan struct{}, 1)
 	rf.chVoteWin = make(chan struct{}, 1)
 	rf.mrole = follower
+	rf.chApplier = applyCh
 
 	rf.nextIndex = make([]int, len(peers))
 	rf.matchIndex = make([]int, len(peers))
 
 	// initialize from state persisted before a crash
 	rf.readPersist(persister.ReadRaftState())
+	rf.readPersist(persister.ReadSnapshot())
+
+	if rf.snapshotIndex >= rf.logFirstIndex {
+		if rf.snapshotIndex < rf.logFirstIndex+len(rf.log) {
+			rf.log = rf.log[rf.snapshotIndex-rf.logFirstIndex+1:]
+		} else {
+			rf.log = []raftLog{}
+		}
+	}
 
 	// start ticker goroutine to start elections
 	go rf.ticker()
