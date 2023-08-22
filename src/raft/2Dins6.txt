@@ -1,0 +1,2200 @@
+disconnect(0)
+disconnect(1)
+disconnect(2)
+connect(0)
+connect(1)
+connect(2)
+Test (2D): install snapshots (disconnect) ...
+1 is candidate! 
+2(0)get votereq from 1(1).
+ candidate last log:[idx:-1,0]
+ my log:[] 
+TERM 1: 2 in term 0 vote for 1! 
+1 wins! term = 1 
+leader state:commit=-1,applied=-1,firstidx=0,log:[] 
+0(0)get votereq from 1(1).
+ candidate last log:[idx:-1,0]
+ my log:[] 
+leader 1 for term 1 start! 
+TERM 1: 0 in term 0 vote for 1! 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = -1, prevterm = -1,LeaderCommit = -1 
+ my state:log len:0,commit:-1,snapidx=-1 snapterm=-1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = -1, prevterm = -1,LeaderCommit = -1 
+ my state:log len:0,commit:-1,snapidx=-1 snapterm=-1,firstIdx=0,log:[] 
+leader 1 state:commit = -1,loglen = 0,matches = [0 0 0] ,nextidx = [0 0 0],snapidx=-1,firstidx=0 
+leader 1 append log in index 1 comit = -1 
+ cmd:3217978426348742960 log:[{1 3217978426348742960}] 
+leader 1 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [0 0 0],snapidx=-1,firstidx=0 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = -1, prevterm = -1,LeaderCommit = 0 
+ my state:log len:0,commit:-1,snapidx=-1 snapterm=-1,firstIdx=0,log:[] 
+2:commit:-1,log:[] 
+i < newLog :2 in term 1 recv log form 1  
+2:leader1,args.LeaderCommit:0,start + newLog - 1=0 
+commit CHANGE!:0,log:[{1 3217978426348742960}] 
+0: recv append from 1,logconut = 1,term = 1,PrevLogIndex = -1, prevterm = -1,LeaderCommit = 0 
+ my state:log len:0,commit:-1,snapidx=-1 snapterm=-1,firstIdx=0,log:[] 
+0:commit:-1,log:[] 
+i < newLog :0 in term 1 recv log form 1  
+0:leader1,args.LeaderCommit:0,start + newLog - 1=0 
+commit CHANGE!:0,log:[{1 3217978426348742960}] 
+1:update for 2!msg.nextIdx =0,msg.entriesLen = 1 
+1:update for 0!msg.nextIdx =0,msg.entriesLen = 1 
+2:Apply!,apply log=[{1 3217978426348742960}],commit=0 apply=-1
+2:Apply!,msg={true 3217978426348742960 1 false [] 0 0}
+0:Apply!,apply log=[{1 3217978426348742960}],commit=0 apply=-1
+0:Apply!,msg={true 3217978426348742960 1 false [] 0 0}
+1:Apply!,apply log=[{1 3217978426348742960}],commit=0 apply=-1
+1:Apply!,msg={true 3217978426348742960 1 false [] 0 0}
+leader 1 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [1 0 1],snapidx=-1,firstidx=0 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 0, prevterm = 1,LeaderCommit = 0 
+ my state:log len:1,commit:0,snapidx=-1 snapterm=-1,firstIdx=0,log:[{1 3217978426348742960}] 
+2:commit:0,log:[{1 3217978426348742960}] 
+2:leader1,args.LeaderCommit:0,start + newLog - 1=0 
+commit CHANGE!:0,log:[{1 3217978426348742960}] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 0, prevterm = 1,LeaderCommit = 0 
+ my state:log len:1,commit:0,snapidx=-1 snapterm=-1,firstIdx=0,log:[{1 3217978426348742960}] 
+0:commit:0,log:[{1 3217978426348742960}] 
+0:leader1,args.LeaderCommit:0,start + newLog - 1=0 
+commit CHANGE!:0,log:[{1 3217978426348742960}] 
+leader 1 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [1 0 1],snapidx=-1,firstidx=0 
+leader 1 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [1 0 1],snapidx=-1,firstidx=0 
+leader 1 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [1 0 1],snapidx=-1,firstidx=0 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 0, prevterm = 1,LeaderCommit = 0 
+ my state:log len:1,commit:0,snapidx=-1 snapterm=-1,firstIdx=0,log:[{1 3217978426348742960}] 
+2:commit:0,log:[{1 3217978426348742960}] 
+2:leader1,args.LeaderCommit:0,start + newLog - 1=0 
+commit CHANGE!:0,log:[{1 3217978426348742960}] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 0, prevterm = 1,LeaderCommit = 0 
+ my state:log len:1,commit:0,snapidx=-1 snapterm=-1,firstIdx=0,log:[{1 3217978426348742960}] 
+0:commit:0,log:[{1 3217978426348742960}] 
+0:leader1,args.LeaderCommit:0,start + newLog - 1=0 
+commit CHANGE!:0,log:[{1 3217978426348742960}] 
+leader 1 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [1 0 1],snapidx=-1,firstidx=0 
+leader 1 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [1 0 1],snapidx=-1,firstidx=0 
+leader 1 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [1 0 1],snapidx=-1,firstidx=0 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 0, prevterm = 1,LeaderCommit = 0 
+ my state:log len:1,commit:0,snapidx=-1 snapterm=-1,firstIdx=0,log:[{1 3217978426348742960}] 
+2:commit:0,log:[{1 3217978426348742960}] 
+2:leader1,args.LeaderCommit:0,start + newLog - 1=0 
+commit CHANGE!:0,log:[{1 3217978426348742960}] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 0, prevterm = 1,LeaderCommit = 0 
+ my state:log len:1,commit:0,snapidx=-1 snapterm=-1,firstIdx=0,log:[{1 3217978426348742960}] 
+0:commit:0,log:[{1 3217978426348742960}] 
+0:leader1,args.LeaderCommit:0,start + newLog - 1=0 
+commit CHANGE!:0,log:[{1 3217978426348742960}] 
+leader 1 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [1 0 1],snapidx=-1,firstidx=0 
+leader 1 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [1 0 1],snapidx=-1,firstidx=0 
+leader 1 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [1 0 1],snapidx=-1,firstidx=0 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 0, prevterm = 1,LeaderCommit = 0 
+ my state:log len:1,commit:0,snapidx=-1 snapterm=-1,firstIdx=0,log:[{1 3217978426348742960}] 
+0:commit:0,log:[{1 3217978426348742960}] 
+0:leader1,args.LeaderCommit:0,start + newLog - 1=0 
+commit CHANGE!:0,log:[{1 3217978426348742960}] 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 0, prevterm = 1,LeaderCommit = 0 
+ my state:log len:1,commit:0,snapidx=-1 snapterm=-1,firstIdx=0,log:[{1 3217978426348742960}] 
+2:commit:0,log:[{1 3217978426348742960}] 
+2:leader1,args.LeaderCommit:0,start + newLog - 1=0 
+commit CHANGE!:0,log:[{1 3217978426348742960}] 
+leader 1 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [1 0 1],snapidx=-1,firstidx=0 
+leader 1 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [1 0 1],snapidx=-1,firstidx=0 
+leader 1 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [1 0 1],snapidx=-1,firstidx=0 
+leader 1 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [1 0 1],snapidx=-1,firstidx=0 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 0, prevterm = 1,LeaderCommit = 0 
+ my state:log len:1,commit:0,snapidx=-1 snapterm=-1,firstIdx=0,log:[{1 3217978426348742960}] 
+2:commit:0,log:[{1 3217978426348742960}] 
+2:leader1,args.LeaderCommit:0,start + newLog - 1=0 
+commit CHANGE!:0,log:[{1 3217978426348742960}] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 0, prevterm = 1,LeaderCommit = 0 
+ my state:log len:1,commit:0,snapidx=-1 snapterm=-1,firstIdx=0,log:[{1 3217978426348742960}] 
+0:commit:0,log:[{1 3217978426348742960}] 
+0:leader1,args.LeaderCommit:0,start + newLog - 1=0 
+commit CHANGE!:0,log:[{1 3217978426348742960}] 
+leader 1 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [1 0 1],snapidx=-1,firstidx=0 
+leader 1 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [1 0 1],snapidx=-1,firstidx=0 
+disconnect(2)
+leader 1 append log in index 2 comit = 0 
+ cmd:7955631252354944640 log:[{1 3217978426348742960} {1 7955631252354944640}] 
+leader 1 state:commit = 0,loglen = 2,matches = [0 0 0] ,nextidx = [1 0 1],snapidx=-1,firstidx=0 
+0: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 0, prevterm = 1,LeaderCommit = 0 
+ my state:log len:1,commit:0,snapidx=-1 snapterm=-1,firstIdx=0,log:[{1 3217978426348742960}] 
+0:commit:0,log:[{1 3217978426348742960}] 
+i < newLog :0 in term 1 recv log form 1  
+0:leader1,args.LeaderCommit:0,start + newLog - 1=1 
+commit CHANGE!:0,log:[{1 3217978426348742960} {1 7955631252354944640}] 
+1:update for 0!msg.nextIdx =1,msg.entriesLen = 1 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 1, prevterm = 1,LeaderCommit = 1 
+ my state:log len:2,commit:0,snapidx=-1 snapterm=-1,firstIdx=0,log:[{1 3217978426348742960} {1 7955631252354944640}] 
+0:commit:0,log:[{1 3217978426348742960} {1 7955631252354944640}] 
+0:leader1,args.LeaderCommit:1,start + newLog - 1=1 
+commit CHANGE!:1,log:[{1 3217978426348742960} {1 7955631252354944640}] 
+1:Apply!,apply log=[{1 3217978426348742960} {1 7955631252354944640}],commit=1 apply=0
+1:Apply!,msg={true 7955631252354944640 2 false [] 0 0}
+0:Apply!,apply log=[{1 3217978426348742960} {1 7955631252354944640}],commit=1 apply=0
+0:Apply!,msg={true 7955631252354944640 2 false [] 0 0}
+leader 1 append log in index 3 comit = 1 
+ cmd:8509316604967319700 log:[{1 3217978426348742960} {1 7955631252354944640} {1 8509316604967319700}] 
+leader 1 append log in index 4 comit = 1 
+ cmd:8561958251725910190 log:[{1 3217978426348742960} {1 7955631252354944640} {1 8509316604967319700} {1 8561958251725910190}] 
+leader 1 append log in index 5 comit = 1 
+ cmd:2436510875154596434 log:[{1 3217978426348742960} {1 7955631252354944640} {1 8509316604967319700} {1 8561958251725910190} {1 2436510875154596434}] 
+leader 1 append log in index 6 comit = 1 
+ cmd:5646895722809995874 log:[{1 3217978426348742960} {1 7955631252354944640} {1 8509316604967319700} {1 8561958251725910190} {1 2436510875154596434} {1 5646895722809995874}] 
+leader 1 append log in index 7 comit = 1 
+ cmd:5078145528763124210 log:[{1 3217978426348742960} {1 7955631252354944640} {1 8509316604967319700} {1 8561958251725910190} {1 2436510875154596434} {1 5646895722809995874} {1 5078145528763124210}] 
+leader 1 append log in index 8 comit = 1 
+ cmd:9016141721335593970 log:[{1 3217978426348742960} {1 7955631252354944640} {1 8509316604967319700} {1 8561958251725910190} {1 2436510875154596434} {1 5646895722809995874} {1 5078145528763124210} {1 9016141721335593970}] 
+leader 1 append log in index 9 comit = 1 
+ cmd:6467306839806142054 log:[{1 3217978426348742960} {1 7955631252354944640} {1 8509316604967319700} {1 8561958251725910190} {1 2436510875154596434} {1 5646895722809995874} {1 5078145528763124210} {1 9016141721335593970} {1 6467306839806142054}] 
+leader 1 state:commit = 1,loglen = 9,matches = [1 0 0] ,nextidx = [2 0 1],snapidx=-1,firstidx=0 
+0: recv append from 1,logconut = 7,term = 1,PrevLogIndex = 1, prevterm = 1,LeaderCommit = 1 
+ my state:log len:2,commit:1,snapidx=-1 snapterm=-1,firstIdx=0,log:[{1 3217978426348742960} {1 7955631252354944640}] 
+0:commit:1,log:[{1 3217978426348742960} {1 7955631252354944640}] 
+i < newLog :0 in term 1 recv log form 1  
+0:leader1,args.LeaderCommit:1,start + newLog - 1=8 
+commit CHANGE!:1,log:[{1 3217978426348742960} {1 7955631252354944640} {1 8509316604967319700} {1 8561958251725910190} {1 2436510875154596434} {1 5646895722809995874} {1 5078145528763124210} {1 9016141721335593970} {1 6467306839806142054}] 
+1:update for 0!msg.nextIdx =2,msg.entriesLen = 7 
+1:Apply!,apply log=[{1 3217978426348742960} {1 7955631252354944640} {1 8509316604967319700} {1 8561958251725910190} {1 2436510875154596434} {1 5646895722809995874} {1 5078145528763124210} {1 9016141721335593970} {1 6467306839806142054}],commit=8 apply=1
+1:Apply!,msg={true 8509316604967319700 3 false [] 0 0}
+1:Apply!,msg={true 8561958251725910190 4 false [] 0 0}
+1:Apply!,msg={true 2436510875154596434 5 false [] 0 0}
+1:Apply!,msg={true 5646895722809995874 6 false [] 0 0}
+1:Apply!,msg={true 5078145528763124210 7 false [] 0 0}
+1:Apply!,msg={true 9016141721335593970 8 false [] 0 0}
+1:Apply!,msg={true 6467306839806142054 9 false [] 0 0}
+leader 1 state:commit = 8,loglen = 0,matches = [8 0 0] ,nextidx = [9 0 1],snapidx=8,firstidx=9 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:9,commit:1,snapidx=-1 snapterm=-1,firstIdx=0,log:[{1 3217978426348742960} {1 7955631252354944640} {1 8509316604967319700} {1 8561958251725910190} {1 2436510875154596434} {1 5646895722809995874} {1 5078145528763124210} {1 9016141721335593970} {1 6467306839806142054}] 
+0:commit:1,log:[{1 3217978426348742960} {1 7955631252354944640} {1 8509316604967319700} {1 8561958251725910190} {1 2436510875154596434} {1 5646895722809995874} {1 5078145528763124210} {1 9016141721335593970} {1 6467306839806142054}] 
+0:leader1,args.LeaderCommit:8,start + newLog - 1=8 
+commit CHANGE!:8,log:[{1 3217978426348742960} {1 7955631252354944640} {1 8509316604967319700} {1 8561958251725910190} {1 2436510875154596434} {1 5646895722809995874} {1 5078145528763124210} {1 9016141721335593970} {1 6467306839806142054}] 
+0:Apply!,apply log=[{1 3217978426348742960} {1 7955631252354944640} {1 8509316604967319700} {1 8561958251725910190} {1 2436510875154596434} {1 5646895722809995874} {1 5078145528763124210} {1 9016141721335593970} {1 6467306839806142054}],commit=8 apply=1
+0:Apply!,msg={true 8509316604967319700 3 false [] 0 0}
+0:Apply!,msg={true 8561958251725910190 4 false [] 0 0}
+0:Apply!,msg={true 2436510875154596434 5 false [] 0 0}
+0:Apply!,msg={true 5646895722809995874 6 false [] 0 0}
+0:Apply!,msg={true 5078145528763124210 7 false [] 0 0}
+0:Apply!,msg={true 9016141721335593970 8 false [] 0 0}
+0:Apply!,msg={true 6467306839806142054 9 false [] 0 0}
+leader 1 state:commit = 8,loglen = 0,matches = [8 0 0] ,nextidx = [9 0 1],snapidx=8,firstidx=9 
+connect(2)
+leader 1 append log in index 10 comit = 8 
+ cmd:6237262395637290681 log:[{1 6237262395637290681}] 
+leader 1 state:commit = 8,loglen = 1,matches = [8 0 0] ,nextidx = [9 0 1],snapidx=8,firstidx=9 
+0: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 snapterm=1,firstIdx=9,log:[] 
+0:commit:8,log:[] 
+i < newLog :0 in term 1 recv log form 1  
+0:leader1,args.LeaderCommit:8,start + newLog - 1=0 
+commit CHANGE!:8,log:[{1 6237262395637290681}] 
+2:rec install form 1,snapidx=8,my state:logfirstidx=0,loglen=1 
+1:update for 0!msg.nextIdx =9,msg.entriesLen = 1 
+1:Apply!,apply log=[{1 6237262395637290681}],commit=9 apply=8
+1:Apply!,msg={true 6237262395637290681 10 false [] 0 0}
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 9, prevterm = 1,LeaderCommit = 9 
+ my state:log len:1,commit:8,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681}] 
+0:commit:8,log:[{1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:9,start + newLog - 1=0 
+commit CHANGE!:9,log:[{1 6237262395637290681}] 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+0:Apply!,apply log=[{1 6237262395637290681}],commit=9 apply=8
+0:Apply!,msg={true 6237262395637290681 10 false [] 0 0}
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 9, prevterm = 1,LeaderCommit = 9 
+ my state:log len:1,commit:9,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681}] 
+0:commit:9,log:[{1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:9,start + newLog - 1=0 
+commit CHANGE!:9,log:[{1 6237262395637290681}] 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 9, prevterm = 1,LeaderCommit = 9 
+ my state:log len:1,commit:9,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681}] 
+0:commit:9,log:[{1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:9,start + newLog - 1=0 
+commit CHANGE!:9,log:[{1 6237262395637290681}] 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 9, prevterm = 1,LeaderCommit = 9 
+ my state:log len:1,commit:9,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681}] 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0:commit:9,log:[{1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:9,start + newLog - 1=0 
+commit CHANGE!:9,log:[{1 6237262395637290681}] 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 9, prevterm = 1,LeaderCommit = 9 
+ my state:log len:1,commit:9,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681}] 
+0:commit:9,log:[{1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:9,start + newLog - 1=0 
+commit CHANGE!:9,log:[{1 6237262395637290681}] 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 9, prevterm = 1,LeaderCommit = 9 
+ my state:log len:1,commit:9,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681}] 
+0:commit:9,log:[{1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:9,start + newLog - 1=0 
+commit CHANGE!:9,log:[{1 6237262395637290681}] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 9, prevterm = 1,LeaderCommit = 9 
+ my state:log len:1,commit:9,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681}] 
+0:commit:9,log:[{1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:9,start + newLog - 1=0 
+commit CHANGE!:9,log:[{1 6237262395637290681}] 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 9, prevterm = 1,LeaderCommit = 9 
+ my state:log len:1,commit:9,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681}] 
+0:commit:9,log:[{1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:9,start + newLog - 1=0 
+commit CHANGE!:9,log:[{1 6237262395637290681}] 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 9, prevterm = 1,LeaderCommit = 9 
+ my state:log len:1,commit:9,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681}] 
+0:commit:9,log:[{1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:9,start + newLog - 1=0 
+commit CHANGE!:9,log:[{1 6237262395637290681}] 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 9, prevterm = 1,LeaderCommit = 9 
+ my state:log len:1,commit:9,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681}] 
+0:commit:9,log:[{1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:9,start + newLog - 1=0 
+commit CHANGE!:9,log:[{1 6237262395637290681}] 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 9, prevterm = 1,LeaderCommit = 9 
+ my state:log len:1,commit:9,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681}] 
+0:commit:9,log:[{1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:9,start + newLog - 1=0 
+commit CHANGE!:9,log:[{1 6237262395637290681}] 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 9, prevterm = 1,LeaderCommit = 9 
+ my state:log len:1,commit:9,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681}] 
+0:commit:9,log:[{1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:9,start + newLog - 1=0 
+commit CHANGE!:9,log:[{1 6237262395637290681}] 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 9, prevterm = 1,LeaderCommit = 9 
+ my state:log len:1,commit:9,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681}] 
+0:commit:9,log:[{1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:9,start + newLog - 1=0 
+commit CHANGE!:9,log:[{1 6237262395637290681}] 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 9, prevterm = 1,LeaderCommit = 9 
+ my state:log len:1,commit:9,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681}] 
+0:commit:9,log:[{1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:9,start + newLog - 1=0 
+commit CHANGE!:9,log:[{1 6237262395637290681}] 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 9, prevterm = 1,LeaderCommit = 9 
+ my state:log len:1,commit:9,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681}] 
+0:commit:9,log:[{1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:9,start + newLog - 1=0 
+commit CHANGE!:9,log:[{1 6237262395637290681}] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 9, prevterm = 1,LeaderCommit = 9 
+ my state:log len:1,commit:9,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681}] 
+0:commit:9,log:[{1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:9,start + newLog - 1=0 
+commit CHANGE!:9,log:[{1 6237262395637290681}] 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 9, prevterm = 1,LeaderCommit = 9 
+ my state:log len:1,commit:9,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681}] 
+0:commit:9,log:[{1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:9,start + newLog - 1=0 
+commit CHANGE!:9,log:[{1 6237262395637290681}] 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 9, prevterm = 1,LeaderCommit = 9 
+ my state:log len:1,commit:9,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681}] 
+0:commit:9,log:[{1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:9,start + newLog - 1=0 
+commit CHANGE!:9,log:[{1 6237262395637290681}] 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 9, prevterm = 1,LeaderCommit = 9 
+ my state:log len:1,commit:9,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681}] 
+0:commit:9,log:[{1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:9,start + newLog - 1=0 
+commit CHANGE!:9,log:[{1 6237262395637290681}] 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 9, prevterm = 1,LeaderCommit = 9 
+ my state:log len:1,commit:9,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681}] 
+0:commit:9,log:[{1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:9,start + newLog - 1=0 
+commit CHANGE!:9,log:[{1 6237262395637290681}] 
+leader 1 state:commit = 9,loglen = 1,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 1 
+leader 1 append log in index 11 comit = 9 
+ cmd:6237262395637290681 log:[{1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 9,loglen = 2,matches = [9 0 8] ,nextidx = [10 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 9 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+0: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 9, prevterm = 1,LeaderCommit = 9 
+ my state:log len:1,commit:9,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681}] 
+0:commit:9,log:[{1 6237262395637290681}] 
+i < newLog :0 in term 1 recv log form 1  
+0:leader1,args.LeaderCommit:9,start + newLog - 1=1 
+commit CHANGE!:9,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+1:update for 0!msg.nextIdx =10,msg.entriesLen = 1 
+1:Apply!,apply log=[{1 6237262395637290681} {1 6237262395637290681}],commit=10 apply=9
+1:Apply!,msg={true 6237262395637290681 11 false [] 0 0}
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 10, prevterm = 1,LeaderCommit = 10 
+ my state:log len:2,commit:9,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:9,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:10,start + newLog - 1=1 
+commit CHANGE!:10,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+0:Apply!,apply log=[{1 6237262395637290681} {1 6237262395637290681}],commit=10 apply=9
+0:Apply!,msg={true 6237262395637290681 11 false [] 0 0}
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 10, prevterm = 1,LeaderCommit = 10 
+ my state:log len:2,commit:10,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:10,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:10,start + newLog - 1=1 
+commit CHANGE!:10,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 10, prevterm = 1,LeaderCommit = 10 
+ my state:log len:2,commit:10,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:10,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:10,start + newLog - 1=1 
+commit CHANGE!:10,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 10, prevterm = 1,LeaderCommit = 10 
+ my state:log len:2,commit:10,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:10,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:10,start + newLog - 1=1 
+commit CHANGE!:10,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 10, prevterm = 1,LeaderCommit = 10 
+ my state:log len:2,commit:10,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:10,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:10,start + newLog - 1=1 
+commit CHANGE!:10,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 10, prevterm = 1,LeaderCommit = 10 
+ my state:log len:2,commit:10,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:10,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:10,start + newLog - 1=1 
+commit CHANGE!:10,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 10, prevterm = 1,LeaderCommit = 10 
+ my state:log len:2,commit:10,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:10,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:10,start + newLog - 1=1 
+commit CHANGE!:10,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 10, prevterm = 1,LeaderCommit = 10 
+ my state:log len:2,commit:10,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:10,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:10,start + newLog - 1=1 
+commit CHANGE!:10,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 10, prevterm = 1,LeaderCommit = 10 
+ my state:log len:2,commit:10,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:10,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:10,start + newLog - 1=1 
+commit CHANGE!:10,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 10, prevterm = 1,LeaderCommit = 10 
+ my state:log len:2,commit:10,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:10,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:10,start + newLog - 1=1 
+commit CHANGE!:10,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 10, prevterm = 1,LeaderCommit = 10 
+ my state:log len:2,commit:10,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:10,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:10,start + newLog - 1=1 
+commit CHANGE!:10,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 10, prevterm = 1,LeaderCommit = 10 
+ my state:log len:2,commit:10,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:10,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:10,start + newLog - 1=1 
+commit CHANGE!:10,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 10, prevterm = 1,LeaderCommit = 10 
+ my state:log len:2,commit:10,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:10,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:10,start + newLog - 1=1 
+commit CHANGE!:10,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 10, prevterm = 1,LeaderCommit = 10 
+ my state:log len:2,commit:10,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:10,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:10,start + newLog - 1=1 
+commit CHANGE!:10,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 10, prevterm = 1,LeaderCommit = 10 
+ my state:log len:2,commit:10,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:10,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:10,start + newLog - 1=1 
+commit CHANGE!:10,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 10, prevterm = 1,LeaderCommit = 10 
+ my state:log len:2,commit:10,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:10,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:10,start + newLog - 1=1 
+commit CHANGE!:10,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 10, prevterm = 1,LeaderCommit = 10 
+ my state:log len:2,commit:10,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:10,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:10,start + newLog - 1=1 
+commit CHANGE!:10,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 10, prevterm = 1,LeaderCommit = 10 
+ my state:log len:2,commit:10,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:10,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:10,start + newLog - 1=1 
+commit CHANGE!:10,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 10, prevterm = 1,LeaderCommit = 10 
+ my state:log len:2,commit:10,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:10,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:10,start + newLog - 1=1 
+commit CHANGE!:10,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+leader 1 state:commit = 10,loglen = 2,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 2,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 2 
+leader 1 append log in index 12 comit = 10 
+ cmd:6237262395637290681 log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 10, prevterm = 1,LeaderCommit = 10 
+ my state:log len:2,commit:10,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:10,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:10,start + newLog - 1=1 
+commit CHANGE!:10,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 10,loglen = 3,matches = [10 0 8] ,nextidx = [11 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 10 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 10, prevterm = 1,LeaderCommit = 10 
+ my state:log len:2,commit:10,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:10,log:[{1 6237262395637290681} {1 6237262395637290681}] 
+i < newLog :0 in term 1 recv log form 1  
+0:leader1,args.LeaderCommit:10,start + newLog - 1=2 
+commit CHANGE!:10,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+1:update for 0!msg.nextIdx =11,msg.entriesLen = 1 
+1:Apply!,apply log=[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}],commit=11 apply=10
+1:Apply!,msg={true 6237262395637290681 12 false [] 0 0}
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 11, prevterm = 1,LeaderCommit = 11 
+ my state:log len:3,commit:10,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:10,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:11,start + newLog - 1=2 
+commit CHANGE!:11,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:Apply!,apply log=[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}],commit=11 apply=10
+0:Apply!,msg={true 6237262395637290681 12 false [] 0 0}
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 11, prevterm = 1,LeaderCommit = 11 
+ my state:log len:3,commit:11,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:11,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:11,start + newLog - 1=2 
+commit CHANGE!:11,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 11, prevterm = 1,LeaderCommit = 11 
+ my state:log len:3,commit:11,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:11,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:11,start + newLog - 1=2 
+commit CHANGE!:11,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 11, prevterm = 1,LeaderCommit = 11 
+ my state:log len:3,commit:11,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:11,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:11,start + newLog - 1=2 
+commit CHANGE!:11,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 11, prevterm = 1,LeaderCommit = 11 
+ my state:log len:3,commit:11,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0:commit:11,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+0:leader1,args.LeaderCommit:11,start + newLog - 1=2 
+commit CHANGE!:11,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 11, prevterm = 1,LeaderCommit = 11 
+ my state:log len:3,commit:11,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:11,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:11,start + newLog - 1=2 
+commit CHANGE!:11,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 11, prevterm = 1,LeaderCommit = 11 
+ my state:log len:3,commit:11,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:11,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:11,start + newLog - 1=2 
+commit CHANGE!:11,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 11, prevterm = 1,LeaderCommit = 11 
+ my state:log len:3,commit:11,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:11,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:11,start + newLog - 1=2 
+commit CHANGE!:11,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 11, prevterm = 1,LeaderCommit = 11 
+ my state:log len:3,commit:11,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:11,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:11,start + newLog - 1=2 
+commit CHANGE!:11,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 11, prevterm = 1,LeaderCommit = 11 
+ my state:log len:3,commit:11,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:11,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:11,start + newLog - 1=2 
+commit CHANGE!:11,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 11, prevterm = 1,LeaderCommit = 11 
+ my state:log len:3,commit:11,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:11,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:11,start + newLog - 1=2 
+commit CHANGE!:11,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 11, prevterm = 1,LeaderCommit = 11 
+ my state:log len:3,commit:11,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:11,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:11,start + newLog - 1=2 
+commit CHANGE!:11,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 11, prevterm = 1,LeaderCommit = 11 
+ my state:log len:3,commit:11,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:11,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:11,start + newLog - 1=2 
+commit CHANGE!:11,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 11, prevterm = 1,LeaderCommit = 11 
+ my state:log len:3,commit:11,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:11,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:11,start + newLog - 1=2 
+commit CHANGE!:11,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 11, prevterm = 1,LeaderCommit = 11 
+ my state:log len:3,commit:11,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:11,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:11,start + newLog - 1=2 
+commit CHANGE!:11,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 11, prevterm = 1,LeaderCommit = 11 
+ my state:log len:3,commit:11,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:11,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:11,start + newLog - 1=2 
+commit CHANGE!:11,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 11, prevterm = 1,LeaderCommit = 11 
+ my state:log len:3,commit:11,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:11,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:11,start + newLog - 1=2 
+commit CHANGE!:11,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 11, prevterm = 1,LeaderCommit = 11 
+ my state:log len:3,commit:11,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:11,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:11,start + newLog - 1=2 
+commit CHANGE!:11,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 11, prevterm = 1,LeaderCommit = 11 
+ my state:log len:3,commit:11,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:11,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:11,start + newLog - 1=2 
+commit CHANGE!:11,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+leader 1 state:commit = 11,loglen = 3,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 3,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 3 
+leader 1 append log in index 13 comit = 11 
+ cmd:6237262395637290681 log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 11,loglen = 4,matches = [11 0 8] ,nextidx = [12 0 9],snapidx=8,firstidx=9 
+0: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 11, prevterm = 1,LeaderCommit = 11 
+ my state:log len:3,commit:11,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:11,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+i < newLog :0 in term 1 recv log form 1  
+0:leader1,args.LeaderCommit:11,start + newLog - 1=3 
+commit CHANGE!:11,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+1:update for 0!msg.nextIdx =12,msg.entriesLen = 1 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 11 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 12, prevterm = 1,LeaderCommit = 12 
+ my state:log len:4,commit:11,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:11,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:12,start + newLog - 1=3 
+commit CHANGE!:12,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+1:Apply!,apply log=[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}],commit=12 apply=11
+1:Apply!,msg={true 6237262395637290681 13 false [] 0 0}
+0:Apply!,apply log=[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}],commit=12 apply=11
+0:Apply!,msg={true 6237262395637290681 13 false [] 0 0}
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 12, prevterm = 1,LeaderCommit = 12 
+ my state:log len:4,commit:12,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:12,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:12,start + newLog - 1=3 
+commit CHANGE!:12,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 12, prevterm = 1,LeaderCommit = 12 
+ my state:log len:4,commit:12,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:12,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:12,start + newLog - 1=3 
+commit CHANGE!:12,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 12, prevterm = 1,LeaderCommit = 12 
+ my state:log len:4,commit:12,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:12,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:12,start + newLog - 1=3 
+commit CHANGE!:12,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 12, prevterm = 1,LeaderCommit = 12 
+ my state:log len:4,commit:12,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:12,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:12,start + newLog - 1=3 
+commit CHANGE!:12,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 12, prevterm = 1,LeaderCommit = 12 
+ my state:log len:4,commit:12,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:12,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:12,start + newLog - 1=3 
+commit CHANGE!:12,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 12, prevterm = 1,LeaderCommit = 12 
+ my state:log len:4,commit:12,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:12,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:12,start + newLog - 1=3 
+commit CHANGE!:12,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 12, prevterm = 1,LeaderCommit = 12 
+ my state:log len:4,commit:12,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:12,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:12,start + newLog - 1=3 
+commit CHANGE!:12,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 12, prevterm = 1,LeaderCommit = 12 
+ my state:log len:4,commit:12,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:12,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:12,start + newLog - 1=3 
+commit CHANGE!:12,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 12, prevterm = 1,LeaderCommit = 12 
+ my state:log len:4,commit:12,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:12,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:12,start + newLog - 1=3 
+commit CHANGE!:12,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 12, prevterm = 1,LeaderCommit = 12 
+ my state:log len:4,commit:12,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:12,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:12,start + newLog - 1=3 
+commit CHANGE!:12,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 12, prevterm = 1,LeaderCommit = 12 
+ my state:log len:4,commit:12,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:12,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:12,start + newLog - 1=3 
+commit CHANGE!:12,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 12, prevterm = 1,LeaderCommit = 12 
+ my state:log len:4,commit:12,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:12,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:12,start + newLog - 1=3 
+commit CHANGE!:12,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 12, prevterm = 1,LeaderCommit = 12 
+ my state:log len:4,commit:12,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:12,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:12,start + newLog - 1=3 
+commit CHANGE!:12,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 12, prevterm = 1,LeaderCommit = 12 
+ my state:log len:4,commit:12,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:12,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:12,start + newLog - 1=3 
+commit CHANGE!:12,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 12, prevterm = 1,LeaderCommit = 12 
+ my state:log len:4,commit:12,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:12,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:12,start + newLog - 1=3 
+commit CHANGE!:12,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 12, prevterm = 1,LeaderCommit = 12 
+ my state:log len:4,commit:12,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:12,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:12,start + newLog - 1=3 
+commit CHANGE!:12,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 12, prevterm = 1,LeaderCommit = 12 
+ my state:log len:4,commit:12,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:12,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:12,start + newLog - 1=3 
+commit CHANGE!:12,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 12, prevterm = 1,LeaderCommit = 12 
+ my state:log len:4,commit:12,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:12,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:12,start + newLog - 1=3 
+commit CHANGE!:12,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 12, prevterm = 1,LeaderCommit = 12 
+ my state:log len:4,commit:12,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:12,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:12,start + newLog - 1=3 
+commit CHANGE!:12,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+leader 1 state:commit = 12,loglen = 4,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+leader 1 append log in index 14 comit = 12 
+ cmd:6237262395637290681 log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+2: recv append from 1,logconut = 4,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 4 
+leader 1 state:commit = 12,loglen = 5,matches = [12 0 8] ,nextidx = [13 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 12 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+0: recv append from 1,logconut = 1,term = 1,PrevLogIndex = 12, prevterm = 1,LeaderCommit = 12 
+ my state:log len:4,commit:12,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:12,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+i < newLog :0 in term 1 recv log form 1  
+0:leader1,args.LeaderCommit:12,start + newLog - 1=4 
+commit CHANGE!:12,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+1:update for 0!msg.nextIdx =13,msg.entriesLen = 1 
+1:Apply!,apply log=[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}],commit=13 apply=12
+1:Apply!,msg={true 6237262395637290681 14 false [] 0 0}
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 13, prevterm = 1,LeaderCommit = 13 
+ my state:log len:5,commit:12,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:12,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:13,start + newLog - 1=4 
+commit CHANGE!:13,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+0:Apply!,apply log=[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}],commit=13 apply=12
+0:Apply!,msg={true 6237262395637290681 14 false [] 0 0}
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 13, prevterm = 1,LeaderCommit = 13 
+ my state:log len:5,commit:13,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:13,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:13,start + newLog - 1=4 
+commit CHANGE!:13,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 13, prevterm = 1,LeaderCommit = 13 
+ my state:log len:5,commit:13,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:13,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:13,start + newLog - 1=4 
+commit CHANGE!:13,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 13, prevterm = 1,LeaderCommit = 13 
+ my state:log len:5,commit:13,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:13,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:13,start + newLog - 1=4 
+commit CHANGE!:13,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 13, prevterm = 1,LeaderCommit = 13 
+ my state:log len:5,commit:13,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:13,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:13,start + newLog - 1=4 
+commit CHANGE!:13,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 13, prevterm = 1,LeaderCommit = 13 
+ my state:log len:5,commit:13,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:13,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:13,start + newLog - 1=4 
+commit CHANGE!:13,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 13, prevterm = 1,LeaderCommit = 13 
+ my state:log len:5,commit:13,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:13,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:13,start + newLog - 1=4 
+commit CHANGE!:13,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 13, prevterm = 1,LeaderCommit = 13 
+ my state:log len:5,commit:13,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:13,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:13,start + newLog - 1=4 
+commit CHANGE!:13,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 13, prevterm = 1,LeaderCommit = 13 
+ my state:log len:5,commit:13,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:13,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:13,start + newLog - 1=4 
+commit CHANGE!:13,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 13, prevterm = 1,LeaderCommit = 13 
+ my state:log len:5,commit:13,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:13,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:13,start + newLog - 1=4 
+commit CHANGE!:13,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 13, prevterm = 1,LeaderCommit = 13 
+ my state:log len:5,commit:13,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:13,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:13,start + newLog - 1=4 
+commit CHANGE!:13,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 13, prevterm = 1,LeaderCommit = 13 
+ my state:log len:5,commit:13,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:13,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:13,start + newLog - 1=4 
+commit CHANGE!:13,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 13, prevterm = 1,LeaderCommit = 13 
+ my state:log len:5,commit:13,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:13,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:13,start + newLog - 1=4 
+commit CHANGE!:13,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 13, prevterm = 1,LeaderCommit = 13 
+ my state:log len:5,commit:13,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:13,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:13,start + newLog - 1=4 
+commit CHANGE!:13,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 13, prevterm = 1,LeaderCommit = 13 
+ my state:log len:5,commit:13,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:13,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:13,start + newLog - 1=4 
+commit CHANGE!:13,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 13, prevterm = 1,LeaderCommit = 13 
+ my state:log len:5,commit:13,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:13,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:13,start + newLog - 1=4 
+commit CHANGE!:13,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 13, prevterm = 1,LeaderCommit = 13 
+ my state:log len:5,commit:13,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:13,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:13,start + newLog - 1=4 
+commit CHANGE!:13,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 13, prevterm = 1,LeaderCommit = 13 
+ my state:log len:5,commit:13,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:13,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:13,start + newLog - 1=4 
+commit CHANGE!:13,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 13, prevterm = 1,LeaderCommit = 13 
+ my state:log len:5,commit:13,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:13,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:leader1,args.LeaderCommit:13,start + newLog - 1=4 
+commit CHANGE!:13,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 13, prevterm = 1,LeaderCommit = 13 
+ my state:log len:5,commit:13,snapidx=8 snapterm=1,firstIdx=9,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+0:commit:13,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+0:leader1,args.LeaderCommit:13,start + newLog - 1=4 
+commit CHANGE!:13,log:[{1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681} {1 6237262395637290681}] 
+leader 1 state:commit = 13,loglen = 5,matches = [13 0 8] ,nextidx = [14 0 9],snapidx=8,firstidx=9 
+2: recv append from 1,logconut = 5,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 13 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=0,log:[] 
+1:update for 2!msg.nextIdx =9,msg.entriesLen = 5 
+--- FAIL: TestSnapshotInstall2D (11.10s)
+    config.go:611: one(6237262395637290681) failed to reach agreement
+FAIL
+exit status 1
+FAIL	6.824/raft	11.124s

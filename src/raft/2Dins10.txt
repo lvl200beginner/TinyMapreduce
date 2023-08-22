@@ -1,0 +1,834 @@
+disconnect(0)
+disconnect(1)
+disconnect(2)
+connect(0)
+connect(1)
+connect(2)
+Test (2D): install snapshots (disconnect) ...
+2 is candidate! 
+0(0)get votereq from 2(1).
+ candidate last log:[idx:-1,0]
+ my log:[] 
+TERM 1: 0 in term 0 vote for 2! 
+2 wins! term = 1 
+leader state:commit=-1,applied=-1,firstidx=0,log:[] 
+1(0)get votereq from 2(1).
+ candidate last log:[idx:-1,0]
+ my log:[] 
+leader 2 for term 1 start! 
+TERM 1: 1 in term 0 vote for 2! 
+1: recv append from 2,logconut = 0,term = 1,PrevLogIndex = -1, prevterm = -1,LeaderCommit = -1 
+ my state:log len:0,commit:-1,snapidx=-1 snapterm=-1,firstIdx=0,log:[] 
+0: recv append from 2,logconut = 0,term = 1,PrevLogIndex = -1, prevterm = -1,LeaderCommit = -1 
+ my state:log len:0,commit:-1,snapidx=-1 snapterm=-1,firstIdx=0,log:[] 
+leader 2 state:commit = -1,loglen = 0,matches = [0 0 0] ,nextidx = [0 0 0],snapidx=-1,firstidx=0 
+leader 2 append log in index 1 comit = -1 
+ cmd:1513023049223224084 log:[{1 1513023049223224084}] 
+leader 2 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [0 0 0],snapidx=-1,firstidx=0 
+2:Apply!,apply log=[{1 1513023049223224084}],commit=0 apply=-1
+2:Apply!,msg={true 1513023049223224084 1 false [] 0 0}
+1: recv append from 2,logconut = 1,term = 1,PrevLogIndex = -1, prevterm = -1,LeaderCommit = 0 
+ my state:log len:0,commit:-1,snapidx=-1 snapterm=-1,firstIdx=0,log:[] 
+1:commit:-1,log:[] 
+i < newLog :1 in term 1 recv log form 2  
+1:leader2,args.LeaderCommit:0,start + newLog - 1=0 
+commit CHANGE!:0,log:[{1 1513023049223224084}] 
+0: recv append from 2,logconut = 1,term = 1,PrevLogIndex = -1, prevterm = -1,LeaderCommit = 0 
+ my state:log len:0,commit:-1,snapidx=-1 snapterm=-1,firstIdx=0,log:[] 
+0:commit:-1,log:[] 
+i < newLog :0 in term 1 recv log form 2  
+0:leader2,args.LeaderCommit:0,start + newLog - 1=0 
+commit CHANGE!:0,log:[{1 1513023049223224084}] 
+2:update for 1!msg.nextIdx =0,msg.entriesLen = 1 
+2:update for 0!msg.nextIdx =0,msg.entriesLen = 1 
+0:Apply!,apply log=[{1 1513023049223224084}],commit=0 apply=-1
+0:Apply!,msg={true 1513023049223224084 1 false [] 0 0}
+1:Apply!,apply log=[{1 1513023049223224084}],commit=0 apply=-1
+1:Apply!,msg={true 1513023049223224084 1 false [] 0 0}
+leader 2 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [1 1 0],snapidx=-1,firstidx=0 
+0: recv append from 2,logconut = 0,term = 1,PrevLogIndex = 0, prevterm = 1,LeaderCommit = 0 
+ my state:log len:1,commit:0,snapidx=-1 snapterm=-1,firstIdx=0,log:[{1 1513023049223224084}] 
+0:commit:0,log:[{1 1513023049223224084}] 
+0:leader2,args.LeaderCommit:0,start + newLog - 1=0 
+commit CHANGE!:0,log:[{1 1513023049223224084}] 
+1: recv append from 2,logconut = 0,term = 1,PrevLogIndex = 0, prevterm = 1,LeaderCommit = 0 
+ my state:log len:1,commit:0,snapidx=-1 snapterm=-1,firstIdx=0,log:[{1 1513023049223224084}] 
+1:commit:0,log:[{1 1513023049223224084}] 
+1:leader2,args.LeaderCommit:0,start + newLog - 1=0 
+commit CHANGE!:0,log:[{1 1513023049223224084}] 
+leader 2 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [1 1 0],snapidx=-1,firstidx=0 
+leader 2 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [1 1 0],snapidx=-1,firstidx=0 
+1: recv append from 2,logconut = 0,term = 1,PrevLogIndex = 0, prevterm = 1,LeaderCommit = 0 
+ my state:log len:1,commit:0,snapidx=-1 snapterm=-1,firstIdx=0,log:[{1 1513023049223224084}] 
+1:commit:0,log:[{1 1513023049223224084}] 
+1:leader2,args.LeaderCommit:0,start + newLog - 1=0 
+commit CHANGE!:0,log:[{1 1513023049223224084}] 
+0: recv append from 2,logconut = 0,term = 1,PrevLogIndex = 0, prevterm = 1,LeaderCommit = 0 
+ my state:log len:1,commit:0,snapidx=-1 snapterm=-1,firstIdx=0,log:[{1 1513023049223224084}] 
+0:commit:0,log:[{1 1513023049223224084}] 
+0:leader2,args.LeaderCommit:0,start + newLog - 1=0 
+commit CHANGE!:0,log:[{1 1513023049223224084}] 
+leader 2 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [1 1 0],snapidx=-1,firstidx=0 
+leader 2 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [1 1 0],snapidx=-1,firstidx=0 
+leader 2 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [1 1 0],snapidx=-1,firstidx=0 
+1: recv append from 2,logconut = 0,term = 1,PrevLogIndex = 0, prevterm = 1,LeaderCommit = 0 
+ my state:log len:1,commit:0,snapidx=-1 snapterm=-1,firstIdx=0,log:[{1 1513023049223224084}] 
+1:commit:0,log:[{1 1513023049223224084}] 
+1:leader2,args.LeaderCommit:0,start + newLog - 1=0 
+commit CHANGE!:0,log:[{1 1513023049223224084}] 
+0: recv append from 2,logconut = 0,term = 1,PrevLogIndex = 0, prevterm = 1,LeaderCommit = 0 
+ my state:log len:1,commit:0,snapidx=-1 snapterm=-1,firstIdx=0,log:[{1 1513023049223224084}] 
+0:commit:0,log:[{1 1513023049223224084}] 
+0:leader2,args.LeaderCommit:0,start + newLog - 1=0 
+commit CHANGE!:0,log:[{1 1513023049223224084}] 
+leader 2 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [1 1 0],snapidx=-1,firstidx=0 
+leader 2 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [1 1 0],snapidx=-1,firstidx=0 
+leader 2 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [1 1 0],snapidx=-1,firstidx=0 
+leader 2 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [1 1 0],snapidx=-1,firstidx=0 
+0: recv append from 2,logconut = 0,term = 1,PrevLogIndex = 0, prevterm = 1,LeaderCommit = 0 
+ my state:log len:1,commit:0,snapidx=-1 snapterm=-1,firstIdx=0,log:[{1 1513023049223224084}] 
+0:commit:0,log:[{1 1513023049223224084}] 
+0:leader2,args.LeaderCommit:0,start + newLog - 1=0 
+commit CHANGE!:0,log:[{1 1513023049223224084}] 
+1: recv append from 2,logconut = 0,term = 1,PrevLogIndex = 0, prevterm = 1,LeaderCommit = 0 
+ my state:log len:1,commit:0,snapidx=-1 snapterm=-1,firstIdx=0,log:[{1 1513023049223224084}] 
+1:commit:0,log:[{1 1513023049223224084}] 
+1:leader2,args.LeaderCommit:0,start + newLog - 1=0 
+commit CHANGE!:0,log:[{1 1513023049223224084}] 
+leader 2 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [1 1 0],snapidx=-1,firstidx=0 
+leader 2 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [1 1 0],snapidx=-1,firstidx=0 
+leader 2 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [1 1 0],snapidx=-1,firstidx=0 
+0: recv append from 2,logconut = 0,term = 1,PrevLogIndex = 0, prevterm = 1,LeaderCommit = 0 
+ my state:log len:1,commit:0,snapidx=-1 snapterm=-1,firstIdx=0,log:[{1 1513023049223224084}] 
+0:commit:0,log:[{1 1513023049223224084}] 
+0:leader2,args.LeaderCommit:0,start + newLog - 1=0 
+commit CHANGE!:0,log:[{1 1513023049223224084}] 
+1: recv append from 2,logconut = 0,term = 1,PrevLogIndex = 0, prevterm = 1,LeaderCommit = 0 
+ my state:log len:1,commit:0,snapidx=-1 snapterm=-1,firstIdx=0,log:[{1 1513023049223224084}] 
+1:commit:0,log:[{1 1513023049223224084}] 
+1:leader2,args.LeaderCommit:0,start + newLog - 1=0 
+commit CHANGE!:0,log:[{1 1513023049223224084}] 
+leader 2 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [1 1 0],snapidx=-1,firstidx=0 
+leader 2 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [1 1 0],snapidx=-1,firstidx=0 
+disconnect(0)
+leader 2 append log in index 2 comit = 0 
+ cmd:1988851519957398282 log:[{1 1513023049223224084} {1 1988851519957398282}] 
+leader 2 state:commit = 0,loglen = 2,matches = [0 0 0] ,nextidx = [1 1 0],snapidx=-1,firstidx=0 
+1: recv append from 2,logconut = 1,term = 1,PrevLogIndex = 0, prevterm = 1,LeaderCommit = 0 
+ my state:log len:1,commit:0,snapidx=-1 snapterm=-1,firstIdx=0,log:[{1 1513023049223224084}] 
+1:commit:0,log:[{1 1513023049223224084}] 
+i < newLog :1 in term 1 recv log form 2  
+1:leader2,args.LeaderCommit:0,start + newLog - 1=1 
+commit CHANGE!:0,log:[{1 1513023049223224084} {1 1988851519957398282}] 
+2:update for 1!msg.nextIdx =1,msg.entriesLen = 1 
+2:Apply!,apply log=[{1 1513023049223224084} {1 1988851519957398282}],commit=1 apply=0
+2:Apply!,msg={true 1988851519957398282 2 false [] 0 0}
+1: recv append from 2,logconut = 0,term = 1,PrevLogIndex = 1, prevterm = 1,LeaderCommit = 1 
+ my state:log len:2,commit:0,snapidx=-1 snapterm=-1,firstIdx=0,log:[{1 1513023049223224084} {1 1988851519957398282}] 
+1:commit:0,log:[{1 1513023049223224084} {1 1988851519957398282}] 
+1:leader2,args.LeaderCommit:1,start + newLog - 1=1 
+commit CHANGE!:1,log:[{1 1513023049223224084} {1 1988851519957398282}] 
+leader 2 state:commit = 1,loglen = 2,matches = [0 1 0] ,nextidx = [1 2 0],snapidx=-1,firstidx=0 
+1:Apply!,apply log=[{1 1513023049223224084} {1 1988851519957398282}],commit=1 apply=0
+1:Apply!,msg={true 1988851519957398282 2 false [] 0 0}
+leader 2 append log in index 3 comit = 1 
+ cmd:1437464884751572641 log:[{1 1513023049223224084} {1 1988851519957398282} {1 1437464884751572641}] 
+leader 2 append log in index 4 comit = 1 
+ cmd:434101461123022521 log:[{1 1513023049223224084} {1 1988851519957398282} {1 1437464884751572641} {1 434101461123022521}] 
+leader 2 append log in index 5 comit = 1 
+ cmd:301974751101741813 log:[{1 1513023049223224084} {1 1988851519957398282} {1 1437464884751572641} {1 434101461123022521} {1 301974751101741813}] 
+leader 2 append log in index 6 comit = 1 
+ cmd:2288990713525908960 log:[{1 1513023049223224084} {1 1988851519957398282} {1 1437464884751572641} {1 434101461123022521} {1 301974751101741813} {1 2288990713525908960}] 
+leader 2 append log in index 7 comit = 1 
+ cmd:8076091794648714245 log:[{1 1513023049223224084} {1 1988851519957398282} {1 1437464884751572641} {1 434101461123022521} {1 301974751101741813} {1 2288990713525908960} {1 8076091794648714245}] 
+leader 2 append log in index 8 comit = 1 
+ cmd:8011265403245523966 log:[{1 1513023049223224084} {1 1988851519957398282} {1 1437464884751572641} {1 434101461123022521} {1 301974751101741813} {1 2288990713525908960} {1 8076091794648714245} {1 8011265403245523966}] 
+leader 2 append log in index 9 comit = 1 
+ cmd:8983258079701347607 log:[{1 1513023049223224084} {1 1988851519957398282} {1 1437464884751572641} {1 434101461123022521} {1 301974751101741813} {1 2288990713525908960} {1 8076091794648714245} {1 8011265403245523966} {1 8983258079701347607}] 
+leader 2 append log in index 10 comit = 1 
+ cmd:8294604982364226328 log:[{1 1513023049223224084} {1 1988851519957398282} {1 1437464884751572641} {1 434101461123022521} {1 301974751101741813} {1 2288990713525908960} {1 8076091794648714245} {1 8011265403245523966} {1 8983258079701347607} {1 8294604982364226328}] 
+leader 2 append log in index 11 comit = 1 
+ cmd:2681526075462491462 log:[{1 1513023049223224084} {1 1988851519957398282} {1 1437464884751572641} {1 434101461123022521} {1 301974751101741813} {1 2288990713525908960} {1 8076091794648714245} {1 8011265403245523966} {1 8983258079701347607} {1 8294604982364226328} {1 2681526075462491462}] 
+leader 2 append log in index 12 comit = 1 
+ cmd:2136277065737220956 log:[{1 1513023049223224084} {1 1988851519957398282} {1 1437464884751572641} {1 434101461123022521} {1 301974751101741813} {1 2288990713525908960} {1 8076091794648714245} {1 8011265403245523966} {1 8983258079701347607} {1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956}] 
+leader 2 append log in index 13 comit = 1 
+ cmd:7451601054608813555 log:[{1 1513023049223224084} {1 1988851519957398282} {1 1437464884751572641} {1 434101461123022521} {1 301974751101741813} {1 2288990713525908960} {1 8076091794648714245} {1 8011265403245523966} {1 8983258079701347607} {1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555}] 
+leader 2 append log in index 14 comit = 1 
+ cmd:1948626802819017951 log:[{1 1513023049223224084} {1 1988851519957398282} {1 1437464884751572641} {1 434101461123022521} {1 301974751101741813} {1 2288990713525908960} {1 8076091794648714245} {1 8011265403245523966} {1 8983258079701347607} {1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951}] 
+leader 2 append log in index 15 comit = 1 
+ cmd:5798890535890694707 log:[{1 1513023049223224084} {1 1988851519957398282} {1 1437464884751572641} {1 434101461123022521} {1 301974751101741813} {1 2288990713525908960} {1 8076091794648714245} {1 8011265403245523966} {1 8983258079701347607} {1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707}] 
+leader 2 state:commit = 1,loglen = 15,matches = [0 1 0] ,nextidx = [1 2 0],snapidx=-1,firstidx=0 
+1: recv append from 2,logconut = 13,term = 1,PrevLogIndex = 1, prevterm = 1,LeaderCommit = 1 
+ my state:log len:2,commit:1,snapidx=-1 snapterm=-1,firstIdx=0,log:[{1 1513023049223224084} {1 1988851519957398282}] 
+1:commit:1,log:[{1 1513023049223224084} {1 1988851519957398282}] 
+i < newLog :1 in term 1 recv log form 2  
+1:leader2,args.LeaderCommit:1,start + newLog - 1=14 
+commit CHANGE!:1,log:[{1 1513023049223224084} {1 1988851519957398282} {1 1437464884751572641} {1 434101461123022521} {1 301974751101741813} {1 2288990713525908960} {1 8076091794648714245} {1 8011265403245523966} {1 8983258079701347607} {1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707}] 
+2:update for 1!msg.nextIdx =2,msg.entriesLen = 13 
+2:Apply!,apply log=[{1 1513023049223224084} {1 1988851519957398282} {1 1437464884751572641} {1 434101461123022521} {1 301974751101741813} {1 2288990713525908960} {1 8076091794648714245} {1 8011265403245523966} {1 8983258079701347607} {1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707}],commit=14 apply=1
+2:Apply!,msg={true 1437464884751572641 3 false [] 0 0}
+2:Apply!,msg={true 434101461123022521 4 false [] 0 0}
+2:Apply!,msg={true 301974751101741813 5 false [] 0 0}
+2:Apply!,msg={true 2288990713525908960 6 false [] 0 0}
+2:Apply!,msg={true 8076091794648714245 7 false [] 0 0}
+2:Apply!,msg={true 8011265403245523966 8 false [] 0 0}
+2:Apply!,msg={true 8983258079701347607 9 false [] 0 0}
+2:Apply!,msg={true 8294604982364226328 10 false [] 0 0}
+leader 2 state:commit = 14,loglen = 6,matches = [0 14 0] ,nextidx = [1 15 0],snapidx=8,firstidx=9 
+1: recv append from 2,logconut = 0,term = 1,PrevLogIndex = 14, prevterm = 1,LeaderCommit = 14 
+ my state:log len:15,commit:1,snapidx=-1 snapterm=-1,firstIdx=0,log:[{1 1513023049223224084} {1 1988851519957398282} {1 1437464884751572641} {1 434101461123022521} {1 301974751101741813} {1 2288990713525908960} {1 8076091794648714245} {1 8011265403245523966} {1 8983258079701347607} {1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707}] 
+1:commit:1,log:[{1 1513023049223224084} {1 1988851519957398282} {1 1437464884751572641} {1 434101461123022521} {1 301974751101741813} {1 2288990713525908960} {1 8076091794648714245} {1 8011265403245523966} {1 8983258079701347607} {1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707}] 
+1:leader2,args.LeaderCommit:14,start + newLog - 1=14 
+commit CHANGE!:14,log:[{1 1513023049223224084} {1 1988851519957398282} {1 1437464884751572641} {1 434101461123022521} {1 301974751101741813} {1 2288990713525908960} {1 8076091794648714245} {1 8011265403245523966} {1 8983258079701347607} {1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707}] 
+1:Apply!,apply log=[{1 1513023049223224084} {1 1988851519957398282} {1 1437464884751572641} {1 434101461123022521} {1 301974751101741813} {1 2288990713525908960} {1 8076091794648714245} {1 8011265403245523966} {1 8983258079701347607} {1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707}],commit=14 apply=1
+1:Apply!,msg={true 1437464884751572641 3 false [] 0 0}
+1:Apply!,msg={true 434101461123022521 4 false [] 0 0}
+1:Apply!,msg={true 301974751101741813 5 false [] 0 0}
+1:Apply!,msg={true 2288990713525908960 6 false [] 0 0}
+1:Apply!,msg={true 8076091794648714245 7 false [] 0 0}
+1:Apply!,msg={true 8011265403245523966 8 false [] 0 0}
+1:Apply!,msg={true 8983258079701347607 9 false [] 0 0}
+1:Apply!,msg={true 8294604982364226328 10 false [] 0 0}
+2:Apply!,apply log=[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707}],commit=14 apply=8
+2:Apply!,msg={true 8294604982364226328 10 false [] 0 0}
+2:Apply!,msg={true 2681526075462491462 11 false [] 0 0}
+2:Apply!,msg={true 2136277065737220956 12 false [] 0 0}
+2:Apply!,msg={true 7451601054608813555 13 false [] 0 0}
+2:Apply!,msg={true 1948626802819017951 14 false [] 0 0}
+2:Apply!,msg={true 5798890535890694707 15 false [] 0 0}
+leader 2 state:commit = 14,loglen = 6,matches = [0 14 0] ,nextidx = [1 15 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 14,loglen = 6,matches = [0 14 0] ,nextidx = [1 15 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 14,loglen = 6,matches = [0 14 0] ,nextidx = [1 15 0],snapidx=8,firstidx=9 
+1: recv append from 2,logconut = 0,term = 1,PrevLogIndex = 14, prevterm = 1,LeaderCommit = 14 
+ my state:log len:6,commit:14,snapidx=8 snapterm=1,firstIdx=9,log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707}] 
+1:commit:14,log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707}] 
+1:leader2,args.LeaderCommit:14,start + newLog - 1=5 
+commit CHANGE!:14,log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707}] 
+leader 2 state:commit = 14,loglen = 6,matches = [0 14 0] ,nextidx = [1 15 0],snapidx=8,firstidx=9 
+1:Apply!,apply log=[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707}],commit=14 apply=8
+1:Apply!,msg={true 8294604982364226328 10 false [] 0 0}
+1:Apply!,msg={true 2681526075462491462 11 false [] 0 0}
+1:Apply!,msg={true 2136277065737220956 12 false [] 0 0}
+1:Apply!,msg={true 7451601054608813555 13 false [] 0 0}
+1:Apply!,msg={true 1948626802819017951 14 false [] 0 0}
+1:Apply!,msg={true 5798890535890694707 15 false [] 0 0}
+connect(0)
+leader 2 append log in index 16 comit = 14 
+ cmd:5498602908565742271 log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+leader 2 state:commit = 14,loglen = 7,matches = [0 14 0] ,nextidx = [1 15 0],snapidx=8,firstidx=9 
+1: recv append from 2,logconut = 1,term = 1,PrevLogIndex = 14, prevterm = 1,LeaderCommit = 14 
+ my state:log len:6,commit:14,snapidx=8 snapterm=1,firstIdx=9,log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707}] 
+0:rec install form 2,snapidx=8,my state:logfirstidx=0,loglen=1 
+1:commit:14,log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707}] 
+i < newLog :1 in term 1 recv log form 2  
+1:leader2,args.LeaderCommit:14,start + newLog - 1=6 
+commit CHANGE!:14,log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+2:update for 1!msg.nextIdx =15,msg.entriesLen = 1 
+2:Apply!,apply log=[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}],commit=15 apply=14
+2:Apply!,msg={true 5498602908565742271 16 false [] 0 0}
+leader 2 state:commit = 15,loglen = 7,matches = [8 15 0] ,nextidx = [9 16 0],snapidx=8,firstidx=9 
+0: recv append from 2,logconut = 7,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 15 
+ my state:log len:0,commit:0,snapidx=8 snapterm=1,firstIdx=9,log:[] 
+0:commit:0,log:[] 
+i < newLog :0 in term 1 recv log form 2  
+0:leader2,args.LeaderCommit:15,start + newLog - 1=6 
+commit CHANGE!:15,log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+2:update for 0!msg.nextIdx =9,msg.entriesLen = 7 
+0:Apply!,apply log=[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}],commit=15 apply=8
+0:Apply!,msg={true 8294604982364226328 10 false [] 0 0}
+0:Apply!,msg={true 2681526075462491462 11 false [] 0 0}
+0:Apply!,msg={true 2136277065737220956 12 false [] 0 0}
+0:Apply!,msg={true 7451601054608813555 13 false [] 0 0}
+0:Apply!,msg={true 1948626802819017951 14 false [] 0 0}
+0:Apply!,msg={true 5798890535890694707 15 false [] 0 0}
+0:Apply!,msg={true 5498602908565742271 16 false [] 0 0}
+1: recv append from 2,logconut = 0,term = 1,PrevLogIndex = 15, prevterm = 1,LeaderCommit = 15 
+ my state:log len:7,commit:14,snapidx=8 snapterm=1,firstIdx=9,log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+1:commit:14,log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+1:leader2,args.LeaderCommit:15,start + newLog - 1=6 
+commit CHANGE!:15,log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+0: recv append from 2,logconut = 0,term = 1,PrevLogIndex = 15, prevterm = 1,LeaderCommit = 15 
+ my state:log len:7,commit:15,snapidx=8 snapterm=1,firstIdx=9,log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+0:commit:15,log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+0:leader2,args.LeaderCommit:15,start + newLog - 1=6 
+commit CHANGE!:15,log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+1:Apply!,apply log=[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}],commit=15 apply=14
+1:Apply!,msg={true 5498602908565742271 16 false [] 0 0}
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+1: recv append from 2,logconut = 0,term = 1,PrevLogIndex = 15, prevterm = 1,LeaderCommit = 15 
+ my state:log len:7,commit:15,snapidx=8 snapterm=1,firstIdx=9,log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+1:commit:15,log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+0: recv append from 2,logconut = 0,term = 1,PrevLogIndex = 15, prevterm = 1,LeaderCommit = 15 
+ my state:log len:7,commit:15,snapidx=8 snapterm=1,firstIdx=9,log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+0:commit:15,log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+0:leader2,args.LeaderCommit:15,start + newLog - 1=6 
+commit CHANGE!:15,log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+1:leader2,args.LeaderCommit:15,start + newLog - 1=6 
+commit CHANGE!:15,log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+1: recv append from 2,logconut = 0,term = 1,PrevLogIndex = 15, prevterm = 1,LeaderCommit = 15 
+ my state:log len:7,commit:15,snapidx=8 snapterm=1,firstIdx=9,log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+1:commit:15,log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+0: recv append from 2,logconut = 0,term = 1,PrevLogIndex = 15, prevterm = 1,LeaderCommit = 15 
+ my state:log len:7,commit:15,snapidx=8 snapterm=1,firstIdx=9,log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+0:commit:15,log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+0:leader2,args.LeaderCommit:15,start + newLog - 1=6 
+commit CHANGE!:15,log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+1:leader2,args.LeaderCommit:15,start + newLog - 1=6 
+commit CHANGE!:15,log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+0: recv append from 2,logconut = 0,term = 1,PrevLogIndex = 15, prevterm = 1,LeaderCommit = 15 
+ my state:log len:7,commit:15,snapidx=8 snapterm=1,firstIdx=9,log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+0:commit:15,log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+0:leader2,args.LeaderCommit:15,start + newLog - 1=6 
+commit CHANGE!:15,log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+1: recv append from 2,logconut = 0,term = 1,PrevLogIndex = 15, prevterm = 1,LeaderCommit = 15 
+ my state:log len:7,commit:15,snapidx=8 snapterm=1,firstIdx=9,log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+1:commit:15,log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+1:leader2,args.LeaderCommit:15,start + newLog - 1=6 
+commit CHANGE!:15,log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+1: recv append from 2,logconut = 0,term = 1,PrevLogIndex = 15, prevterm = 1,LeaderCommit = 15 
+ my state:log len:7,commit:15,snapidx=8 snapterm=1,firstIdx=9,log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+1:commit:15,log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+1:leader2,args.LeaderCommit:15,start + newLog - 1=6 
+commit CHANGE!:15,log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+0: recv append from 2,logconut = 0,term = 1,PrevLogIndex = 15, prevterm = 1,LeaderCommit = 15 
+ my state:log len:7,commit:15,snapidx=8 snapterm=1,firstIdx=9,log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+0:commit:15,log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+0:leader2,args.LeaderCommit:15,start + newLog - 1=6 
+commit CHANGE!:15,log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+1: recv append from 2,logconut = 0,term = 1,PrevLogIndex = 15, prevterm = 1,LeaderCommit = 15 
+ my state:log len:7,commit:15,snapidx=8 snapterm=1,firstIdx=9,log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+1:commit:15,log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+1:leader2,args.LeaderCommit:15,start + newLog - 1=6 
+commit CHANGE!:15,log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+0: recv append from 2,logconut = 0,term = 1,PrevLogIndex = 15, prevterm = 1,LeaderCommit = 15 
+ my state:log len:7,commit:15,snapidx=8 snapterm=1,firstIdx=9,log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+0:commit:15,log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+0:leader2,args.LeaderCommit:15,start + newLog - 1=6 
+commit CHANGE!:15,log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+disconnect(2)
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+0 is candidate! 
+1(1)get votereq from 0(2).
+ candidate last log:[idx:6,1]
+ my log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+1 is candidate! 
+0(2)get votereq from 1(3).
+ candidate last log:[idx:6,1]
+ my log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+0 is candidate! 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+1(3)get votereq from 0(4).
+ candidate last log:[idx:6,1]
+ my log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+1 is candidate! 
+0(4)get votereq from 1(5).
+ candidate last log:[idx:6,1]
+ my log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+0 is candidate! 
+1(5)get votereq from 0(6).
+ candidate last log:[idx:6,1]
+ my log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+1 is candidate! 
+0(6)get votereq from 1(7).
+ candidate last log:[idx:6,1]
+ my log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+1 is candidate! 
+0(7)get votereq from 1(8).
+ candidate last log:[idx:6,1]
+ my log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+0 is candidate! 
+1(8)get votereq from 0(9).
+ candidate last log:[idx:6,1]
+ my log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+1 is candidate! 
+0(9)get votereq from 1(10).
+ candidate last log:[idx:6,1]
+ my log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+0 is candidate! 
+1(10)get votereq from 0(11).
+ candidate last log:[idx:6,1]
+ my log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+1 is candidate! 
+0(11)get votereq from 1(12).
+ candidate last log:[idx:6,1]
+ my log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+0 is candidate! 
+1(12)get votereq from 0(13).
+ candidate last log:[idx:6,1]
+ my log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+1 is candidate! 
+0(13)get votereq from 1(14).
+ candidate last log:[idx:6,1]
+ my log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+0 is candidate! 
+1(14)get votereq from 0(15).
+ candidate last log:[idx:6,1]
+ my log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+1 is candidate! 
+0(15)get votereq from 1(16).
+ candidate last log:[idx:6,1]
+ my log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+0 is candidate! 
+1(16)get votereq from 0(17).
+ candidate last log:[idx:6,1]
+ my log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+1 is candidate! 
+0(17)get votereq from 1(18).
+ candidate last log:[idx:6,1]
+ my log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+0 is candidate! 
+1(18)get votereq from 0(19).
+ candidate last log:[idx:6,1]
+ my log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+1 is candidate! 
+0(19)get votereq from 1(20).
+ candidate last log:[idx:6,1]
+ my log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+0 is candidate! 
+1(20)get votereq from 0(21).
+ candidate last log:[idx:6,1]
+ my log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+1 is candidate! 
+0(21)get votereq from 1(22).
+ candidate last log:[idx:6,1]
+ my log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+0 is candidate! 
+1(22)get votereq from 0(23).
+ candidate last log:[idx:6,1]
+ my log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+1 is candidate! 
+0(23)get votereq from 1(24).
+ candidate last log:[idx:6,1]
+ my log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+0 is candidate! 
+1(24)get votereq from 0(25).
+ candidate last log:[idx:6,1]
+ my log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+1 is candidate! 
+0(25)get votereq from 1(26).
+ candidate last log:[idx:6,1]
+ my log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+0 is candidate! 
+1(26)get votereq from 0(27).
+ candidate last log:[idx:6,1]
+ my log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+1 is candidate! 
+0(27)get votereq from 1(28).
+ candidate last log:[idx:6,1]
+ my log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+0 is candidate! 
+1(28)get votereq from 0(29).
+ candidate last log:[idx:6,1]
+ my log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+1 is candidate! 
+0(29)get votereq from 1(30).
+ candidate last log:[idx:6,1]
+ my log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+0 is candidate! 
+1(30)get votereq from 0(31).
+ candidate last log:[idx:6,1]
+ my log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+1 is candidate! 
+0(31)get votereq from 1(32).
+ candidate last log:[idx:6,1]
+ my log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+0 is candidate! 
+1(32)get votereq from 0(33).
+ candidate last log:[idx:6,1]
+ my log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+1 is candidate! 
+0(33)get votereq from 1(34).
+ candidate last log:[idx:6,1]
+ my log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+0 is candidate! 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+1(34)get votereq from 0(35).
+ candidate last log:[idx:6,1]
+ my log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+1 is candidate! 
+0(35)get votereq from 1(36).
+ candidate last log:[idx:6,1]
+ my log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+0 is candidate! 
+1(36)get votereq from 0(37).
+ candidate last log:[idx:6,1]
+ my log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+1 is candidate! 
+0(37)get votereq from 1(38).
+ candidate last log:[idx:6,1]
+ my log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+0 is candidate! 
+1(38)get votereq from 0(39).
+ candidate last log:[idx:6,1]
+ my log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+1 is candidate! 
+0(39)get votereq from 1(40).
+ candidate last log:[idx:6,1]
+ my log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+0 is candidate! 
+1(40)get votereq from 0(41).
+ candidate last log:[idx:6,1]
+ my log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+1 is candidate! 
+0(41)get votereq from 1(42).
+ candidate last log:[idx:6,1]
+ my log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+0 is candidate! 
+1(42)get votereq from 0(43).
+ candidate last log:[idx:6,1]
+ my log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+1 is candidate! 
+0(43)get votereq from 1(44).
+ candidate last log:[idx:6,1]
+ my log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+0 is candidate! 
+1(44)get votereq from 0(45).
+ candidate last log:[idx:6,1]
+ my log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+0 is candidate! 
+1(45)get votereq from 0(46).
+ candidate last log:[idx:6,1]
+ my log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+1 is candidate! 
+0(46)get votereq from 1(47).
+ candidate last log:[idx:6,1]
+ my log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+1 is candidate! 
+0(47)get votereq from 1(48).
+ candidate last log:[idx:6,1]
+ my log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+0 is candidate! 
+1(48)get votereq from 0(49).
+ candidate last log:[idx:6,1]
+ my log:[{1 8294604982364226328} {1 2681526075462491462} {1 2136277065737220956} {1 7451601054608813555} {1 1948626802819017951} {1 5798890535890694707} {1 5498602908565742271}] 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+leader 2 state:commit = 15,loglen = 7,matches = [15 15 0] ,nextidx = [16 16 0],snapidx=8,firstidx=9 
+1 is candidate! 
+--- FAIL: TestSnapshotInstall2D (11.91s)
+    config.go:611: one(4989704003666078036) failed to reach agreement
+FAIL
+exit status 1
+FAIL	6.824/raft	11.924s

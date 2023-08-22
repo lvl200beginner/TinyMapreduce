@@ -1,0 +1,206 @@
+Test (2D): snapshots basic ...
+1 is candidate! 
+2(0)get votereq from 1(1).
+ candidate last log:[idx:-1,0]
+ my log:[] 
+0(0)get votereq from 1(1).
+ candidate last log:[idx:-1,0]
+ my log:[] 
+TERM 1: 2 in term 0 vote for 1! 
+leader 1 for term 1 start! 
+1:heartbeat!
+1 wins! term = 1 
+leader state:commit=-1,applied=-1,log:[] 
+TERM 1: 0 in term 0 vote for 1! 
+1:for peers send heartRPC!
+leader 1 sleep and wait for heartbeat!
+leader 1:heart beat for 2 in term 1 
+leader 1:heart beat for 0 in term 1 
+2(1) rec heart from 1(1) 
+ 2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = -1, prevterm = -1,LeaderCommit = -1 
+ my state:log len:0,commit:-1, log:[] 
+0(1) rec heart from 1(1) 
+ 0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = -1, prevterm = -1,LeaderCommit = -1 
+ my state:log len:0,commit:-1, log:[] 
+leader 1 state:commit = -1,loglen = 0,matches = [0 0 0] ,nextidx = [0 0 0] 
+leader 1 append log in index 1 comit = -1 
+ cmd:5727166797447847155 log:[{1 5727166797447847155}] 
+leader 1 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [0 0 0] 
+2(1) rec heart from 1(1) 
+ 0(1) rec heart from 1(1) 
+ 2: recv append from 1,logconut = 1,term = 1,PrevLogIndex = -1, prevterm = -1,LeaderCommit = 0 
+ my state:log len:0,commit:-1, log:[] 
+0: recv append from 1,logconut = 1,term = 1,PrevLogIndex = -1, prevterm = -1,LeaderCommit = 0 
+ my state:log len:0,commit:-1, log:[] 
+0:commit:-1,log:[] 
+i < newLog :0 in term 1 recv log form 1  
+0:leader1,args.LeaderCommit:0,start + newLog - 1=0 
+commit CHANGE!:0,log:[{1 5727166797447847155}] 
+2:commit:-1,log:[] 
+i < newLog :2 in term 1 recv log form 1  
+2:leader1,args.LeaderCommit:0,start + newLog - 1=0 
+commit CHANGE!:0,log:[{1 5727166797447847155}] 
+1:update for 0!msg.nextIdx =0,msg.entriesLen = 1 
+1:update for 2!msg.nextIdx =0,msg.entriesLen = 1 
+1:Apply!,apply log=[{1 5727166797447847155}],commit=0 apply=-1
+2:Apply!,apply log=[{1 5727166797447847155}],commit=0 apply=-1
+0:Apply!,apply log=[{1 5727166797447847155}],commit=0 apply=-1
+leader 1 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [1 0 1] 
+1:heartbeat!
+1:for peers send heartRPC!
+leader 1 sleep and wait for heartbeat!
+leader 1:heart beat for 2 in term 1 
+leader 1:heart beat for 0 in term 1 
+2(1) rec heart from 1(1) 
+ 2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 0, prevterm = 1,LeaderCommit = 0 
+ my state:log len:1,commit:0, log:[{1 5727166797447847155}] 
+2:commit:0,log:[{1 5727166797447847155}] 
+2:leader1,args.LeaderCommit:0,start + newLog - 1=0 
+commit CHANGE!:0,log:[{1 5727166797447847155}] 
+0(1) rec heart from 1(1) 
+ 0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 0, prevterm = 1,LeaderCommit = 0 
+ my state:log len:1,commit:0, log:[{1 5727166797447847155}] 
+0:commit:0,log:[{1 5727166797447847155}] 
+0:leader1,args.LeaderCommit:0,start + newLog - 1=0 
+commit CHANGE!:0,log:[{1 5727166797447847155}] 
+leader 1 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [1 0 1] 
+leader 1 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [1 0 1] 
+leader 1 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [1 0 1] 
+1:heartbeat!
+1:for peers send heartRPC!
+leader 1 sleep and wait for heartbeat!
+leader 1:heart beat for 2 in term 1 
+leader 1:heart beat for 0 in term 1 
+2(1) rec heart from 1(1) 
+ 2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 0, prevterm = 1,LeaderCommit = 0 
+ my state:log len:1,commit:0, log:[{1 5727166797447847155}] 
+2:commit:0,log:[{1 5727166797447847155}] 
+2:leader1,args.LeaderCommit:0,start + newLog - 1=0 
+commit CHANGE!:0,log:[{1 5727166797447847155}] 
+0(1) rec heart from 1(1) 
+ 0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 0, prevterm = 1,LeaderCommit = 0 
+ my state:log len:1,commit:0, log:[{1 5727166797447847155}] 
+0:commit:0,log:[{1 5727166797447847155}] 
+0:leader1,args.LeaderCommit:0,start + newLog - 1=0 
+commit CHANGE!:0,log:[{1 5727166797447847155}] 
+leader 1 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [1 0 1] 
+leader 1 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [1 0 1] 
+leader 1 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [1 0 1] 
+1:heartbeat!
+1:for peers send heartRPC!
+leader 1 sleep and wait for heartbeat!
+leader 1:heart beat for 0 in term 1 
+leader 1:heart beat for 2 in term 1 
+0(1) rec heart from 1(1) 
+ 0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 0, prevterm = 1,LeaderCommit = 0 
+ my state:log len:1,commit:0, log:[{1 5727166797447847155}] 
+0:commit:0,log:[{1 5727166797447847155}] 
+0:leader1,args.LeaderCommit:0,start + newLog - 1=0 
+commit CHANGE!:0,log:[{1 5727166797447847155}] 
+2(1) rec heart from 1(1) 
+ 2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 0, prevterm = 1,LeaderCommit = 0 
+ my state:log len:1,commit:0, log:[{1 5727166797447847155}] 
+2:commit:0,log:[{1 5727166797447847155}] 
+2:leader1,args.LeaderCommit:0,start + newLog - 1=0 
+commit CHANGE!:0,log:[{1 5727166797447847155}] 
+leader 1 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [1 0 1] 
+leader 1 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [1 0 1] 
+leader 1 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [1 0 1] 
+1:heartbeat!
+1:for peers send heartRPC!
+leader 1 sleep and wait for heartbeat!
+leader 1:heart beat for 2 in term 1 
+leader 1:heart beat for 0 in term 1 
+2(1) rec heart from 1(1) 
+ 2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 0, prevterm = 1,LeaderCommit = 0 
+ my state:log len:1,commit:0, log:[{1 5727166797447847155}] 
+2:commit:0,log:[{1 5727166797447847155}] 
+2:leader1,args.LeaderCommit:0,start + newLog - 1=0 
+commit CHANGE!:0,log:[{1 5727166797447847155}] 
+0(1) rec heart from 1(1) 
+ 0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 0, prevterm = 1,LeaderCommit = 0 
+ my state:log len:1,commit:0, log:[{1 5727166797447847155}] 
+0:commit:0,log:[{1 5727166797447847155}] 
+0:leader1,args.LeaderCommit:0,start + newLog - 1=0 
+commit CHANGE!:0,log:[{1 5727166797447847155}] 
+leader 1 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [1 0 1] 
+leader 1 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [1 0 1] 
+leader 1 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [1 0 1] 
+1:heartbeat!
+1:for peers send heartRPC!
+leader 1 sleep and wait for heartbeat!
+leader 1:heart beat for 2 in term 1 
+leader 1:heart beat for 0 in term 1 
+2(1) rec heart from 1(1) 
+ 0(1) rec heart from 1(1) 
+ 2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 0, prevterm = 1,LeaderCommit = 0 
+ my state:log len:1,commit:0, log:[{1 5727166797447847155}] 
+2:commit:0,log:[{1 5727166797447847155}] 
+2:leader1,args.LeaderCommit:0,start + newLog - 1=0 
+commit CHANGE!:0,log:[{1 5727166797447847155}] 
+0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 0, prevterm = 1,LeaderCommit = 0 
+ my state:log len:1,commit:0, log:[{1 5727166797447847155}] 
+0:commit:0,log:[{1 5727166797447847155}] 
+0:leader1,args.LeaderCommit:0,start + newLog - 1=0 
+commit CHANGE!:0,log:[{1 5727166797447847155}] 
+leader 1 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [1 0 1] 
+leader 1 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [1 0 1] 
+leader 1 append log in index 2 comit = 0 
+ cmd:2429237399592301910 log:[{1 5727166797447847155} {1 2429237399592301910}] 
+1:heartbeat!
+leader 1 append log in index 3 comit = 0 
+ cmd:981676234661952108 log:[{1 5727166797447847155} {1 2429237399592301910} {1 981676234661952108}] 
+leader 1 append log in index 4 comit = 0 
+ cmd:7408341968911801705 log:[{1 5727166797447847155} {1 2429237399592301910} {1 981676234661952108} {1 7408341968911801705}] 
+leader 1 append log in index 5 comit = 0 
+ cmd:4007177779517623785 log:[{1 5727166797447847155} {1 2429237399592301910} {1 981676234661952108} {1 7408341968911801705} {1 4007177779517623785}] 
+leader 1 append log in index 6 comit = 0 
+ cmd:5739889826722118333 log:[{1 5727166797447847155} {1 2429237399592301910} {1 981676234661952108} {1 7408341968911801705} {1 4007177779517623785} {1 5739889826722118333}] 
+leader 1 append log in index 7 comit = 0 
+ cmd:219548932528005684 log:[{1 5727166797447847155} {1 2429237399592301910} {1 981676234661952108} {1 7408341968911801705} {1 4007177779517623785} {1 5739889826722118333} {1 219548932528005684}] 
+1:for peers send heartRPC!
+leader 1 sleep and wait for heartbeat!
+leader 1:heart beat for 2 in term 1 
+2(1) rec heart from 1(1) 
+ 2: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 0, prevterm = 1,LeaderCommit = 0 
+ my state:log len:1,commit:0, log:[{1 5727166797447847155}] 
+2:commit:0,log:[{1 5727166797447847155}] 
+2:leader1,args.LeaderCommit:0,start + newLog - 1=0 
+commit CHANGE!:0,log:[{1 5727166797447847155}] 
+leader 1 append log in index 8 comit = 0 
+ cmd:530711929514600118 log:[{1 5727166797447847155} {1 2429237399592301910} {1 981676234661952108} {1 7408341968911801705} {1 4007177779517623785} {1 5739889826722118333} {1 219548932528005684} {1 530711929514600118}] 
+leader 1:heart beat for 0 in term 1 
+0(1) rec heart from 1(1) 
+ 0: recv append from 1,logconut = 0,term = 1,PrevLogIndex = 0, prevterm = 1,LeaderCommit = 0 
+ my state:log len:1,commit:0, log:[{1 5727166797447847155}] 
+0:commit:0,log:[{1 5727166797447847155}] 
+0:leader1,args.LeaderCommit:0,start + newLog - 1=0 
+commit CHANGE!:0,log:[{1 5727166797447847155}] 
+leader 1 state:commit = 0,loglen = 8,matches = [0 0 0] ,nextidx = [1 0 1] 
+0(1) rec heart from 1(1) 
+ 0: recv append from 1,logconut = 7,term = 1,PrevLogIndex = 0, prevterm = 1,LeaderCommit = 0 
+ my state:log len:1,commit:0, log:[{1 5727166797447847155}] 
+0:commit:0,log:[{1 5727166797447847155}] 
+i < newLog :0 in term 1 recv log form 1  
+0:leader1,args.LeaderCommit:0,start + newLog - 1=7 
+commit CHANGE!:0,log:[{1 5727166797447847155} {1 2429237399592301910} {1 981676234661952108} {1 7408341968911801705} {1 4007177779517623785} {1 5739889826722118333} {1 219548932528005684} {1 530711929514600118}] 
+2(1) rec heart from 1(1) 
+ 2: recv append from 1,logconut = 7,term = 1,PrevLogIndex = 0, prevterm = 1,LeaderCommit = 0 
+ my state:log len:1,commit:0, log:[{1 5727166797447847155}] 
+2:commit:0,log:[{1 5727166797447847155}] 
+i < newLog :2 in term 1 recv log form 1  
+2:leader1,args.LeaderCommit:0,start + newLog - 1=7 
+commit CHANGE!:0,log:[{1 5727166797447847155} {1 2429237399592301910} {1 981676234661952108} {1 7408341968911801705} {1 4007177779517623785} {1 5739889826722118333} {1 219548932528005684} {1 530711929514600118}] 
+1:update for 0!msg.nextIdx =1,msg.entriesLen = 7 
+N = 1!rf.log[N].Term=1,rf.currentTerm = 1,match = [7 0 0],next =[8 0 1] 
+N = 2!rf.log[N].Term=1,rf.currentTerm = 1,match = [7 0 0],next =[8 0 1] 
+N = 3!rf.log[N].Term=1,rf.currentTerm = 1,match = [7 0 0],next =[8 0 1] 
+N = 4!rf.log[N].Term=1,rf.currentTerm = 1,match = [7 0 0],next =[8 0 1] 
+N = 5!rf.log[N].Term=1,rf.currentTerm = 1,match = [7 0 0],next =[8 0 1] 
+N = 6!rf.log[N].Term=1,rf.currentTerm = 1,match = [7 0 0],next =[8 0 1] 
+N = 7!rf.log[N].Term=1,rf.currentTerm = 1,match = [7 0 0],next =[8 0 1] 
+1:update for 2!msg.nextIdx =1,msg.entriesLen = 7 
+1:Apply!,apply log=[{1 5727166797447847155} {1 2429237399592301910} {1 981676234661952108} {1 7408341968911801705} {1 4007177779517623785} {1 5739889826722118333} {1 219548932528005684} {1 530711929514600118}],commit=7 apply=0
+2023/08/22 12:31:55 apply error: server 1 apply out of order, expected index 2, got 8
+exit status 1
+FAIL	6.824/raft	1.082s

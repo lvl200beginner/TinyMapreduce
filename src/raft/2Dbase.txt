@@ -1,0 +1,2195 @@
+Test (2D): snapshots basic ...
+0 is candidate! 
+2(0)get votereq from 0(1).
+ candidate last log:[idx:-1,0]
+ my log:[] 
+1(0)get votereq from 0(1).
+ candidate last log:[idx:-1,0]
+ my log:[] 
+TERM 1: 2 in term 0 vote for 0! 
+0 wins! term = 1 
+leader state:commit=-1,applied=-1,log:[] 
+leader 0 for term 1 start! 
+TERM 1: 1 in term 0 vote for 0! 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = -1, prevterm = -1,LeaderCommit = -1 
+ my state:log len:0,commit:-1,snapidx=-1 log:[] 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = -1, prevterm = -1,LeaderCommit = -1 
+ my state:log len:0,commit:-1,snapidx=-1 log:[] 
+leader 0 state:commit = -1,loglen = 0,matches = [0 0 0] ,nextidx = [0 0 0],snapidx=-1 
+leader 0 append log in index 1 comit = -1 
+ cmd:8823612521765915152 log:[{1 8823612521765915152}] 
+leader 0 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [0 0 0],snapidx=-1 
+1: recv append from 0,logconut = 1,term = 1,PrevLogIndex = -1, prevterm = -1,LeaderCommit = 0 
+ my state:log len:0,commit:-1,snapidx=-1 log:[] 
+1:commit:-1,log:[] 
+i < newLog :1 in term 1 recv log form 0  
+1:leader0,args.LeaderCommit:0,start + newLog - 1=0 
+commit CHANGE!:0,log:[{1 8823612521765915152}] 
+2: recv append from 0,logconut = 1,term = 1,PrevLogIndex = -1, prevterm = -1,LeaderCommit = 0 
+ my state:log len:0,commit:-1,snapidx=-1 log:[] 
+2:commit:-1,log:[] 
+i < newLog :2 in term 1 recv log form 0  
+2:leader0,args.LeaderCommit:0,start + newLog - 1=0 
+commit CHANGE!:0,log:[{1 8823612521765915152}] 
+0:update for 1!msg.nextIdx =0,msg.entriesLen = 1 
+0:update for 2!msg.nextIdx =0,msg.entriesLen = 1 
+leader 0 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [0 1 1],snapidx=-1 
+2:Apply!,apply log=[{1 8823612521765915152}],commit=0 apply=-1
+2:Apply!,msg={true 8823612521765915152 1 false [] 0 0}
+1:Apply!,apply log=[{1 8823612521765915152}],commit=0 apply=-1
+1:Apply!,msg={true 8823612521765915152 1 false [] 0 0}
+0:Apply!,apply log=[{1 8823612521765915152}],commit=0 apply=-1
+0:Apply!,msg={true 8823612521765915152 1 false [] 0 0}
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 0, prevterm = 1,LeaderCommit = 0 
+ my state:log len:1,commit:0,snapidx=-1 log:[{1 8823612521765915152}] 
+1:commit:0,log:[{1 8823612521765915152}] 
+1:leader0,args.LeaderCommit:0,start + newLog - 1=0 
+commit CHANGE!:0,log:[{1 8823612521765915152}] 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 0, prevterm = 1,LeaderCommit = 0 
+ my state:log len:1,commit:0,snapidx=-1 log:[{1 8823612521765915152}] 
+2:commit:0,log:[{1 8823612521765915152}] 
+2:leader0,args.LeaderCommit:0,start + newLog - 1=0 
+commit CHANGE!:0,log:[{1 8823612521765915152}] 
+leader 0 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [0 1 1],snapidx=-1 
+leader 0 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [0 1 1],snapidx=-1 
+leader 0 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [0 1 1],snapidx=-1 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 0, prevterm = 1,LeaderCommit = 0 
+ my state:log len:1,commit:0,snapidx=-1 log:[{1 8823612521765915152}] 
+2:commit:0,log:[{1 8823612521765915152}] 
+2:leader0,args.LeaderCommit:0,start + newLog - 1=0 
+commit CHANGE!:0,log:[{1 8823612521765915152}] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 0, prevterm = 1,LeaderCommit = 0 
+ my state:log len:1,commit:0,snapidx=-1 log:[{1 8823612521765915152}] 
+1:commit:0,log:[{1 8823612521765915152}] 
+1:leader0,args.LeaderCommit:0,start + newLog - 1=0 
+commit CHANGE!:0,log:[{1 8823612521765915152}] 
+leader 0 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [0 1 1],snapidx=-1 
+leader 0 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [0 1 1],snapidx=-1 
+leader 0 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [0 1 1],snapidx=-1 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 0, prevterm = 1,LeaderCommit = 0 
+ my state:log len:1,commit:0,snapidx=-1 log:[{1 8823612521765915152}] 
+2:commit:0,log:[{1 8823612521765915152}] 
+2:leader0,args.LeaderCommit:0,start + newLog - 1=0 
+commit CHANGE!:0,log:[{1 8823612521765915152}] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 0, prevterm = 1,LeaderCommit = 0 
+ my state:log len:1,commit:0,snapidx=-1 log:[{1 8823612521765915152}] 
+1:commit:0,log:[{1 8823612521765915152}] 
+1:leader0,args.LeaderCommit:0,start + newLog - 1=0 
+commit CHANGE!:0,log:[{1 8823612521765915152}] 
+leader 0 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [0 1 1],snapidx=-1 
+leader 0 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [0 1 1],snapidx=-1 
+leader 0 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [0 1 1],snapidx=-1 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 0, prevterm = 1,LeaderCommit = 0 
+ my state:log len:1,commit:0,snapidx=-1 log:[{1 8823612521765915152}] 
+2:commit:0,log:[{1 8823612521765915152}] 
+2:leader0,args.LeaderCommit:0,start + newLog - 1=0 
+commit CHANGE!:0,log:[{1 8823612521765915152}] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 0, prevterm = 1,LeaderCommit = 0 
+ my state:log len:1,commit:0,snapidx=-1 log:[{1 8823612521765915152}] 
+1:commit:0,log:[{1 8823612521765915152}] 
+1:leader0,args.LeaderCommit:0,start + newLog - 1=0 
+commit CHANGE!:0,log:[{1 8823612521765915152}] 
+leader 0 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [0 1 1],snapidx=-1 
+leader 0 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [0 1 1],snapidx=-1 
+leader 0 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [0 1 1],snapidx=-1 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 0, prevterm = 1,LeaderCommit = 0 
+ my state:log len:1,commit:0,snapidx=-1 log:[{1 8823612521765915152}] 
+2:commit:0,log:[{1 8823612521765915152}] 
+2:leader0,args.LeaderCommit:0,start + newLog - 1=0 
+commit CHANGE!:0,log:[{1 8823612521765915152}] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 0, prevterm = 1,LeaderCommit = 0 
+ my state:log len:1,commit:0,snapidx=-1 log:[{1 8823612521765915152}] 
+1:commit:0,log:[{1 8823612521765915152}] 
+1:leader0,args.LeaderCommit:0,start + newLog - 1=0 
+commit CHANGE!:0,log:[{1 8823612521765915152}] 
+leader 0 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [0 1 1],snapidx=-1 
+leader 0 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [0 1 1],snapidx=-1 
+leader 0 state:commit = 0,loglen = 1,matches = [0 0 0] ,nextidx = [0 1 1],snapidx=-1 
+leader 0 append log in index 2 comit = 0 
+ cmd:285835959587543006 log:[{1 8823612521765915152} {1 285835959587543006}] 
+leader 0 append log in index 3 comit = 0 
+ cmd:410683471853905284 log:[{1 8823612521765915152} {1 285835959587543006} {1 410683471853905284}] 
+leader 0 append log in index 4 comit = 0 
+ cmd:6866505646885032231 log:[{1 8823612521765915152} {1 285835959587543006} {1 410683471853905284} {1 6866505646885032231}] 
+leader 0 append log in index 5 comit = 0 
+ cmd:4148880145228134399 log:[{1 8823612521765915152} {1 285835959587543006} {1 410683471853905284} {1 6866505646885032231} {1 4148880145228134399}] 
+leader 0 append log in index 6 comit = 0 
+ cmd:4313274529213179707 log:[{1 8823612521765915152} {1 285835959587543006} {1 410683471853905284} {1 6866505646885032231} {1 4148880145228134399} {1 4313274529213179707}] 
+leader 0 append log in index 7 comit = 0 
+ cmd:7267650754188666823 log:[{1 8823612521765915152} {1 285835959587543006} {1 410683471853905284} {1 6866505646885032231} {1 4148880145228134399} {1 4313274529213179707} {1 7267650754188666823}] 
+leader 0 append log in index 8 comit = 0 
+ cmd:3939198970167391572 log:[{1 8823612521765915152} {1 285835959587543006} {1 410683471853905284} {1 6866505646885032231} {1 4148880145228134399} {1 4313274529213179707} {1 7267650754188666823} {1 3939198970167391572}] 
+leader 0 state:commit = 0,loglen = 8,matches = [0 0 0] ,nextidx = [0 1 1],snapidx=-1 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 0, prevterm = 1,LeaderCommit = 0 
+ my state:log len:1,commit:0,snapidx=-1 log:[{1 8823612521765915152}] 
+2:commit:0,log:[{1 8823612521765915152}] 
+2:leader0,args.LeaderCommit:0,start + newLog - 1=0 
+commit CHANGE!:0,log:[{1 8823612521765915152}] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 0, prevterm = 1,LeaderCommit = 0 
+ my state:log len:1,commit:0,snapidx=-1 log:[{1 8823612521765915152}] 
+1:commit:0,log:[{1 8823612521765915152}] 
+1:leader0,args.LeaderCommit:0,start + newLog - 1=0 
+commit CHANGE!:0,log:[{1 8823612521765915152}] 
+1: recv append from 0,logconut = 7,term = 1,PrevLogIndex = 0, prevterm = 1,LeaderCommit = 0 
+ my state:log len:1,commit:0,snapidx=-1 log:[{1 8823612521765915152}] 
+1:commit:0,log:[{1 8823612521765915152}] 
+i < newLog :1 in term 1 recv log form 0  
+1:leader0,args.LeaderCommit:0,start + newLog - 1=7 
+commit CHANGE!:0,log:[{1 8823612521765915152} {1 285835959587543006} {1 410683471853905284} {1 6866505646885032231} {1 4148880145228134399} {1 4313274529213179707} {1 7267650754188666823} {1 3939198970167391572}] 
+2: recv append from 0,logconut = 7,term = 1,PrevLogIndex = 0, prevterm = 1,LeaderCommit = 0 
+ my state:log len:1,commit:0,snapidx=-1 log:[{1 8823612521765915152}] 
+2:commit:0,log:[{1 8823612521765915152}] 
+i < newLog :2 in term 1 recv log form 0  
+2:leader0,args.LeaderCommit:0,start + newLog - 1=7 
+commit CHANGE!:0,log:[{1 8823612521765915152} {1 285835959587543006} {1 410683471853905284} {1 6866505646885032231} {1 4148880145228134399} {1 4313274529213179707} {1 7267650754188666823} {1 3939198970167391572}] 
+0:update for 1!msg.nextIdx =1,msg.entriesLen = 7 
+0:update for 2!msg.nextIdx =1,msg.entriesLen = 7 
+0:Apply!,apply log=[{1 8823612521765915152} {1 285835959587543006} {1 410683471853905284} {1 6866505646885032231} {1 4148880145228134399} {1 4313274529213179707} {1 7267650754188666823} {1 3939198970167391572}],commit=7 apply=0
+0:Apply!,msg={true 285835959587543006 2 false [] 0 0}
+0:Apply!,msg={true 410683471853905284 3 false [] 0 0}
+0:Apply!,msg={true 6866505646885032231 4 false [] 0 0}
+0:Apply!,msg={true 4148880145228134399 5 false [] 0 0}
+0:Apply!,msg={true 4313274529213179707 6 false [] 0 0}
+0:Apply!,msg={true 7267650754188666823 7 false [] 0 0}
+0:Apply!,msg={true 3939198970167391572 8 false [] 0 0}
+leader 0 state:commit = 7,loglen = 8,matches = [0 7 7] ,nextidx = [0 8 8],snapidx=-1 
+leader 0 state:commit = 7,loglen = 8,matches = [0 7 7] ,nextidx = [0 8 8],snapidx=-1 
+leader 0 state:commit = 7,loglen = 8,matches = [0 7 7] ,nextidx = [0 8 8],snapidx=-1 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 7, prevterm = 1,LeaderCommit = 7 
+ my state:log len:8,commit:0,snapidx=-1 log:[{1 8823612521765915152} {1 285835959587543006} {1 410683471853905284} {1 6866505646885032231} {1 4148880145228134399} {1 4313274529213179707} {1 7267650754188666823} {1 3939198970167391572}] 
+2:commit:0,log:[{1 8823612521765915152} {1 285835959587543006} {1 410683471853905284} {1 6866505646885032231} {1 4148880145228134399} {1 4313274529213179707} {1 7267650754188666823} {1 3939198970167391572}] 
+2:leader0,args.LeaderCommit:7,start + newLog - 1=7 
+commit CHANGE!:7,log:[{1 8823612521765915152} {1 285835959587543006} {1 410683471853905284} {1 6866505646885032231} {1 4148880145228134399} {1 4313274529213179707} {1 7267650754188666823} {1 3939198970167391572}] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 7, prevterm = 1,LeaderCommit = 7 
+ my state:log len:8,commit:0,snapidx=-1 log:[{1 8823612521765915152} {1 285835959587543006} {1 410683471853905284} {1 6866505646885032231} {1 4148880145228134399} {1 4313274529213179707} {1 7267650754188666823} {1 3939198970167391572}] 
+1:commit:0,log:[{1 8823612521765915152} {1 285835959587543006} {1 410683471853905284} {1 6866505646885032231} {1 4148880145228134399} {1 4313274529213179707} {1 7267650754188666823} {1 3939198970167391572}] 
+1:leader0,args.LeaderCommit:7,start + newLog - 1=7 
+commit CHANGE!:7,log:[{1 8823612521765915152} {1 285835959587543006} {1 410683471853905284} {1 6866505646885032231} {1 4148880145228134399} {1 4313274529213179707} {1 7267650754188666823} {1 3939198970167391572}] 
+2:Apply!,apply log=[{1 8823612521765915152} {1 285835959587543006} {1 410683471853905284} {1 6866505646885032231} {1 4148880145228134399} {1 4313274529213179707} {1 7267650754188666823} {1 3939198970167391572}],commit=7 apply=0
+2:Apply!,msg={true 285835959587543006 2 false [] 0 0}
+2:Apply!,msg={true 410683471853905284 3 false [] 0 0}
+2:Apply!,msg={true 6866505646885032231 4 false [] 0 0}
+2:Apply!,msg={true 4148880145228134399 5 false [] 0 0}
+2:Apply!,msg={true 4313274529213179707 6 false [] 0 0}
+2:Apply!,msg={true 7267650754188666823 7 false [] 0 0}
+2:Apply!,msg={true 3939198970167391572 8 false [] 0 0}
+1:Apply!,apply log=[{1 8823612521765915152} {1 285835959587543006} {1 410683471853905284} {1 6866505646885032231} {1 4148880145228134399} {1 4313274529213179707} {1 7267650754188666823} {1 3939198970167391572}],commit=7 apply=0
+1:Apply!,msg={true 285835959587543006 2 false [] 0 0}
+1:Apply!,msg={true 410683471853905284 3 false [] 0 0}
+1:Apply!,msg={true 6866505646885032231 4 false [] 0 0}
+1:Apply!,msg={true 4148880145228134399 5 false [] 0 0}
+1:Apply!,msg={true 4313274529213179707 6 false [] 0 0}
+1:Apply!,msg={true 7267650754188666823 7 false [] 0 0}
+1:Apply!,msg={true 3939198970167391572 8 false [] 0 0}
+leader 0 state:commit = 7,loglen = 8,matches = [0 7 7] ,nextidx = [0 8 8],snapidx=-1 
+leader 0 append log in index 9 comit = 7 
+ cmd:3434719351137509177 log:[{1 8823612521765915152} {1 285835959587543006} {1 410683471853905284} {1 6866505646885032231} {1 4148880145228134399} {1 4313274529213179707} {1 7267650754188666823} {1 3939198970167391572} {1 3434719351137509177}] 
+leader 0 state:commit = 7,loglen = 9,matches = [0 7 7] ,nextidx = [0 8 8],snapidx=-1 
+2: recv append from 0,logconut = 1,term = 1,PrevLogIndex = 7, prevterm = 1,LeaderCommit = 7 
+ my state:log len:8,commit:7,snapidx=-1 log:[{1 8823612521765915152} {1 285835959587543006} {1 410683471853905284} {1 6866505646885032231} {1 4148880145228134399} {1 4313274529213179707} {1 7267650754188666823} {1 3939198970167391572}] 
+2:commit:7,log:[{1 8823612521765915152} {1 285835959587543006} {1 410683471853905284} {1 6866505646885032231} {1 4148880145228134399} {1 4313274529213179707} {1 7267650754188666823} {1 3939198970167391572}] 
+i < newLog :2 in term 1 recv log form 0  
+2:leader0,args.LeaderCommit:7,start + newLog - 1=8 
+commit CHANGE!:7,log:[{1 8823612521765915152} {1 285835959587543006} {1 410683471853905284} {1 6866505646885032231} {1 4148880145228134399} {1 4313274529213179707} {1 7267650754188666823} {1 3939198970167391572} {1 3434719351137509177}] 
+0:update for 2!msg.nextIdx =8,msg.entriesLen = 1 
+1: recv append from 0,logconut = 1,term = 1,PrevLogIndex = 7, prevterm = 1,LeaderCommit = 7 
+ my state:log len:8,commit:7,snapidx=-1 log:[{1 8823612521765915152} {1 285835959587543006} {1 410683471853905284} {1 6866505646885032231} {1 4148880145228134399} {1 4313274529213179707} {1 7267650754188666823} {1 3939198970167391572}] 
+1:commit:7,log:[{1 8823612521765915152} {1 285835959587543006} {1 410683471853905284} {1 6866505646885032231} {1 4148880145228134399} {1 4313274529213179707} {1 7267650754188666823} {1 3939198970167391572}] 
+i < newLog :1 in term 1 recv log form 0  
+1:leader0,args.LeaderCommit:7,start + newLog - 1=8 
+commit CHANGE!:7,log:[{1 8823612521765915152} {1 285835959587543006} {1 410683471853905284} {1 6866505646885032231} {1 4148880145228134399} {1 4313274529213179707} {1 7267650754188666823} {1 3939198970167391572} {1 3434719351137509177}] 
+0:update for 1!msg.nextIdx =8,msg.entriesLen = 1 
+0:Apply!,apply log=[{1 8823612521765915152} {1 285835959587543006} {1 410683471853905284} {1 6866505646885032231} {1 4148880145228134399} {1 4313274529213179707} {1 7267650754188666823} {1 3939198970167391572} {1 3434719351137509177}],commit=8 apply=7
+0:Apply!,msg={true 3434719351137509177 9 false [] 0 0}
+leader 0 state:commit = 8,loglen = 0,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:9,commit:7,snapidx=-1 log:[{1 8823612521765915152} {1 285835959587543006} {1 410683471853905284} {1 6866505646885032231} {1 4148880145228134399} {1 4313274529213179707} {1 7267650754188666823} {1 3939198970167391572} {1 3434719351137509177}] 
+1:commit:7,log:[{1 8823612521765915152} {1 285835959587543006} {1 410683471853905284} {1 6866505646885032231} {1 4148880145228134399} {1 4313274529213179707} {1 7267650754188666823} {1 3939198970167391572} {1 3434719351137509177}] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=8 
+commit CHANGE!:8,log:[{1 8823612521765915152} {1 285835959587543006} {1 410683471853905284} {1 6866505646885032231} {1 4148880145228134399} {1 4313274529213179707} {1 7267650754188666823} {1 3939198970167391572} {1 3434719351137509177}] 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:9,commit:7,snapidx=-1 log:[{1 8823612521765915152} {1 285835959587543006} {1 410683471853905284} {1 6866505646885032231} {1 4148880145228134399} {1 4313274529213179707} {1 7267650754188666823} {1 3939198970167391572} {1 3434719351137509177}] 
+2:commit:7,log:[{1 8823612521765915152} {1 285835959587543006} {1 410683471853905284} {1 6866505646885032231} {1 4148880145228134399} {1 4313274529213179707} {1 7267650754188666823} {1 3939198970167391572} {1 3434719351137509177}] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=8 
+commit CHANGE!:8,log:[{1 8823612521765915152} {1 285835959587543006} {1 410683471853905284} {1 6866505646885032231} {1 4148880145228134399} {1 4313274529213179707} {1 7267650754188666823} {1 3939198970167391572} {1 3434719351137509177}] 
+1:Apply!,apply log=[{1 8823612521765915152} {1 285835959587543006} {1 410683471853905284} {1 6866505646885032231} {1 4148880145228134399} {1 4313274529213179707} {1 7267650754188666823} {1 3939198970167391572} {1 3434719351137509177}],commit=8 apply=7
+1:Apply!,msg={true 3434719351137509177 9 false [] 0 0}
+leader 0 state:commit = 8,loglen = 0,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:Apply!,apply log=[{1 8823612521765915152} {1 285835959587543006} {1 410683471853905284} {1 6866505646885032231} {1 4148880145228134399} {1 4313274529213179707} {1 7267650754188666823} {1 3939198970167391572} {1 3434719351137509177}],commit=8 apply=7
+2:Apply!,msg={true 3434719351137509177 9 false [] 0 0}
+leader 0 append log in index 10 comit = 8 
+ cmd:4242254132612919017 log:[{1 4242254132612919017}] 
+leader 0 append log in index 11 comit = 8 
+ cmd:2413203333188910144 log:[{1 4242254132612919017} {1 2413203333188910144}] 
+leader 0 append log in index 12 comit = 8 
+ cmd:4037318910230573712 log:[{1 4242254132612919017} {1 2413203333188910144} {1 4037318910230573712}] 
+leader 0 append log in index 13 comit = 8 
+ cmd:8274681527758165615 log:[{1 4242254132612919017} {1 2413203333188910144} {1 4037318910230573712} {1 8274681527758165615}] 
+leader 0 append log in index 14 comit = 8 
+ cmd:951736886457355978 log:[{1 4242254132612919017} {1 2413203333188910144} {1 4037318910230573712} {1 8274681527758165615} {1 951736886457355978}] 
+leader 0 append log in index 15 comit = 8 
+ cmd:4913169218912711427 log:[{1 4242254132612919017} {1 2413203333188910144} {1 4037318910230573712} {1 8274681527758165615} {1 951736886457355978} {1 4913169218912711427}] 
+leader 0 append log in index 16 comit = 8 
+ cmd:9189611068951833854 log:[{1 4242254132612919017} {1 2413203333188910144} {1 4037318910230573712} {1 8274681527758165615} {1 951736886457355978} {1 4913169218912711427} {1 9189611068951833854}] 
+leader 0 append log in index 17 comit = 8 
+ cmd:5658977887462461366 log:[{1 4242254132612919017} {1 2413203333188910144} {1 4037318910230573712} {1 8274681527758165615} {1 951736886457355978} {1 4913169218912711427} {1 9189611068951833854} {1 5658977887462461366}] 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 8,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 append log in index 18 comit = 8 
+ cmd:5658977887462461366 log:[{1 4242254132612919017} {1 2413203333188910144} {1 4037318910230573712} {1 8274681527758165615} {1 951736886457355978} {1 4913169218912711427} {1 9189611068951833854} {1 5658977887462461366} {1 5658977887462461366}] 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 9,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 append log in index 19 comit = 8 
+ cmd:5658977887462461366 log:[{1 4242254132612919017} {1 2413203333188910144} {1 4037318910230573712} {1 8274681527758165615} {1 951736886457355978} {1 4913169218912711427} {1 9189611068951833854} {1 5658977887462461366} {1 5658977887462461366} {1 5658977887462461366}] 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 10,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 append log in index 20 comit = 8 
+ cmd:5658977887462461366 log:[{1 4242254132612919017} {1 2413203333188910144} {1 4037318910230573712} {1 8274681527758165615} {1 951736886457355978} {1 4913169218912711427} {1 9189611068951833854} {1 5658977887462461366} {1 5658977887462461366} {1 5658977887462461366} {1 5658977887462461366}] 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 11,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 append log in index 21 comit = 8 
+ cmd:5658977887462461366 log:[{1 4242254132612919017} {1 2413203333188910144} {1 4037318910230573712} {1 8274681527758165615} {1 951736886457355978} {1 4913169218912711427} {1 9189611068951833854} {1 5658977887462461366} {1 5658977887462461366} {1 5658977887462461366} {1 5658977887462461366} {1 5658977887462461366}] 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+1:commit:8,log:[] 
+1:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+2: recv append from 0,logconut = 0,term = 1,PrevLogIndex = 8, prevterm = 1,LeaderCommit = 8 
+ my state:log len:0,commit:8,snapidx=8 log:[] 
+2:commit:8,log:[] 
+2:leader0,args.LeaderCommit:8,start + newLog - 1=-1 
+commit CHANGE!:8,log:[] 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+leader 0 state:commit = 8,loglen = 12,matches = [0 8 8] ,nextidx = [0 9 9],snapidx=8 
+1:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+2:rec install form 0,snapidx=8,my state:logfirstidx=9,loglen=0 
+--- FAIL: TestSnapshotBasic2D (11.31s)
+    config.go:611: one(5658977887462461366) failed to reach agreement
+FAIL
+exit status 1
+FAIL	6.824/raft	11.328s
