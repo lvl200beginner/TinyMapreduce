@@ -22,7 +22,7 @@ import "sync"
 func StartHTTPDebuger() {
 	pprofHandler := http.NewServeMux()
 	pprofHandler.Handle("/debug/pprof/", http.HandlerFunc(pprof.Index))
-	server := &http.Server{Addr: ":7890", Handler: pprofHandler}
+	server := &http.Server{Addr: ":6060", Handler: pprofHandler}
 	go server.ListenAndServe()
 }
 
@@ -1392,6 +1392,7 @@ func snapcommon2(t *testing.T, name string, disconnect bool, reliable bool, cras
 }
 
 func TestSnapshotBasic2D(t *testing.T) {
+	go StartHTTPDebuger()
 	snapcommon(t, "Test (2D): snapshots basic", false, true, false)
 }
 

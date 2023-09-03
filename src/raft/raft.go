@@ -316,7 +316,7 @@ func (rf *Raft) Snapshot(index int, snapshot []byte) {
 		rf.snapshotTerm = rf.log[index-1-rf.logFirstIndex].Term
 		rf.log = rf.log[index-1-rf.logFirstIndex+1:]
 		rf.logFirstIndex = index
-		rf.lastApplied = index - 1
+		//rf.lastApplied = index - 1
 		go rf.persistStateAndSnapshot()
 	}
 	rf.mu.Unlock()
@@ -534,12 +534,12 @@ func (rf *Raft) RequestVote(args *RequestVoteArgs, reply *RequestVoteReply) {
 func (rf *Raft) InstallSnapshot(args *InstallSnapshotArgs, reply *InstallSnapshotReply) {
 	rf.chticker <- struct{}{}
 	rf.mu.Lock()
-	defer rf.mu.Unlock()
 
-	//fmt.Printf("%d:rec install form %d,snapidx=%d,my state:logfirstidx=%d,loglen=%d \n", rf.me, args.LeaderId, args.LastIncludedIndex, rf.logFirstIndex, len(rf.log))
+	MyPrintf("S%d:rec install form %d,snapidx=%d,my state:logfirstidx=%d,loglen=%d \n", rf.me, args.LeaderId, args.LastIncludedIndex, rf.logFirstIndex, len(rf.log))
 
 	reply.Term = rf.currentTerm
 	if args.Term < rf.currentTerm {
+		rf.mu.Unlock()
 		return
 	}
 	if args.Term > rf.currentTerm {
@@ -551,6 +551,7 @@ func (rf *Raft) InstallSnapshot(args *InstallSnapshotArgs, reply *InstallSnapsho
 		rf.currentTerm = args.Term
 	}
 	if rf.snapshotIndex >= args.LastIncludedIndex {
+		rf.mu.Unlock()
 		return
 	}
 
@@ -558,7 +559,7 @@ func (rf *Raft) InstallSnapshot(args *InstallSnapshotArgs, reply *InstallSnapsho
 	rf.snapshotIndex = args.LastIncludedIndex
 	rf.snapshotTerm = args.LastIncludedTerm
 
-	rf.lastApplied = rf.snapshotIndex
+	//rf.lastApplied = rf.snapshotIndex
 	//rf.commitIndex = max(rf.lastApplied, rf.commitIndex)
 
 	lens := len(rf.log)
@@ -568,18 +569,19 @@ func (rf *Raft) InstallSnapshot(args *InstallSnapshotArgs, reply *InstallSnapsho
 	} else {
 		rf.log = []raftLog{}
 	}
+
 	rf.logFirstIndex = args.LastIncludedIndex + 1
-	msg := ApplyMsg{}
-	msg.SnapshotValid = true
-	msg.CommandValid = false
-	msg.SnapshotTerm = args.LastIncludedTerm
-	msg.SnapshotIndex = args.LastIncludedIndex + 1
-	msg.Snapshot = args.Data
+	//msg := ApplyMsg{}
+	//msg.SnapshotValid = true
+	//msg.CommandValid = false
+	//msg.SnapshotTerm = args.LastIncludedTerm
+	//msg.SnapshotIndex = args.LastIncludedIndex + 1
+	//msg.Snapshot = args.Data
+	//rf.chApplier <- msg
 	//fmt.Printf("%d install from %d,msg = %v \n", rf.me, args.LeaderId, msg)
-	go func() {
-		rf.chApplier <- msg
-	}()
 	go rf.persistStateAndSnapshot()
+	rf.mu.Unlock()
+
 }
 
 //
@@ -1063,7 +1065,7 @@ func (rf *Raft) handleAppendRely(t int, ch chan AppendMsg, chs chan struct{}) {
 				n := msg.nextIdx - 1
 				if msg.reply.ConflicTerm != -1 {
 					for n >= msg.reply.TermFirstIndex && n < len(rf.log)+rf.logFirstIndex && n-rf.logFirstIndex >= 0 {
-						if rf.log[n-rf.logFirstIndex].Term == msg.reply.ConflicTerm {
+						if rf.log[n-rf.logFirstIndex].Term == msg.reply.ConflicTerm || (n == rf.logFirstIndex && rf.snapshotIndex < 0) {
 							break
 						}
 						n--
@@ -1437,6 +1439,42 @@ func (rf *Raft) ticker() {
 
 	}
 }
+func (rf *Raft) applier2(applyCh chan ApplyMsg) {
+	for rf.killed() == false {
+		rf.mu.Lock()
+		if rf.lastApplied < rf.snapshotIndex {
+			rf.mu.Unlock()
+			msg := ApplyMsg{}
+			msg.SnapshotValid = true
+			msg.CommandValid = false
+			msg.SnapshotTerm = rf.snapshotTerm
+			msg.SnapshotIndex = rf.snapshotIndex + 1
+			msg.Snapshot = rf.snapshot
+			rf.chApplier <- msg
+			rf.lastApplied = rf.snapshotIndex
+		} else if rf.commitIndex >= rf.logFirstIndex && rf.commitIndex < len(rf.log)+rf.logFirstIndex {
+			comIdx := rf.commitIndex
+			logs := make([]raftLog, len(rf.log))
+			firstidx := rf.logFirstIndex
+			copy(logs, rf.log)
+			lastApp := rf.lastApplied
+			rf.mu.Unlock()
+			for comIdx > lastApp {
+				lastApp++
+				if lastApp < firstidx || lastApp >= firstidx+len(logs) {
+					//fmt.Printf("lack of log at %d to apply!my log:%v,first idx:%d \n", rf.lastApplied, logs, firstidx)
+					break
+				}
+				msg := ApplyMsg{true, logs[lastApp-firstidx].Cmd, lastApp + 1, false, nil, 0, 0}
+				MyPrintf("S%d:ApplyLog!,msg=%v\n", rf.me, msg)
+				applyCh <- msg
+				rf.lastApplied = lastApp
+			}
+		} else {
+			rf.mu.Unlock()
+		}
+	}
+}
 
 func (rf *Raft) applier(applyCh chan ApplyMsg) {
 	for rf.killed() == false {
@@ -1449,9 +1487,6 @@ func (rf *Raft) applier(applyCh chan ApplyMsg) {
 			logs := make([]raftLog, len(rf.log))
 			firstidx := rf.logFirstIndex
 			copy(logs, rf.log)
-			if comIdx > rf.lastApplied {
-				//fmt.Printf("%d:Apply!,apply log=%v,commit=%d apply=%d\n", rf.me, rf.log, comIdx, rf.lastApplied)
-			}
 			applyFailed := false
 			for comIdx > rf.lastApplied && !applyFailed {
 				rf.lastApplied++
@@ -1532,6 +1567,6 @@ func Make(peers []*labrpc.ClientEnd, me int,
 	// start ticker goroutine to start elections
 	go rf.ticker()
 	go rf.run2()
-	go rf.applier(applyCh)
+	go rf.applier2(applyCh)
 	return rf
 }
