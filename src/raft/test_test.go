@@ -322,6 +322,7 @@ func TestFailAgree2B(t *testing.T) {
 }
 
 func TestFailNoAgree2B(t *testing.T) {
+	//go StartHTTPDebuger()
 	servers := 5
 	cfg := make_config(t, servers, false, false)
 	defer cfg.cleanup()
@@ -332,6 +333,7 @@ func TestFailNoAgree2B(t *testing.T) {
 
 	// 3 of 5 followers disconnect
 	leader := cfg.checkOneLeader()
+	Debug2(dTest, "Disconnect S%d S%d S%d ", (leader+1)%servers, (leader+2)%servers, (leader+3)%servers)
 	cfg.disconnect((leader + 1) % servers)
 	cfg.disconnect((leader + 2) % servers)
 	cfg.disconnect((leader + 3) % servers)
@@ -350,7 +352,7 @@ func TestFailNoAgree2B(t *testing.T) {
 	if n > 0 {
 		t.Fatalf("%v committed but no majority", n)
 	}
-
+	Debug2(dTest, "Connect S%d S%d S%d ", (leader+1)%servers, (leader+2)%servers, (leader+3)%servers)
 	// repair
 	cfg.connect((leader + 1) % servers)
 	cfg.connect((leader + 2) % servers)
@@ -511,7 +513,7 @@ func TestRejoin2B(t *testing.T) {
 	cfg.end()
 }
 
-func aTestMyBackup2B(t *testing.T) {
+func TestMyBackup2B(t *testing.T) {
 	servers := 5
 	cfg := make_config(t, servers, false, false)
 	defer cfg.cleanup()
@@ -525,6 +527,7 @@ func aTestMyBackup2B(t *testing.T) {
 	cfg.disconnect((leader1 + 2) % servers)
 	cfg.disconnect((leader1 + 3) % servers)
 	cfg.disconnect((leader1 + 4) % servers)
+	Debug2(dTest, "Disconnect S%d S%d S%d ", (leader1+2)%servers, (leader1+3)%servers, (leader1+4)%servers)
 
 	// submit lots of commands that won't commit
 	for i := 2; i < 52; i++ {
@@ -535,13 +538,17 @@ func aTestMyBackup2B(t *testing.T) {
 
 	cfg.disconnect((leader1 + 0) % servers)
 	cfg.disconnect((leader1 + 1) % servers)
+	Debug2(dTest, "Disconnect S%d S%d ", (leader1+0)%servers, (leader1+1)%servers)
 
 	// allow other partition to recover
 	cfg.connect((leader1 + 2) % servers)
 	cfg.connect((leader1 + 3) % servers)
 	cfg.connect((leader1 + 4) % servers)
 
+	Debug2(dTest, "Connect S%d S%d S%d ", (leader1+2)%servers, (leader1+3)%servers, (leader1+4)%servers)
+
 	// lots of successful commands to new group.
+	Debug2(dTest, "Cfg.One %d~%d ", 2, 51)
 	for i := 2; i < 52; i++ {
 		cfg.one(i, 3, true)
 	}
@@ -553,7 +560,7 @@ func aTestMyBackup2B(t *testing.T) {
 		other = (leader2 + 1) % servers
 	}
 	cfg.disconnect(other)
-	fmt.Printf("diconnect one follower %d  \n", other)
+	Debug2(dTest, "Disconnect follower S%d ", other)
 
 	// lots more commands that won't commit
 	for i := 52; i < 102; i++ {
@@ -569,9 +576,10 @@ func aTestMyBackup2B(t *testing.T) {
 	cfg.connect((leader1 + 0) % servers)
 	cfg.connect((leader1 + 1) % servers)
 	cfg.connect(other)
-	fmt.Printf("connect %d,%d,%d \n", (leader1+0)%servers, (leader1+1)%servers, other)
+	Debug2(dTest, "Connect S%d S%d S%d ", (leader1+0)%servers, (leader1+1)%servers, other)
 
 	// lots of successful commands to new group.
+	Debug2(dTest, "Cfg.One %d~%d ", 102, 151)
 	for i := 2; i < 52; i++ {
 		cfg.one(i+100, 3, true)
 	}
@@ -580,13 +588,14 @@ func aTestMyBackup2B(t *testing.T) {
 	for i := 0; i < servers; i++ {
 		cfg.connect(i)
 	}
-	fmt.Printf("connect all \n")
+	Debug2(dTest, "Connect all ")
+	Debug2(dTest, "Cfg.One 1000 ")
 	cfg.one(1000, servers, true)
 
 	cfg.end()
 }
 
-func TestBackup2B(t *testing.T) {
+func fTestBackup2B(t *testing.T) {
 	servers := 5
 	cfg := make_config(t, servers, false, false)
 	defer cfg.cleanup()
@@ -1258,8 +1267,6 @@ func TestUnreliableChurn2C(t *testing.T) {
 const MAXLOGSIZE = 2000
 
 func snapcommon(t *testing.T, name string, disconnect bool, reliable bool, crash bool) {
-
-	//go StartHTTPDebuger()
 
 	iters := 30
 	servers := 3
