@@ -242,26 +242,24 @@ func (rf *Raft) readSnapShot(data []byte) {
 	}
 	r := bytes.NewBuffer(data)
 	d := labgob.NewDecoder(r)
-	var xlog []interface{}
 	var snapshotIndex int
-	if d.Decode(&snapshotIndex) != nil ||
-		d.Decode(&xlog) != nil {
+	if d.Decode(&snapshotIndex) != nil {
 		//fmt.Printf("decode error!\n")
 	} else {
 		rf.mu.Lock()
 		rf.snapshot = data
 		rf.snapshotIndex = snapshotIndex - 1
 
-		var cmds []interface{}
+		//var cmds []interface{}
 
-		if len(xlog) > 0 {
-			cmds = append(cmds, xlog[0])
-			if len(xlog) > 1 {
-				cmds = append(cmds, xlog[len(xlog)-1])
-			}
-		}
+		//if len(xlog) > 0 {
+		//	cmds = append(cmds, xlog[0])
+		//	if len(xlog) > 1 {
+		//		cmds = append(cmds, xlog[len(xlog)-1])
+		//	}
+		//}
 
-		Debug2(dPersist, "S%d Read Snap T:%d SI:%d CMDS:%v ", rf.me, rf.currentTerm, rf.snapshotIndex, cmds)
+		Debug2(dPersist, "S%d Read Snap T:%d SI:%d ", rf.me, rf.currentTerm, rf.snapshotIndex)
 		rf.mu.Unlock()
 	}
 }
@@ -326,12 +324,12 @@ func (rf *Raft) CondInstallSnapshot(lastIncludedTerm int, lastIncludedIndex int,
 // that index. Raft should now trim its log as much as possible.
 func (rf *Raft) Snapshot(index int, snapshot []byte) {
 	// Your code here (2D).
-	w := bytes.NewBuffer(snapshot)
-	e := labgob.NewDecoder(w)
-	var i int
-	var xlog []interface{}
-	e.Decode(&i)
-	e.Decode(&xlog)
+	//w := bytes.NewBuffer(snapshot)
+	//e := labgob.NewDecoder(w)
+	//var i int
+	//var xlog []interface{}
+	//e.Decode(&i)
+	//e.Decode(&xlog)
 
 	rf.mu.Lock()
 	if index-1 >= rf.logFirstIndex {
@@ -340,15 +338,15 @@ func (rf *Raft) Snapshot(index int, snapshot []byte) {
 		rf.snapshotTerm = rf.log[index-1-rf.logFirstIndex].Term
 		rf.log = rf.log[index-1-rf.logFirstIndex+1:]
 		rf.logFirstIndex = index
-		var cmds []interface{}
-		if len(xlog) > 0 {
-			cmds = append(cmds, xlog[0])
-			if len(xlog) > 1 {
-				cmds = append(cmds, xlog[len(xlog)-1])
-			}
-		}
+		//var cmds []interface{}
+		//if len(xlog) > 0 {
+		//	cmds = append(cmds, xlog[0])
+		//	if len(xlog) > 1 {
+		//		cmds = append(cmds, xlog[len(xlog)-1])
+		//	}
+		//}
 
-		Debug2(dSnap, "S%d Compact Snap SI=%d CMD=%v ", rf.me, i-1, cmds)
+		Debug2(dSnap, "S%d Compact Snap SI=%d ST=%d ", rf.me, rf.snapshotIndex, rf.snapshotTerm)
 		go rf.persistStateAndSnapshot()
 	}
 	rf.mu.Unlock()

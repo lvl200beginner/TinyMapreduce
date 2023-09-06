@@ -6,8 +6,6 @@ import (
 	"6.824/raft"
 	"bytes"
 	"fmt"
-	"strconv"
-	"strings"
 	"sync"
 	"sync/atomic"
 	"time"
@@ -29,10 +27,11 @@ type Op struct {
 	// Your definitions here.
 	// Field names must start with capital letters,
 	// otherwise RPC will break.
-	Method     int
-	Identifier string
-	Key        string
-	Value      string
+	Method   int
+	ClientId int
+	CmdId    uint
+	Key      string
+	Value    string
 }
 
 type KVServer struct {
@@ -70,10 +69,11 @@ func (kv *KVServer) Get(args *GetArgs, reply *GetReply) {
 	kv.mapIdtoOpchannel[cmdIdentifier] = ch
 	kv.mu.Unlock()
 	idx, _, isLeader := kv.rf.Start(Op{
-		Method:     opGet,
-		Identifier: cmdIdentifier,
-		Key:        args.Key,
-		Value:      "",
+		Method:   opGet,
+		ClientId: args.Client,
+		CmdId:    args.CommandId,
+		Key:      args.Key,
+		Value:    "",
 	})
 	if !isLeader {
 		reply.Err = "not leader"
@@ -102,7 +102,7 @@ func (kv *KVServer) Get(args *GetArgs, reply *GetReply) {
 
 func (kv *KVServer) PutAppend(args *PutAppendArgs, reply *PutAppendReply) {
 	// Your code here.
-	Debug(dKvserver, "KS%d From C%d %v Req Args=[] ", kv.me, args.Client, args.Op, args.CommandId, args.Key, args.Value)
+	Debug(dKvserver, "KS%d From C%d %v Req Args=[CmdId:%d Key:%v Value:%v] ", kv.me, args.Client, args.Op, args.CommandId, args.Key, args.Value)
 	reply.Success = false
 	_, ok := kv.rf.GetState()
 	if !ok {
@@ -130,10 +130,11 @@ func (kv *KVServer) PutAppend(args *PutAppendArgs, reply *PutAppendReply) {
 	kv.mu.Unlock()
 	//t0 := time.Now()
 	idx, _, isLeader := kv.rf.Start(Op{
-		Method:     m,
-		Identifier: cmdIdentifier,
-		Key:        args.Key,
-		Value:      args.Value,
+		Method:   m,
+		ClientId: args.Client,
+		CmdId:    args.CommandId,
+		Key:      args.Key,
+		Value:    args.Value,
 	})
 	if !isLeader {
 		reply.Err = "not leader"
@@ -176,29 +177,12 @@ func (kv *KVServer) Kill() {
 }
 
 func (kv *KVServer) ingestSnap(snapshot []byte, index int) {
-	if snapshot == nil {
-		Debug(dWarn, "KS%d nil snapshot")
-		return
-	}
-	r := bytes.NewBuffer(snapshot)
-	d := labgob.NewDecoder(r)
-	var lastIncludedIndex int
-	var stateMachine map[string]string
-	var clientCmds map[int]uint
-	if d.Decode(&lastIncludedIndex) != nil ||
-		d.Decode(&stateMachine) != nil ||
-		d.Decode(&clientCmds) != nil {
-		Debug(dWarn, "snapshot decode error")
-		return
-	}
-	if index != -1 && index != lastIncludedIndex {
-		Debug(dWarn, "KS%d Snapshot Doesn't Match SnapshotIndex", kv.me)
-		return
-	}
-	Debug(dKvserver, "KS%d Apply Snap SI:%d ", kv.me, lastIncludedIndex)
-	kv.statemachine = stateMachine
-	kv.lastApplied = lastIncludedIndex
-	kv.latestCmdId = clientCmds
+	//if index != -1 && index != lastIncludedIndex {
+	//	Debug(dWarn, "KS%d Snapshot Doesn't Match SnapshotIndex", kv.me)
+	//	return
+	//}
+	kv.applySnapData(snapshot)
+
 	return
 }
 
@@ -216,14 +200,11 @@ func (kv *KVServer) applier() {
 				switch m.Command.(type) {
 				case Op:
 					cmd := m.Command.(Op)
-					s := strings.Split(cmd.Identifier, "_")
-					client, _ := strconv.Atoi(s[0])
-					cmdId, _ := strconv.Atoi(s[1])
 					kv.mu.Lock()
 					kv.lastApplied = m.CommandIndex
-					if cmd.Method != opGet && kv.latestCmdId[client] != uint(cmdId) {
-						Debug(dKvserver, "KS%d Commit Log CmdId:%v ", kv.me, cmd.Identifier)
-						kv.latestCmdId[client] = uint(cmdId)
+					if cmd.Method != opGet && kv.latestCmdId[cmd.ClientId] != cmd.CmdId {
+						Debug(dKvserver, "KS%d Commit Log CmdId:%d_%d ", kv.me, cmd.ClientId, cmd.CmdId)
+						kv.latestCmdId[cmd.ClientId] = cmd.CmdId
 						switch cmd.Method {
 						case opAppend:
 							kv.statemachine[cmd.Key] += cmd.Value
@@ -231,7 +212,8 @@ func (kv *KVServer) applier() {
 							kv.statemachine[cmd.Key] = cmd.Value
 						}
 					}
-					ch, isPresent := kv.mapIdtoOpchannel[cmd.Identifier]
+					Identifier := fmt.Sprintf("%d_%d", cmd.ClientId, cmd.CmdId)
+					ch, isPresent := kv.mapIdtoOpchannel[Identifier]
 					kv.mu.Unlock()
 					if isPresent {
 						msg := OpMsg{}
@@ -245,7 +227,7 @@ func (kv *KVServer) applier() {
 						}
 					}
 					kv.mu.Lock()
-					delete(kv.mapIdtoOpchannel, cmd.Identifier)
+					delete(kv.mapIdtoOpchannel, Identifier)
 					kv.mu.Unlock()
 					logSize := kv.persist.RaftStateSize()
 					if kv.maxraftstate > 0 && logSize >= kv.maxraftstate {
@@ -266,6 +248,29 @@ func (kv *KVServer) applier() {
 func (kv *KVServer) killed() bool {
 	z := atomic.LoadInt32(&kv.dead)
 	return z == 1
+}
+
+func (kv *KVServer) applySnapData(snapData []byte) {
+	if snapData == nil {
+		Debug(dWarn, "KS%d nil snapshot")
+		return
+	}
+	r := bytes.NewBuffer(snapData)
+	d := labgob.NewDecoder(r)
+	var lastIncludedIndex int
+	var stateMachine map[string]string
+	var clientCmds map[int]uint
+	if d.Decode(&lastIncludedIndex) != nil ||
+		d.Decode(&stateMachine) != nil ||
+		d.Decode(&clientCmds) != nil {
+		Debug(dWarn, "snapshot decode error")
+		return
+	}
+
+	Debug(dKvserver, "KS%d Apply Snap SI:%d ", kv.me, lastIncludedIndex)
+	kv.statemachine = stateMachine
+	kv.lastApplied = lastIncludedIndex
+	kv.latestCmdId = clientCmds
 }
 
 //
@@ -300,6 +305,7 @@ func StartKVServer(servers []*labrpc.ClientEnd, me int, persister *raft.Persiste
 	kv.stopCh = make(chan struct{})
 	kv.lastApplied = -1
 	kv.rf = raft.Make(servers, me, persister, kv.applyCh)
+	kv.applySnapData(kv.persist.ReadSnapshot())
 
 	go kv.applier()
 
