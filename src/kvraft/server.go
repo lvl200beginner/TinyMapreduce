@@ -4,23 +4,14 @@ import (
 	"6.824/labgob"
 	"6.824/labrpc"
 	"6.824/raft"
+	"bytes"
 	"fmt"
-	"log"
 	"strconv"
 	"strings"
 	"sync"
 	"sync/atomic"
 	"time"
 )
-
-const Debug = false
-
-func DPrintf(format string, a ...interface{}) (n int, err error) {
-	if Debug {
-		log.Printf(format, a...)
-	}
-	return
-}
 
 const (
 	opAppend = iota
@@ -48,6 +39,7 @@ type KVServer struct {
 	mu               sync.Mutex
 	me               int
 	rf               *raft.Raft
+	persist          *raft.Persister
 	applyCh          chan raft.ApplyMsg
 	stopCh           chan struct{}
 	dead             int32 // set by Kill()
@@ -63,7 +55,7 @@ type KVServer struct {
 
 func (kv *KVServer) Get(args *GetArgs, reply *GetReply) {
 	// Your code here.
-	DPrintf("Server%d rec Get request.Args:%v \n", kv.me, args)
+	Debug(dKvserver, "KS%d From C%d Get Req.Args=[CmdId:%d Key%v] ", kv.me, args.Client, args.CommandId, args.Key)
 	_, ok := kv.rf.GetState()
 	reply.Success = false
 	reply.Value = ""
@@ -105,25 +97,12 @@ func (kv *KVServer) Get(args *GetArgs, reply *GetReply) {
 	}
 	close(chStop)
 
-	//select {
-	//case msg := <-ch:
-	//	if msg.Index != idx {
-	//		reply.Err = "Index not match"
-	//	} else {
-	//		reply.Success = true
-	//		reply.Value = msg.Value
-	//	}
-	//case <-time.After(600 * time.Millisecond):
-	//	reply.Err = "not leader"
-	//	//DPrintf("Kvserver apply log time out!\n")
-	//}
-
 	return
 }
 
 func (kv *KVServer) PutAppend(args *PutAppendArgs, reply *PutAppendReply) {
 	// Your code here.
-	DPrintf("S%d rec PutAppend request.Args:%v \n", kv.me, args)
+	Debug(dKvserver, "KS%d From C%d %v Req Args=[] ", kv.me, args.Client, args.Op, args.CommandId, args.Key, args.Value)
 	reply.Success = false
 	_, ok := kv.rf.GetState()
 	if !ok {
@@ -135,7 +114,7 @@ func (kv *KVServer) PutAppend(args *PutAppendArgs, reply *PutAppendReply) {
 	v, isPresent := kv.latestCmdId[args.Client]
 	if isPresent && args.CommandId == v {
 		reply.Success = true
-		DPrintf("S%d for C%d's cmd%d:Put&Append done before.key:%v,value:%v.\n", kv.me, args.Client, args.CommandId, args.Key, args.Value)
+		//DPrintf("S%d for C%d's cmd%d:Put&Append done before.key:%v,value:%v.\n", kv.me, args.Client, args.CommandId, args.Key, args.Value)
 		kv.mu.Unlock()
 		return
 	}
@@ -176,19 +155,6 @@ func (kv *KVServer) PutAppend(args *PutAppendArgs, reply *PutAppendReply) {
 		time.Sleep(20 * time.Millisecond)
 	}
 	close(chStop)
-	//select {
-	//case msg := <-ch:
-	//	if msg.Index != idx {
-	//		reply.Err = "Index not match"
-	//	} else {
-	//		//fmt.Printf("KV :S%d:%v ms passed between start and apply \n", kv.me, time.Since(t0).Milliseconds())
-	//		reply.Success = true
-	//		DPrintf("KV S%d->C%d:cmd %v done. \n", kv.me, args.CommandId, cmdIdentifier)
-	//		//DPrintf("Kvserver apply log time out!\n")
-	//	}
-	//case <-time.After(600 * time.Millisecond):
-	//	reply.Err = "not leader"
-	//}
 }
 
 //
@@ -204,8 +170,36 @@ func (kv *KVServer) PutAppend(args *PutAppendArgs, reply *PutAppendReply) {
 func (kv *KVServer) Kill() {
 	atomic.StoreInt32(&kv.dead, 1)
 	kv.rf.Kill()
+	Debug(dInfo, "KS%d Killed ")
 	close(kv.stopCh)
 	// Your code here, if desired.
+}
+
+func (kv *KVServer) ingestSnap(snapshot []byte, index int) {
+	if snapshot == nil {
+		Debug(dWarn, "KS%d nil snapshot")
+		return
+	}
+	r := bytes.NewBuffer(snapshot)
+	d := labgob.NewDecoder(r)
+	var lastIncludedIndex int
+	var stateMachine map[string]string
+	var clientCmds map[int]uint
+	if d.Decode(&lastIncludedIndex) != nil ||
+		d.Decode(&stateMachine) != nil ||
+		d.Decode(&clientCmds) != nil {
+		Debug(dWarn, "snapshot decode error")
+		return
+	}
+	if index != -1 && index != lastIncludedIndex {
+		Debug(dWarn, "KS%d Snapshot Doesn't Match SnapshotIndex", kv.me)
+		return
+	}
+	Debug(dKvserver, "KS%d Apply Snap SI:%d ", kv.me, lastIncludedIndex)
+	kv.statemachine = stateMachine
+	kv.lastApplied = lastIncludedIndex
+	kv.latestCmdId = clientCmds
+	return
 }
 
 func (kv *KVServer) applier() {
@@ -214,20 +208,21 @@ func (kv *KVServer) applier() {
 		case <-kv.stopCh:
 			return
 		case m := <-kv.applyCh:
-			if m.CommandValid == false {
-				// ignore other types of ApplyMsg
-			} else {
+			if m.SnapshotValid {
+				if kv.rf.CondInstallSnapshot(m.SnapshotTerm, m.SnapshotIndex, m.Snapshot) {
+					kv.ingestSnap(m.Snapshot, m.SnapshotIndex)
+				}
+			} else if m.CommandValid {
 				switch m.Command.(type) {
 				case Op:
 					cmd := m.Command.(Op)
 					s := strings.Split(cmd.Identifier, "_")
 					client, _ := strconv.Atoi(s[0])
 					cmdId, _ := strconv.Atoi(s[1])
-					DPrintf("KVServer%d Log! cmdid=%v \n", kv.me, cmd.Identifier)
 					kv.mu.Lock()
 					kv.lastApplied = m.CommandIndex
 					if cmd.Method != opGet && kv.latestCmdId[client] != uint(cmdId) {
-						//fmt.Printf("KVServer%d Apply! cmd=%v \n", kv.me, cmd)
+						Debug(dKvserver, "KS%d Commit Log CmdId:%v ", kv.me, cmd.Identifier)
 						kv.latestCmdId[client] = uint(cmdId)
 						switch cmd.Method {
 						case opAppend:
@@ -252,6 +247,16 @@ func (kv *KVServer) applier() {
 					kv.mu.Lock()
 					delete(kv.mapIdtoOpchannel, cmd.Identifier)
 					kv.mu.Unlock()
+					logSize := kv.persist.RaftStateSize()
+					if kv.maxraftstate > 0 && logSize >= kv.maxraftstate {
+						Debug(dKvserver, "KS%d LogSize=%d >%d LastIndex:%d ", kv.me, logSize, kv.maxraftstate, m.CommandIndex)
+						w := new(bytes.Buffer)
+						e := labgob.NewEncoder(w)
+						e.Encode(m.CommandIndex)
+						e.Encode(kv.statemachine)
+						e.Encode(kv.latestCmdId)
+						kv.rf.Snapshot(m.CommandIndex, w.Bytes())
+					}
 				}
 			}
 		}
@@ -285,6 +290,7 @@ func StartKVServer(servers []*labrpc.ClientEnd, me int, persister *raft.Persiste
 	kv := new(KVServer)
 	kv.me = me
 	kv.maxraftstate = maxraftstate
+	kv.persist = persister
 
 	// You may need initialization code here.
 	kv.statemachine = make(map[string]string)

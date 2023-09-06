@@ -808,6 +808,7 @@ func (rf *Raft) startElection(t0 int) {
 		}
 		rf.t0 = time.Now()
 		rf.chVoteWin <- struct{}{}
+		rf.log = append(rf.log, raftLog{rf.currentTerm, 1})
 		go rf.persist()
 		Debug2(dCandidate, "S%d Wins Term:%d Commit:%d FI%d LogLen:%d Logs:%v ",
 			rf.me, rf.currentTerm, rf.commitIndex, rf.logFirstIndex, len(rf.log), rf.log)
@@ -1200,9 +1201,11 @@ func (rf *Raft) applier2(applyCh chan ApplyMsg) {
 			msg := ApplyMsg{}
 			msg.SnapshotValid = true
 			msg.CommandValid = false
+			rf.mu.Lock()
 			msg.SnapshotTerm = rf.snapshotTerm
 			msg.SnapshotIndex = rf.snapshotIndex + 1
 			msg.Snapshot = rf.snapshot
+			rf.mu.Unlock()
 			Debug2(dApply, "S%d Apply Snap Args=[SI:%d ST:%d ] ", rf.me, rf.snapshotIndex, rf.snapshotTerm)
 			msgBuffer <- msg
 			rf.lastApplied = rf.snapshotIndex

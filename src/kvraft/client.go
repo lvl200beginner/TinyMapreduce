@@ -64,7 +64,7 @@ func (ck *Clerk) Get(key string) string {
 	}
 	ck.cmdId++
 	ck.mu.Unlock()
-	DPrintf("Client%d get! args:%v\n", ck.name, args)
+	Debug(dKvclient, "KC%d Get Req Args=[CmdId:%v Key:%v] ", ck.name, args.CommandId, args.Key)
 	for {
 		reply := GetReply{}
 		reply.Success = false
@@ -76,7 +76,7 @@ func (ck *Clerk) Get(key string) string {
 		}
 		//DPrintf("Client%d get reply:%v\n", ck.name, reply)
 		if reply.Success {
-
+			Debug(dKvclient, "KC%d Get Success via KS%d Reply=[CmdId:%v Key:%v Value:%v] ", ck.name, i, args.CommandId, args.Key, reply.Value)
 			return reply.Value
 		}
 		if reply.Err == "not leader" {
@@ -110,7 +110,7 @@ func (ck *Clerk) PutAppend(key string, value string, op string) {
 	}
 	ck.cmdId++
 	ck.mu.Unlock()
-	DPrintf("Client%d put&append! args:%v\n", ck.name, args)
+	Debug(dKvclient, "KC%d %v Req Args=[CmdId:%d Key:%v Value:%v] ", ck.name, args.Op, args.CommandId, args.Key, args.Value)
 	for {
 		reply := PutAppendReply{}
 		reply.Success = false
@@ -120,8 +120,8 @@ func (ck *Clerk) PutAppend(key string, value string, op string) {
 			i = (i + 1) % len(ck.servers)
 			continue
 		}
-		//DPrintf("Client%d put&append reply! :%v\n", ck.name, reply)
 		if reply.Success {
+			Debug(dKvclient, "KC%d Cmd%d Success via KS%d ", ck.name, args.CommandId, i)
 			return
 		}
 		if reply.Err == "not leader" {
