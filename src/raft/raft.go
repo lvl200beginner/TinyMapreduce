@@ -81,6 +81,7 @@ type Raft struct {
 	// Look at the paper's Figure 2 for a description of what
 	// state a Raft server must maintain.
 	receiveHeartbeat bool
+	ConsumerStopped  bool
 	t0               time.Time
 	commitIndex      int
 	lastApplied      int
@@ -1184,9 +1185,11 @@ func (rf *Raft) msgBufferConsumer(buffer chan ApplyMsg, applyCh chan ApplyMsg) {
 			Debug2(dLog2, "S%d Consume Buffer Index:%d SI:%d CMD:%v ", rf.me, m.CommandIndex, m.SnapshotIndex, m.Command)
 			applyCh <- m
 		case <-rf.chStop:
+			rf.ConsumerStopped = true
 			return
 		}
 	}
+	rf.ConsumerStopped = true
 }
 
 func (rf *Raft) applier2(applyCh chan ApplyMsg) {
@@ -1205,7 +1208,11 @@ func (rf *Raft) applier2(applyCh chan ApplyMsg) {
 			msg.Snapshot = rf.snapshot
 			rf.mu.Unlock()
 			Debug2(dApply, "S%d Apply Snap Args=[SI:%d ST:%d ] ", rf.me, rf.snapshotIndex, rf.snapshotTerm)
-			msgBuffer <- msg
+			select {
+			case msgBuffer <- msg:
+			case <-rf.chStop:
+				return
+			}
 			rf.lastApplied = rf.snapshotIndex
 		} else if rf.commitIndex >= rf.logFirstIndex && rf.commitIndex < len(rf.log)+rf.logFirstIndex && rf.commitIndex > rf.lastApplied {
 			rf.mu.Lock()
@@ -1222,7 +1229,11 @@ func (rf *Raft) applier2(applyCh chan ApplyMsg) {
 				count++
 				msg := ApplyMsg{true, rf.log[lastApp-firstidx].Cmd, lastApp + 1, false, nil, -1, -1}
 				Debug2(dApply, "S%d Apply Args=[Cmd:%v Index:%d ] ", rf.me, msg.Command, lastApp)
-				msgBuffer <- msg
+				select {
+				case msgBuffer <- msg:
+				case <-rf.chStop:
+					return
+				}
 				rf.lastApplied = lastApp
 			}
 			rf.mu.Unlock()
@@ -1260,6 +1271,7 @@ func Make(peers []*labrpc.ClientEnd, me int,
 	rf.snapshotTerm = -1
 	rf.snapshotIndex = -1
 	rf.receiveHeartbeat = false
+	rf.ConsumerStopped = false
 	rf.chticker = make(chan struct{}, 1)
 	rf.chVoteWin = make(chan struct{}, 1)
 	rf.chHeartbeatTicker = make(chan struct{}, 50)

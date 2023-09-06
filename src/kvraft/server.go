@@ -85,8 +85,9 @@ func (kv *KVServer) Get(args *GetArgs, reply *GetReply) {
 	go func() {
 		select {
 		case msg := <-ch:
-			reply.Success = true
 			reply.Value = msg.Value
+			reply.Success = true
+			Debug(dKvserver, "KS%d -> KC%d Get Reply Id:%d Key:%v Value:%v ", kv.me, args.Client, args.CommandId, args.Key, reply.Value)
 		case <-chStop:
 			reply.Err = "not leader"
 		}
@@ -147,6 +148,7 @@ func (kv *KVServer) PutAppend(args *PutAppendArgs, reply *PutAppendReply) {
 		select {
 		case <-ch:
 			reply.Success = true
+			Debug(dKvserver, "KS%d -> KC%d %v Success Id:%d Key:%v Value:%v ", kv.me, args.Client, args.Op, args.CommandId, args.Key, args.Value)
 		case <-chStop:
 			reply.Err = "not leader"
 		}
@@ -171,7 +173,16 @@ func (kv *KVServer) PutAppend(args *PutAppendArgs, reply *PutAppendReply) {
 func (kv *KVServer) Kill() {
 	atomic.StoreInt32(&kv.dead, 1)
 	kv.rf.Kill()
-	Debug(dInfo, "KS%d Killed ")
+	t0 := time.Now()
+	for kv.rf.ConsumerStopped == false && time.Since(t0).Milliseconds() < 10000 {
+		time.Sleep(100 * time.Millisecond)
+	}
+	if time.Since(t0).Milliseconds() >= 10000 {
+		Debug(dWarn, "KS%d Cant Stop Consumer ", kv.me)
+		panic("Cant Stop Consumer")
+	}
+
+	Debug(dInfo, "KS%d Killed ", kv.me)
 	close(kv.stopCh)
 	// Your code here, if desired.
 }
@@ -203,7 +214,6 @@ func (kv *KVServer) applier() {
 					kv.mu.Lock()
 					kv.lastApplied = m.CommandIndex
 					if cmd.Method != opGet && kv.latestCmdId[cmd.ClientId] != cmd.CmdId {
-						Debug(dKvserver, "KS%d Commit Log CmdId:%d_%d ", kv.me, cmd.ClientId, cmd.CmdId)
 						kv.latestCmdId[cmd.ClientId] = cmd.CmdId
 						switch cmd.Method {
 						case opAppend:
@@ -211,6 +221,7 @@ func (kv *KVServer) applier() {
 						case opPut:
 							kv.statemachine[cmd.Key] = cmd.Value
 						}
+						Debug(dKvserver, "KS%d Commit Log CmdId:%d_%d Key:%v Value:%v", kv.me, cmd.ClientId, cmd.CmdId, cmd.Key, kv.statemachine[cmd.Key])
 					}
 					Identifier := fmt.Sprintf("%d_%d", cmd.ClientId, cmd.CmdId)
 					ch, isPresent := kv.mapIdtoOpchannel[Identifier]
@@ -267,10 +278,10 @@ func (kv *KVServer) applySnapData(snapData []byte) {
 		return
 	}
 
-	Debug(dKvserver, "KS%d Apply Snap SI:%d ", kv.me, lastIncludedIndex)
 	kv.statemachine = stateMachine
 	kv.lastApplied = lastIncludedIndex
 	kv.latestCmdId = clientCmds
+	Debug(dKvserver, "KS%d Apply Snap SI:%d StateMachine:%v ", kv.me, lastIncludedIndex, kv.statemachine)
 }
 
 //
@@ -306,6 +317,7 @@ func StartKVServer(servers []*labrpc.ClientEnd, me int, persister *raft.Persiste
 	kv.lastApplied = -1
 	kv.rf = raft.Make(servers, me, persister, kv.applyCh)
 	kv.applySnapData(kv.persist.ReadSnapshot())
+	Debug(dKvserver, "KS%d Start Running StateMachine:%v ", kv.me, kv.statemachine)
 
 	go kv.applier()
 
