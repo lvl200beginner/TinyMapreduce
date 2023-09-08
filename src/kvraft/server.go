@@ -54,7 +54,7 @@ type KVServer struct {
 
 func (kv *KVServer) Get(args *GetArgs, reply *GetReply) {
 	// Your code here.
-	Debug(dKvserver, "KS%d From C%d Get Req.Args=[CmdId:%d Key%v] ", kv.me, args.Client, args.CommandId, args.Key)
+	Debug(dKvserver, "KS%d From KC%d Get Req.Args=[CmdId:%d Key%v] ", kv.me, args.Client, args.CommandId, args.Key)
 	_, ok := kv.rf.GetState()
 	reply.Success = false
 	reply.Value = ""
@@ -82,7 +82,9 @@ func (kv *KVServer) Get(args *GetArgs, reply *GetReply) {
 	}
 	t0 := time.Now()
 	chStop := make(chan struct{})
-	go func() {
+	wg := sync.WaitGroup{}
+	wg.Add(1)
+	go func(m_wg *sync.WaitGroup) {
 		select {
 		case msg := <-ch:
 			reply.Value = msg.Value
@@ -91,19 +93,21 @@ func (kv *KVServer) Get(args *GetArgs, reply *GetReply) {
 		case <-chStop:
 			reply.Err = "not leader"
 		}
-	}()
+		m_wg.Done()
+	}(&wg)
 
 	for kv.lastApplied < idx && time.Since(t0).Milliseconds() < 2000 {
 		time.Sleep(20 * time.Millisecond)
 	}
 	close(chStop)
+	wg.Wait()
 
 	return
 }
 
 func (kv *KVServer) PutAppend(args *PutAppendArgs, reply *PutAppendReply) {
 	// Your code here.
-	Debug(dKvserver, "KS%d From C%d %v Req Args=[CmdId:%d Key:%v Value:%v] ", kv.me, args.Client, args.Op, args.CommandId, args.Key, args.Value)
+	Debug(dKvserver, "KS%d From KC%d %v Req Args=[CmdId:%d Key:%v Value:%v] ", kv.me, args.Client, args.Op, args.CommandId, args.Key, args.Value)
 	reply.Success = false
 	_, ok := kv.rf.GetState()
 	if !ok {
@@ -144,7 +148,9 @@ func (kv *KVServer) PutAppend(args *PutAppendArgs, reply *PutAppendReply) {
 	}
 	t0 := time.Now()
 	chStop := make(chan struct{})
-	go func() {
+	wg := sync.WaitGroup{}
+	wg.Add(1)
+	go func(m_wg *sync.WaitGroup) {
 		select {
 		case <-ch:
 			reply.Success = true
@@ -152,12 +158,14 @@ func (kv *KVServer) PutAppend(args *PutAppendArgs, reply *PutAppendReply) {
 		case <-chStop:
 			reply.Err = "not leader"
 		}
-	}()
+		m_wg.Done()
+	}(&wg)
 
 	for kv.lastApplied < idx && time.Since(t0).Milliseconds() < 2000 {
 		time.Sleep(20 * time.Millisecond)
 	}
 	close(chStop)
+	wg.Wait()
 }
 
 //
@@ -211,6 +219,7 @@ func (kv *KVServer) applier() {
 				switch m.Command.(type) {
 				case Op:
 					cmd := m.Command.(Op)
+					Debug(dKvserver, "KS%d Apply Chan Entry:%d_%d ", kv.me, cmd.ClientId, cmd.CmdId)
 					kv.mu.Lock()
 					kv.lastApplied = m.CommandIndex
 					if cmd.Method != opGet && kv.latestCmdId[cmd.ClientId] != cmd.CmdId {

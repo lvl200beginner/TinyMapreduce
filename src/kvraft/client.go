@@ -56,7 +56,6 @@ func MakeClerk(servers []*labrpc.ClientEnd) *Clerk {
 //
 func (ck *Clerk) Get(key string) string {
 	ck.mu.Lock()
-	i := ck.leaderServer
 	args := GetArgs{
 		Client:    ck.name,
 		CommandId: ck.cmdId,
@@ -69,18 +68,18 @@ func (ck *Clerk) Get(key string) string {
 		reply := GetReply{}
 		reply.Success = false
 		reply.LeaderId = -1
-		ok := ck.servers[i].Call("KVServer.Get", &args, &reply)
+		ok := ck.servers[ck.leaderServer].Call("KVServer.Get", &args, &reply)
 		if !ok {
-			i = (i + 1) % len(ck.servers)
+			ck.leaderServer = (ck.leaderServer + 1) % len(ck.servers)
 			continue
 		}
 		//DPrintf("Client%d get reply:%v\n", ck.name, reply)
 		if reply.Success {
-			Debug(dKvclient, "KC%d Get Success via KS%d Reply=[CmdId:%v Key:%v Value:%v] ", ck.name, i, args.CommandId, args.Key, reply.Value)
+			Debug(dKvclient, "KC%d Get Success via KS%d Reply=[CmdId:%v Key:%v Value:%v] ", ck.name, ck.leaderServer, args.CommandId, args.Key, reply.Value)
 			return reply.Value
 		}
 		if reply.Err == "not leader" {
-			i = (i + 1) % len(ck.servers)
+			ck.leaderServer = (ck.leaderServer + 1) % len(ck.servers)
 		}
 	}
 	// You will have to modify this function.
@@ -100,7 +99,6 @@ func (ck *Clerk) PutAppend(key string, value string, op string) {
 	// You will have to modify this function.
 
 	ck.mu.Lock()
-	i := ck.leaderServer
 	args := PutAppendArgs{
 		Key:       key,
 		Value:     value,
@@ -115,17 +113,17 @@ func (ck *Clerk) PutAppend(key string, value string, op string) {
 		reply := PutAppendReply{}
 		reply.Success = false
 		reply.LeaderId = -1
-		ok := ck.servers[i].Call("KVServer.PutAppend", &args, &reply)
+		ok := ck.servers[ck.leaderServer].Call("KVServer.PutAppend", &args, &reply)
 		if !ok {
-			i = (i + 1) % len(ck.servers)
+			ck.leaderServer = (ck.leaderServer + 1) % len(ck.servers)
 			continue
 		}
 		if reply.Success {
-			Debug(dKvclient, "KC%d Cmd%d Success via KS%d ", ck.name, args.CommandId, i)
+			Debug(dKvclient, "KC%d Cmd%d Success via KS%d ", ck.name, args.CommandId, ck.leaderServer)
 			return
 		}
 		if reply.Err == "not leader" {
-			i = (i + 1) % len(ck.servers)
+			ck.leaderServer = (ck.leaderServer + 1) % len(ck.servers)
 		}
 	}
 }

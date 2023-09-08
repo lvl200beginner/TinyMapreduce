@@ -66,6 +66,11 @@ const (
 	leader    = byte(2)
 )
 
+const (
+	persistState = iota
+	persistAll
+)
+
 //
 // A Go object implementing a single Raft peer.
 //
@@ -82,6 +87,7 @@ type Raft struct {
 	// state a Raft server must maintain.
 	receiveHeartbeat bool
 	ConsumerStopped  bool
+	freshLeader      bool
 	t0               time.Time
 	commitIndex      int
 	lastApplied      int
@@ -103,6 +109,7 @@ type Raft struct {
 	chVoteWin         chan struct{}
 	chHeartbeatTicker chan struct{}
 	chStop            chan struct{}
+	chPersist         chan int
 
 	chApplier chan ApplyMsg
 }
@@ -143,6 +150,48 @@ func (rf *Raft) GetState() (int, bool) {
 // where it can later be retrieved after a crash and restart.
 // see paper's Figure 2 for a description of what should be persistent.
 //
+
+func (rf *Raft) persistTicker() {
+	for rf.killed() == false {
+		select {
+		case <-rf.chStop:
+			Debug2(dTimer, "S%d Persist Exit ", rf.me)
+			return
+		case p := <-rf.chPersist:
+			wg := sync.WaitGroup{}
+			wg.Add(1)
+			cht := make(chan struct{}, 2)
+			go func(pp *int, w *sync.WaitGroup) {
+				count := 1
+				for {
+					select {
+					case <-cht:
+						wg.Done()
+						Debug2(dPersist, "S%d Persist Req Count:%d ", rf.me, count)
+						return
+					case n := <-rf.chPersist:
+						count++
+						if n == persistAll {
+							p = persistAll
+						}
+					}
+				}
+			}(&p, &wg)
+			time.Sleep(10 * time.Millisecond)
+			cht <- struct{}{}
+			wg.Wait()
+
+			if p == persistAll {
+				rf.persistStateAndSnapshot()
+			} else if p == persistState {
+				rf.persist()
+			} else {
+				Debug2(dWarn, "S%d Wrong Persist Int %d ", rf.me, p)
+			}
+		}
+	}
+}
+
 func (rf *Raft) persist() {
 	// Your code here (2C).
 	w := new(bytes.Buffer)
@@ -178,10 +227,7 @@ func (rf *Raft) persist() {
 		//Debug2(dWarn,"S%d Persist Encode snapshotTerm")
 		return
 	}
-	rf.mu.Unlock()
-	data := w.Bytes()
 	var logtoPrint []raftLog
-
 	if len(rf.log) > 0 {
 		logtoPrint = append(logtoPrint, rf.log[0])
 		if len(rf.log) > 1 {
@@ -190,6 +236,9 @@ func (rf *Raft) persist() {
 	}
 	Debug2(dPersist, "S%d Saved State T:%d VF:%d FI:%d LL:%d ST:%d SI:%d LOG:%v ",
 		rf.me, rf.currentTerm, rf.votedFor, rf.logFirstIndex, len(rf.log), rf.snapshotTerm, rf.snapshotIndex, logtoPrint)
+	rf.mu.Unlock()
+	data := w.Bytes()
+
 	rf.persister.SaveRaftState(data)
 }
 
@@ -230,10 +279,10 @@ func (rf *Raft) persistStateAndSnapshot() {
 	}
 	snapdata := make([]byte, len(rf.snapshot))
 	copy(snapdata, rf.snapshot)
-	rf.mu.Unlock()
-	data := w.Bytes()
 	Debug2(dPersist, "S%d Saved All T:%d VF:%d FI:%d LL:%d ST:%d SI:%d ",
 		rf.me, rf.currentTerm, rf.votedFor, rf.logFirstIndex, len(rf.log), rf.snapshotTerm, rf.snapshotIndex)
+	rf.mu.Unlock()
+	data := w.Bytes()
 	rf.persister.SaveStateAndSnapshot(data, snapdata)
 }
 
@@ -348,7 +397,7 @@ func (rf *Raft) Snapshot(index int, snapshot []byte) {
 		//}
 
 		Debug2(dSnap, "S%d Compact Snap SI=%d ST=%d ", rf.me, rf.snapshotIndex, rf.snapshotTerm)
-		go rf.persistStateAndSnapshot()
+		rf.chPersist <- persistAll
 	}
 	rf.mu.Unlock()
 }
@@ -408,7 +457,7 @@ func (rf *Raft) PersistState(changed *bool) {
 	if !(*changed) {
 		return
 	}
-	go rf.persist()
+	rf.chPersist <- persistState
 }
 
 func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply) {
@@ -605,7 +654,7 @@ func (rf *Raft) InstallSnapshot(args *InstallSnapshotArgs, reply *InstallSnapsho
 	}
 
 	rf.logFirstIndex = args.LastIncludedIndex + 1
-	go rf.persistStateAndSnapshot()
+	rf.chPersist <- persistAll
 	rf.mu.Unlock()
 
 }
@@ -672,7 +721,6 @@ func (rf *Raft) Start(command interface{}) (int, int, bool) {
 
 	// Your code here (2B).
 	rf.mu.Lock()
-	defer rf.mu.Unlock()
 	index := len(rf.log) + rf.logFirstIndex
 	term := rf.currentTerm
 	isLeader := rf.mrole == leader
@@ -680,10 +728,20 @@ func (rf *Raft) Start(command interface{}) (int, int, bool) {
 	if isLeader {
 		Debug2(dLeader, "S%d Start(%v) CmdIndex:%d FI:%d LogLen:%d Logs:%v ", rf.me, command, index, rf.logFirstIndex, len(rf.log), rf.log)
 		rf.log = append(rf.log, raftLog{rf.currentTerm, command})
+		rf.chPersist <- persistState
+		//wait for persist
+		if rf.freshLeader {
+			rf.freshLeader = false
+			rf.mu.Unlock()
+			time.Sleep(50 * time.Millisecond)
+		} else {
+			rf.mu.Unlock()
+		}
 		go func() {
 			rf.chHeartbeatTicker <- struct{}{}
 		}()
-		go rf.persist()
+	} else {
+		rf.mu.Unlock()
 	}
 
 	return index + 1, term, isLeader
@@ -738,7 +796,7 @@ func (rf *Raft) startElection(t0 int) {
 	}
 	args := RequestVoteArgs{term, rf.me, lastLogIndex, lastLogTerm}
 	rf.mu.Unlock()
-	go rf.persist()
+	rf.chPersist <- persistState
 	votecount := 1
 	imnew := true
 	finished := 0
@@ -798,19 +856,20 @@ func (rf *Raft) startElection(t0 int) {
 		rf.mrole = follower
 		rf.votedFor = idx
 		rf.currentTerm = newterm
-		go rf.persist()
+		rf.chPersist <- persistState
 	} else if votecount >= majarity && rf.votedFor == rf.me && rf.mrole == candidate {
 		rf.mrole = leader
 		for i := 0; i < lenpeers; i++ {
-			rf.matchIndex[i] = 0
+			rf.matchIndex[i] = -1
 			rf.nextIndex[i] = len(rf.log) + rf.logFirstIndex
 		}
 		rf.t0 = time.Now()
 		rf.chVoteWin <- struct{}{}
-		rf.log = append(rf.log, raftLog{rf.currentTerm, 1})
-		go rf.persist()
+		//rf.log = append(rf.log, raftLog{rf.currentTerm, 1})
+		rf.chPersist <- persistState
 		Debug2(dCandidate, "S%d Wins Term:%d Commit:%d FI%d LogLen:%d Logs:%v ",
 			rf.me, rf.currentTerm, rf.commitIndex, rf.logFirstIndex, len(rf.log), rf.log)
+		rf.freshLeader = true
 	}
 	return
 }
@@ -874,7 +933,7 @@ func (rf *Raft) SendHeartbeat() bool {
 					rf.currentTerm = msg.reply.Term
 					rf.chticker <- struct{}{}
 					rf.mu.Unlock()
-					go rf.persist()
+					rf.chPersist <- persistState
 					*mFlag = true
 					return
 				}
@@ -962,7 +1021,7 @@ func (rf *Raft) handleAppendRely(t int, ch chan AppendMsg, chs chan struct{}) {
 				rf.currentTerm = msg.reply.Term
 				rf.chticker <- struct{}{}
 				rf.mu.Unlock()
-				go rf.persist()
+				rf.chPersist <- persistState
 				return
 			}
 			Debug2(dLeader, "S%d Update LeaderState FollowerReply=[S%d Success:%v IsSnap:%v LogLen:%d NI:%d Conflict:%d TFI:%d] CurNi:%d FI:%d Log:%v ",
@@ -1272,10 +1331,12 @@ func Make(peers []*labrpc.ClientEnd, me int,
 	rf.snapshotIndex = -1
 	rf.receiveHeartbeat = false
 	rf.ConsumerStopped = false
+	rf.freshLeader = false
 	rf.chticker = make(chan struct{}, 1)
 	rf.chVoteWin = make(chan struct{}, 1)
 	rf.chHeartbeatTicker = make(chan struct{}, 50)
 	rf.chStop = make(chan struct{}, 1)
+	rf.chPersist = make(chan int, 100)
 	rf.mrole = follower
 	rf.chApplier = applyCh
 
@@ -1302,5 +1363,6 @@ func Make(peers []*labrpc.ClientEnd, me int,
 	go rf.ticker()
 	go rf.run2()
 	go rf.applier2(applyCh)
+	go rf.persistTicker()
 	return rf
 }
