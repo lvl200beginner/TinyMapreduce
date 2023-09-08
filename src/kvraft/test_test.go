@@ -1,8 +1,6 @@
 package kvraft
 
-import (
-	"6.824/porcupine"
-)
+import "6.824/porcupine"
 import "6.824/models"
 import "testing"
 import "strconv"
@@ -13,7 +11,6 @@ import "sync"
 import "sync/atomic"
 import "fmt"
 import "io/ioutil"
-import _ "net/http/pprof"
 
 // The tester generously allows solutions to complete elections in one second
 // (much more than the paper's range of timeouts).
@@ -256,7 +253,7 @@ func GenericTest(t *testing.T, part string, nclients int, nservers int, unreliab
 		clnts[i] = make(chan int)
 	}
 	for i := 0; i < 3; i++ {
-		Debug(dTest, "Iteration %v ", i)
+		// log.Printf("Iteration %v\n", i)
 		atomic.StoreInt32(&done_clients, 0)
 		atomic.StoreInt32(&done_partitioner, 0)
 		go spawn_clients_and_wait(t, cfg, nclients, func(cli int, myck *Clerk, t *testing.T) {
@@ -278,7 +275,6 @@ func GenericTest(t *testing.T, part string, nclients int, nservers int, unreliab
 				nv := "x " + strconv.Itoa(cli) + " " + strconv.Itoa(j) + " y"
 				if (rand.Int() % 1000) < 500 {
 					// log.Printf("%d: client new append %v\n", cli, nv)
-					Debug(dTest, "TEST:C%d: client APPEND.Key=%v,Value=%v ", cli, key, nv)
 					Append(cfg, myck, key, nv, opLog, cli)
 					if !randomkeys {
 						last = NextValue(last, nv)
@@ -287,11 +283,10 @@ func GenericTest(t *testing.T, part string, nclients int, nservers int, unreliab
 				} else if randomkeys && (rand.Int()%1000) < 100 {
 					// we only do this when using random keys, because it would break the
 					// check done after Get() operations
-					Debug(dTest, "TEST:C%d: client PUT.Key=%v,Value=%v ", cli, key, nv)
 					Put(cfg, myck, key, nv, opLog, cli)
 					j++
 				} else {
-					Debug(dTest, "TEST:C%d: client GET Key=%v ", cli, key)
+					// log.Printf("%d: client new get %v\n", cli, key)
 					v := Get(cfg, myck, key, opLog, cli)
 					// the following check only makes sense when we're not using random keys
 					if !randomkeys && v != last {
@@ -312,7 +307,7 @@ func GenericTest(t *testing.T, part string, nclients int, nservers int, unreliab
 		atomic.StoreInt32(&done_partitioner, 1) // tell partitioner to quit
 
 		if partitions {
-			Debug(dTest, "wait for partitioner ")
+			// log.Printf("wait for partitioner\n")
 			<-ch_partitioner
 			// reconnect network and submit a request. A client may
 			// have submitted a request in a minority.  That request
@@ -324,14 +319,14 @@ func GenericTest(t *testing.T, part string, nclients int, nservers int, unreliab
 		}
 
 		if crash {
-			Debug(dTest, "shutdown servers ")
+			// log.Printf("shutdown servers\n")
 			for i := 0; i < nservers; i++ {
 				cfg.ShutdownServer(i)
 			}
 			// Wait for a while for servers to shutdown, since
 			// shutdown isn't a real crash and isn't instantaneous
 			time.Sleep(electionTimeout)
-			Debug(dTest, "restart servers ")
+			// log.Printf("restart servers\n")
 			// crash and re-start all
 			for i := 0; i < nservers; i++ {
 				cfg.StartServer(i)
@@ -341,13 +336,13 @@ func GenericTest(t *testing.T, part string, nclients int, nservers int, unreliab
 
 		// log.Printf("wait for clients\n")
 		for i := 0; i < nclients; i++ {
-			Debug(dTest, "read from clients %d ", i)
+			// log.Printf("read from clients %d\n", i)
 			j := <-clnts[i]
-			if j < 10 {
-				Debug(dTest, "Warning: client %d managed to perform only %d put operations in 1 sec? ", i, j)
-			}
+			// if j < 10 {
+			// 	log.Printf("Warning: client %d managed to perform only %d put operations in 1 sec?\n", i, j)
+			// }
 			key := strconv.Itoa(i)
-			Debug(dTest, "Check %v for client %d ", j, i)
+			// log.Printf("Check %v for client %d\n", j, i)
 			v := Get(cfg, ck, key, opLog, 0)
 			if !randomkeys {
 				checkClntAppends(t, i, v, j)
@@ -596,11 +591,6 @@ func TestPersistPartitionUnreliableLinearizable3A(t *testing.T) {
 	GenericTest(t, "3A", 15, 7, true, true, true, -1, true)
 }
 
-//runtime.SetBlockProfileRate(1)
-//go func() {
-//	log.Println(http.ListenAndServe("localhost:6060", nil))
-//}()
-
 //
 // if one server falls behind, then rejoins, does it
 // recover by using the InstallSnapshot RPC?
@@ -706,21 +696,9 @@ func TestSnapshotRecover3B(t *testing.T) {
 	GenericTest(t, "3B", 1, 5, false, true, false, 1000, false)
 }
 
-func anaTimeout(ch chan int) {
-	select {
-	case <-ch:
-		return
-	case <-time.After(time.Second * 35):
-		panic("time out")
-	}
-}
-
 func TestSnapshotRecoverManyClients3B(t *testing.T) {
 	// Test: restarts, snapshots, many clients (3B) ...
-	ch1 := make(chan int)
-	go anaTimeout(ch1)
 	GenericTest(t, "3B", 20, 5, false, true, false, 1000, false)
-	close(ch1)
 }
 
 func TestSnapshotUnreliable3B(t *testing.T) {

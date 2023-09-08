@@ -221,13 +221,11 @@ func (cfg *config) applierSnap(i int, applyCh chan ApplyMsg) {
 		err_msg := ""
 		if m.SnapshotValid {
 			if rf.CondInstallSnapshot(m.SnapshotTerm, m.SnapshotIndex, m.Snapshot) {
-				//fmt.Printf("SERVICE: %d apply snap!idx=%d,term=%d \n", i, m.SnapshotIndex, m.SnapshotTerm)
 				cfg.mu.Lock()
 				err_msg = cfg.ingestSnap(i, m.Snapshot, m.SnapshotIndex)
 				cfg.mu.Unlock()
 			}
 		} else if m.CommandValid {
-			//fmt.Printf("SERVICE: %d apply cmd!idx=%d,cmd=%d \n", i, m.CommandIndex, m.Command)
 			if m.CommandIndex != cfg.lastApplied[i]+1 {
 				err_msg = fmt.Sprintf("server %v apply out of order, expected index %v, got %v", i, cfg.lastApplied[i]+1, m.CommandIndex)
 			}
@@ -361,7 +359,7 @@ func (cfg *config) cleanup() {
 
 // attach server i to the net.
 func (cfg *config) connect(i int) {
-	//fmt.Printf("\n connect S%d \n\n", i)
+	// fmt.Printf("connect(%d)\n", i)
 
 	cfg.connected[i] = true
 
@@ -384,7 +382,7 @@ func (cfg *config) connect(i int) {
 
 // detach server i from the net.
 func (cfg *config) disconnect(i int) {
-	//fmt.Printf("\ndisconnect S%d\n\n", i)
+	// fmt.Printf("disconnect(%d)\n", i)
 
 	cfg.connected[i] = false
 

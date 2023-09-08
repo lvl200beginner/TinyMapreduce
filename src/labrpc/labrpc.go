@@ -51,8 +51,6 @@ package labrpc
 
 import (
 	"6.824/labgob"
-	"fmt"
-	"os"
 )
 import "bytes"
 import "reflect"
@@ -495,15 +493,6 @@ func (svc *Service) dispatch(methname string, req reqMsg) replyMsg {
 		replyType := method.Type.In(2)
 		replyType = replyType.Elem()
 		replyv := reflect.New(replyType)
-
-		defer func() {
-			if r := recover(); r != nil {
-				fmt.Printf("Catch Panic \n")
-				fmt.Println(args.Elem().Type())
-				fmt.Println(args.Elem())
-				os.Exit(0)
-			}
-		}()
 
 		// call the method.
 		function := method.Func

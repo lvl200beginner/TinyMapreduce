@@ -8,23 +8,12 @@ package raft
 // test with the original before submitting.
 //
 
-import (
-	"testing"
-)
+import "testing"
 import "fmt"
 import "time"
 import "math/rand"
 import "sync/atomic"
-import "net/http/pprof"
-import "net/http"
 import "sync"
-
-func StartHTTPDebuger() {
-	pprofHandler := http.NewServeMux()
-	pprofHandler.Handle("/debug/pprof/", http.HandlerFunc(pprof.Index))
-	server := &http.Server{Addr: ":6060", Handler: pprofHandler}
-	go server.ListenAndServe()
-}
 
 // The tester generously allows solutions to complete elections in one second
 // (much more than the paper's range of timeouts).
@@ -72,6 +61,7 @@ func TestReElection2A(t *testing.T) {
 
 	// if the leader disconnects, a new one should be elected.
 	cfg.disconnect(leader1)
+	fmt.Println("disable:", leader1)
 	cfg.checkOneLeader()
 
 	// if the old leader rejoins, that shouldn't
@@ -83,7 +73,9 @@ func TestReElection2A(t *testing.T) {
 	// if there's no quorum, no new leader should
 	// be elected.
 	cfg.disconnect(leader2)
+	fmt.Println("disable:", leader2)
 	cfg.disconnect((leader2 + 1) % servers)
+	fmt.Println("disable:", (leader2+1)%servers)
 	time.Sleep(2 * RaftElectionTimeout)
 
 	// check that the one connected server
@@ -135,8 +127,6 @@ func TestManyElections2A(t *testing.T) {
 }
 
 func TestBasicAgree2B(t *testing.T) {
-	//go StartHTTPDebuger()
-
 	servers := 3
 	cfg := make_config(t, servers, false, false)
 	defer cfg.cleanup()
@@ -322,7 +312,6 @@ func TestFailAgree2B(t *testing.T) {
 }
 
 func TestFailNoAgree2B(t *testing.T) {
-	//go StartHTTPDebuger()
 	servers := 5
 	cfg := make_config(t, servers, false, false)
 	defer cfg.cleanup()
@@ -333,7 +322,6 @@ func TestFailNoAgree2B(t *testing.T) {
 
 	// 3 of 5 followers disconnect
 	leader := cfg.checkOneLeader()
-	Debug2(dTest, "Disconnect S%d S%d S%d ", (leader+1)%servers, (leader+2)%servers, (leader+3)%servers)
 	cfg.disconnect((leader + 1) % servers)
 	cfg.disconnect((leader + 2) % servers)
 	cfg.disconnect((leader + 3) % servers)
@@ -352,7 +340,7 @@ func TestFailNoAgree2B(t *testing.T) {
 	if n > 0 {
 		t.Fatalf("%v committed but no majority", n)
 	}
-	Debug2(dTest, "Connect S%d S%d S%d ", (leader+1)%servers, (leader+2)%servers, (leader+3)%servers)
+
 	// repair
 	cfg.connect((leader + 1) % servers)
 	cfg.connect((leader + 2) % servers)
@@ -513,7 +501,7 @@ func TestRejoin2B(t *testing.T) {
 	cfg.end()
 }
 
-func TestMyBackup2B(t *testing.T) {
+func aTestMyBackup2B(t *testing.T) {
 	servers := 5
 	cfg := make_config(t, servers, false, false)
 	defer cfg.cleanup()
@@ -527,7 +515,7 @@ func TestMyBackup2B(t *testing.T) {
 	cfg.disconnect((leader1 + 2) % servers)
 	cfg.disconnect((leader1 + 3) % servers)
 	cfg.disconnect((leader1 + 4) % servers)
-	Debug2(dTest, "Disconnect S%d S%d S%d ", (leader1+2)%servers, (leader1+3)%servers, (leader1+4)%servers)
+	fmt.Printf("distconnect %d,%d,%d \n", (leader1+2)%servers, (leader1+3)%servers, (leader1+4)%servers)
 
 	// submit lots of commands that won't commit
 	for i := 2; i < 52; i++ {
@@ -538,17 +526,15 @@ func TestMyBackup2B(t *testing.T) {
 
 	cfg.disconnect((leader1 + 0) % servers)
 	cfg.disconnect((leader1 + 1) % servers)
-	Debug2(dTest, "Disconnect S%d S%d ", (leader1+0)%servers, (leader1+1)%servers)
+	fmt.Printf("diconnect %d,%d \n", (leader1+0)%servers, (leader1+1)%servers)
 
 	// allow other partition to recover
 	cfg.connect((leader1 + 2) % servers)
 	cfg.connect((leader1 + 3) % servers)
 	cfg.connect((leader1 + 4) % servers)
-
-	Debug2(dTest, "Connect S%d S%d S%d ", (leader1+2)%servers, (leader1+3)%servers, (leader1+4)%servers)
+	fmt.Printf("connect %d,%d,%d \n", (leader1+2)%servers, (leader1+3)%servers, (leader1+4)%servers)
 
 	// lots of successful commands to new group.
-	Debug2(dTest, "Cfg.One %d~%d ", 2, 51)
 	for i := 2; i < 52; i++ {
 		cfg.one(i, 3, true)
 	}
@@ -560,7 +546,7 @@ func TestMyBackup2B(t *testing.T) {
 		other = (leader2 + 1) % servers
 	}
 	cfg.disconnect(other)
-	Debug2(dTest, "Disconnect follower S%d ", other)
+	fmt.Printf("diconnect one follower %d  \n", other)
 
 	// lots more commands that won't commit
 	for i := 52; i < 102; i++ {
@@ -576,10 +562,9 @@ func TestMyBackup2B(t *testing.T) {
 	cfg.connect((leader1 + 0) % servers)
 	cfg.connect((leader1 + 1) % servers)
 	cfg.connect(other)
-	Debug2(dTest, "Connect S%d S%d S%d ", (leader1+0)%servers, (leader1+1)%servers, other)
+	fmt.Printf("connect %d,%d,%d \n", (leader1+0)%servers, (leader1+1)%servers, other)
 
 	// lots of successful commands to new group.
-	Debug2(dTest, "Cfg.One %d~%d ", 102, 151)
 	for i := 2; i < 52; i++ {
 		cfg.one(i+100, 3, true)
 	}
@@ -588,14 +573,13 @@ func TestMyBackup2B(t *testing.T) {
 	for i := 0; i < servers; i++ {
 		cfg.connect(i)
 	}
-	Debug2(dTest, "Connect all ")
-	Debug2(dTest, "Cfg.One 1000 ")
+	fmt.Printf("connect all \n")
 	cfg.one(1000, servers, true)
 
 	cfg.end()
 }
 
-func fTestBackup2B(t *testing.T) {
+func TestBackup2B(t *testing.T) {
 	servers := 5
 	cfg := make_config(t, servers, false, false)
 	defer cfg.cleanup()
@@ -1267,7 +1251,6 @@ func TestUnreliableChurn2C(t *testing.T) {
 const MAXLOGSIZE = 2000
 
 func snapcommon(t *testing.T, name string, disconnect bool, reliable bool, crash bool) {
-
 	iters := 30
 	servers := 3
 	cfg := make_config(t, servers, !reliable, true)
@@ -1331,75 +1314,7 @@ func snapcommon(t *testing.T, name string, disconnect bool, reliable bool, crash
 	cfg.end()
 }
 
-func snapcommon2(t *testing.T, name string, disconnect bool, reliable bool, crash bool) {
-
-	//go StartHTTPDebuger()
-
-	iters := 30
-	servers := 3
-	cfg := make_config(t, servers, !reliable, true)
-	defer cfg.cleanup()
-
-	cfg.begin(name)
-
-	cfg.one(1, servers, true)
-	leader1 := cfg.checkOneLeader()
-
-	for i := 0; i < iters; i++ {
-		victim := (leader1 + 1) % servers
-		sender := leader1
-		if i%3 == 1 {
-			sender = (leader1 + 1) % servers
-			victim = leader1
-		}
-
-		if disconnect {
-			cfg.disconnect(victim)
-			cfg.one(iters+100, servers-1, true)
-		}
-		if crash {
-			cfg.crash1(victim)
-			cfg.one(iters+200, servers-1, true)
-		}
-
-		// perhaps send enough to get a snapshot
-		nn := (SnapShotInterval / 2) + (rand.Int() % SnapShotInterval)
-		for i := 0; i < nn; i++ {
-			cfg.rafts[sender].Start(rand.Int())
-		}
-
-		// let applier threads catch up with the Start()'s
-		if disconnect == false && crash == false {
-			// make sure all followers have caught up, so that
-			// an InstallSnapshot RPC isn't required for
-			// TestSnapshotBasic2D().
-			cfg.one(iters+300, servers, true)
-		} else {
-			cfg.one(iters+300, servers-1, true)
-		}
-
-		if cfg.LogSize() >= MAXLOGSIZE {
-			cfg.t.Fatalf("Log size too large")
-		}
-		if disconnect {
-			// reconnect a follower, who maybe behind and
-			// needs to rceive a snapshot to catch up.
-			cfg.connect(victim)
-			cfg.one(iters+400, servers, true)
-			leader1 = cfg.checkOneLeader()
-		}
-		if crash {
-			cfg.start1(victim, cfg.applierSnap)
-			cfg.connect(victim)
-			cfg.one(iters+500, servers, true)
-			leader1 = cfg.checkOneLeader()
-		}
-	}
-	cfg.end()
-}
-
 func TestSnapshotBasic2D(t *testing.T) {
-	go StartHTTPDebuger()
 	snapcommon(t, "Test (2D): snapshots basic", false, true, false)
 }
 
