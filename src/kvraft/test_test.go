@@ -706,18 +706,21 @@ func TestSnapshotRecover3B(t *testing.T) {
 	GenericTest(t, "3B", 1, 5, false, true, false, 1000, false)
 }
 
-func anaTimeout() {
-	t0 := time.Now()
-	for time.Since(t0).Seconds() < 33 {
-		time.Sleep(time.Second * 6)
+func anaTimeout(ch chan int) {
+	select {
+	case <-ch:
+		return
+	case <-time.After(time.Second * 35):
+		panic("time out")
 	}
-	panic("time out!")
 }
 
 func TestSnapshotRecoverManyClients3B(t *testing.T) {
 	// Test: restarts, snapshots, many clients (3B) ...
-	go anaTimeout()
+	ch1 := make(chan int)
+	go anaTimeout(ch1)
 	GenericTest(t, "3B", 20, 5, false, true, false, 1000, false)
+	close(ch1)
 }
 
 func TestSnapshotUnreliable3B(t *testing.T) {
