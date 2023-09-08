@@ -1255,9 +1255,20 @@ func internalChurn(t *testing.T, unreliable bool) {
 
 	cfg.end()
 }
+func anaTimeout(ch chan int) {
+	select {
+	case <-ch:
+		return
+	case <-time.After(time.Second * 28):
+		panic("time out")
+	}
+}
 
 func TestReliableChurn2C(t *testing.T) {
+	ch1 := make(chan int)
+	go anaTimeout(ch1)
 	internalChurn(t, false)
+	close(ch1)
 }
 
 func TestUnreliableChurn2C(t *testing.T) {

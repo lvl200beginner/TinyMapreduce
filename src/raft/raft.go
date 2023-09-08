@@ -196,34 +196,28 @@ func (rf *Raft) persist() {
 	// Your code here (2C).
 	w := new(bytes.Buffer)
 	e := labgob.NewEncoder(w)
-	rf.mu.Lock()
 	err := e.Encode(rf.log)
 	if err != nil {
-		rf.mu.Unlock()
 		//fmt.Printf("persist log error.err=%v \n", err)
 		return
 	}
 	err = e.Encode(rf.votedFor)
 	if err != nil {
-		rf.mu.Unlock()
 		//fmt.Printf("persist votedFor error.err=%v \n", err)
 		return
 	}
 	err = e.Encode(rf.currentTerm)
 	if err != nil {
-		rf.mu.Unlock()
 		//fmt.Printf("persist currentTerm error.err=%v \n", err)
 		return
 	}
 	err = e.Encode(rf.logFirstIndex)
 	if err != nil {
-		rf.mu.Unlock()
 		//fmt.Printf("persist logFirstIndex error.err=%v \n", err)
 		return
 	}
 	err = e.Encode(rf.snapshotTerm)
 	if err != nil {
-		rf.mu.Unlock()
 		//Debug2(dWarn,"S%d Persist Encode snapshotTerm")
 		return
 	}
@@ -236,7 +230,6 @@ func (rf *Raft) persist() {
 	}
 	Debug2(dPersist, "S%d Saved State T:%d VF:%d FI:%d LL:%d ST:%d SI:%d LOG:%v ",
 		rf.me, rf.currentTerm, rf.votedFor, rf.logFirstIndex, len(rf.log), rf.snapshotTerm, rf.snapshotIndex, logtoPrint)
-	rf.mu.Unlock()
 	data := w.Bytes()
 
 	rf.persister.SaveRaftState(data)
@@ -246,34 +239,28 @@ func (rf *Raft) persistStateAndSnapshot() {
 	// Your code here (2C).
 	w := new(bytes.Buffer)
 	e := labgob.NewEncoder(w)
-	rf.mu.Lock()
 	err := e.Encode(rf.log)
 	if err != nil {
-		rf.mu.Unlock()
 		//fmt.Printf("persist log error.err=%v \n", err)
 		return
 	}
 	err = e.Encode(rf.votedFor)
 	if err != nil {
-		rf.mu.Unlock()
 		//fmt.Printf("persist votedFor error.err=%v \n", err)
 		return
 	}
 	err = e.Encode(rf.currentTerm)
 	if err != nil {
-		rf.mu.Unlock()
 		//fmt.Printf("persist currentTerm error.err=%v \n", err)
 		return
 	}
 	err = e.Encode(rf.logFirstIndex)
 	if err != nil {
-		rf.mu.Unlock()
 		//fmt.Printf("persist logFirstIndex error.err=%v \n", err)
 		return
 	}
 	err = e.Encode(rf.snapshotTerm)
 	if err != nil {
-		rf.mu.Unlock()
 		//fmt.Printf("persist snapshotTerm error.err=%v \n", err)
 		return
 	}
@@ -281,7 +268,6 @@ func (rf *Raft) persistStateAndSnapshot() {
 	copy(snapdata, rf.snapshot)
 	Debug2(dPersist, "S%d Saved All T:%d VF:%d FI:%d LL:%d ST:%d SI:%d ",
 		rf.me, rf.currentTerm, rf.votedFor, rf.logFirstIndex, len(rf.log), rf.snapshotTerm, rf.snapshotIndex)
-	rf.mu.Unlock()
 	data := w.Bytes()
 	rf.persister.SaveStateAndSnapshot(data, snapdata)
 }
@@ -397,7 +383,7 @@ func (rf *Raft) Snapshot(index int, snapshot []byte) {
 		//}
 
 		Debug2(dSnap, "S%d Compact Snap SI=%d ST=%d ", rf.me, rf.snapshotIndex, rf.snapshotTerm)
-		rf.chPersist <- persistAll
+		rf.persistStateAndSnapshot()
 	}
 	rf.mu.Unlock()
 }
@@ -457,7 +443,7 @@ func (rf *Raft) PersistState(changed *bool) {
 	if !(*changed) {
 		return
 	}
-	rf.chPersist <- persistState
+	rf.persist()
 }
 
 func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply) {
@@ -471,7 +457,6 @@ func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply
 	logCount := len(args.Entries)
 	stateChanged := new(bool)
 	*stateChanged = false
-	defer rf.PersistState(stateChanged)
 
 	if args.Term < rf.currentTerm {
 		return
@@ -492,6 +477,9 @@ func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply
 	//check prevlog
 	if args.PrevLogIndex == -1 && logCount == 0 {
 		reply.Success = true
+		if *stateChanged == true {
+			rf.persist()
+		}
 		return
 	}
 
@@ -499,10 +487,19 @@ func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply
 
 	if idx < -1 {
 		//fmt.Printf("follower'log > leader's! args.PrevLogIndex = %d,rf.logFirstIndex=%d \n", args.PrevLogIndex, rf.logFirstIndex)
+		if *stateChanged == true {
+			rf.persist()
+		}
 		return
 	} else if idx >= len(rf.log) {
+		if *stateChanged == true {
+			rf.persist()
+		}
 		return
 	} else if idx == -1 && args.PrevLogTerm != rf.snapshotTerm {
+		if *stateChanged == true {
+			rf.persist()
+		}
 		return
 	}
 
@@ -516,6 +513,9 @@ func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply
 			i--
 		}
 		reply.TermFirstIndex = i
+		if *stateChanged == true {
+			rf.persist()
+		}
 		return
 	}
 	reply.Success = true
@@ -552,6 +552,9 @@ func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply
 		}
 		Debug2(dCommit, "S%d Commit Change %d->%d ", rf.me, cmdi, rf.commitIndex)
 	}
+	if *stateChanged == true {
+		rf.persist()
+	}
 }
 
 //
@@ -563,7 +566,7 @@ func (rf *Raft) RequestVote(args *RequestVoteArgs, reply *RequestVoteReply) {
 	defer rf.mu.Unlock()
 	stateChanged := new(bool)
 	*stateChanged = false
-	defer rf.PersistState(stateChanged)
+
 	reply.Term = rf.currentTerm
 	reply.VoteGranted = false
 	llog := make([]raftLog, 0)
@@ -588,10 +591,16 @@ func (rf *Raft) RequestVote(args *RequestVoteArgs, reply *RequestVoteReply) {
 		switch rf.log[lenl-1].Term == args.LastLogTerm {
 		case true:
 			if args.LastLogIndex < rf.logFirstIndex+lenl-1 {
+				if *stateChanged == true {
+					rf.persist()
+				}
 				return
 			}
 		case false:
 			if args.LastLogTerm < rf.log[lenl-1].Term {
+				if *stateChanged == true {
+					rf.persist()
+				}
 				return
 			}
 		}
@@ -599,10 +608,16 @@ func (rf *Raft) RequestVote(args *RequestVoteArgs, reply *RequestVoteReply) {
 		switch rf.snapshotTerm == args.LastLogTerm {
 		case true:
 			if args.LastLogIndex < rf.snapshotIndex {
+				if *stateChanged == true {
+					rf.persist()
+				}
 				return
 			}
 		case false:
 			if args.LastLogTerm < rf.snapshotTerm {
+				if *stateChanged == true {
+					rf.persist()
+				}
 				return
 			}
 		}
@@ -613,6 +628,9 @@ func (rf *Raft) RequestVote(args *RequestVoteArgs, reply *RequestVoteReply) {
 		reply.VoteGranted = true
 		Debug2(dVote, "S%d Vote For S%d ", rf.me, args.CandidateId)
 		rf.chticker <- struct{}{}
+	}
+	if *stateChanged == true {
+		rf.persist()
 	}
 	return
 }
@@ -654,7 +672,7 @@ func (rf *Raft) InstallSnapshot(args *InstallSnapshotArgs, reply *InstallSnapsho
 	}
 
 	rf.logFirstIndex = args.LastIncludedIndex + 1
-	rf.chPersist <- persistAll
+	rf.persistStateAndSnapshot()
 	rf.mu.Unlock()
 
 }
@@ -728,7 +746,7 @@ func (rf *Raft) Start(command interface{}) (int, int, bool) {
 	if isLeader {
 		Debug2(dLeader, "S%d Start(%v) CmdIndex:%d FI:%d LogLen:%d Logs:%v ", rf.me, command, index, rf.logFirstIndex, len(rf.log), rf.log)
 		rf.log = append(rf.log, raftLog{rf.currentTerm, command})
-		rf.chPersist <- persistState
+		rf.persist()
 		//wait for persist
 		if rf.freshLeader {
 			rf.freshLeader = false
@@ -795,8 +813,8 @@ func (rf *Raft) startElection(t0 int) {
 		lastLogIndex = rf.snapshotIndex
 	}
 	args := RequestVoteArgs{term, rf.me, lastLogIndex, lastLogTerm}
+	rf.persist()
 	rf.mu.Unlock()
-	rf.chPersist <- persistState
 	votecount := 1
 	imnew := true
 	finished := 0
@@ -856,7 +874,7 @@ func (rf *Raft) startElection(t0 int) {
 		rf.mrole = follower
 		rf.votedFor = idx
 		rf.currentTerm = newterm
-		rf.chPersist <- persistState
+		rf.persist()
 	} else if votecount >= majarity && rf.votedFor == rf.me && rf.mrole == candidate {
 		rf.mrole = leader
 		for i := 0; i < lenpeers; i++ {
@@ -866,7 +884,7 @@ func (rf *Raft) startElection(t0 int) {
 		rf.t0 = time.Now()
 		rf.chVoteWin <- struct{}{}
 		//rf.log = append(rf.log, raftLog{rf.currentTerm, 1})
-		rf.chPersist <- persistState
+		rf.persist()
 		Debug2(dCandidate, "S%d Wins Term:%d Commit:%d FI%d LogLen:%d Logs:%v ",
 			rf.me, rf.currentTerm, rf.commitIndex, rf.logFirstIndex, len(rf.log), rf.log)
 		rf.freshLeader = true
@@ -932,8 +950,8 @@ func (rf *Raft) SendHeartbeat() bool {
 					rf.matchIndex = make([]int, len(rf.peers))
 					rf.currentTerm = msg.reply.Term
 					rf.chticker <- struct{}{}
+					rf.persist()
 					rf.mu.Unlock()
-					rf.chPersist <- persistState
 					*mFlag = true
 					return
 				}
@@ -1020,8 +1038,8 @@ func (rf *Raft) handleAppendRely(t int, ch chan AppendMsg, chs chan struct{}) {
 				rf.matchIndex = make([]int, len(rf.peers))
 				rf.currentTerm = msg.reply.Term
 				rf.chticker <- struct{}{}
+				rf.persist()
 				rf.mu.Unlock()
-				rf.chPersist <- persistState
 				return
 			}
 			Debug2(dLeader, "S%d Update LeaderState FollowerReply=[S%d Success:%v IsSnap:%v LogLen:%d NI:%d Conflict:%d TFI:%d] CurNi:%d FI:%d Log:%v ",
@@ -1363,6 +1381,5 @@ func Make(peers []*labrpc.ClientEnd, me int,
 	go rf.ticker()
 	go rf.run2()
 	go rf.applier2(applyCh)
-	go rf.persistTicker()
 	return rf
 }
